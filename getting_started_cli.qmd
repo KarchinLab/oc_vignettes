@@ -269,7 +269,7 @@ Then the installation will proceed:
 [2024:01:31 14:25:17] Finished installation of wgclinvar:1.1.1
 ```
 
-## Understanding the Input File Format
+## Understanding the Input File Format [to be updated with new example_input]
 
 We can generate an example file using `oc new example-input`. Note the period at the end, which means that we will generate the file in the current directory:
 
