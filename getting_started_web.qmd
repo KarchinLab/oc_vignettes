@@ -1,0 +1,42 @@
+---
+title: "Getting Started (Website)"
+format: html
+---
+
+# Learning Objectives
+
+- **Create** as user account on open cravat site
+- **Search** for available annotators on the open cravat site
+- **Upload** and **annotate** variant files on the site
+- **Filter** annotated results for visualization 
+- **Visualize** and **Summarize** Results in Open-Cravat 
+- **Share** annotation results with others 
+ 
+![](arch.png)
+
+## Research Question
+
+Given an file of exome variants:
+
+- How many variants are cancer related?
+- How many variants are implicated with diseases listed in CiViC?
+
+## Create Account
+
+
+
+## Look at Available Annotators in Store
+
+
+
+## Upload variant file
+
+
+
+## Map and Annotate
+
+
+
+##
+
+
