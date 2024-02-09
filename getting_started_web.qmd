@@ -100,6 +100,28 @@ Now that OpenCravat is installed, we can run the GUI. In a command prompt (Power
 oc gui
 ```
 
+You should see the following in your terminal:
+
+```
+tedladeras@teds-MacBook-Pro ~ % oc gui
+
+   ____                   __________  ___ _    _____  ______
+  / __ \____  ___  ____  / ____/ __ \/   | |  / /   |/_  __/
+ / / / / __ \/ _ \/ __ \/ /   / /_/ / /| | | / / /| | / /   
+/ /_/ / /_/ /  __/ / / / /___/ _, _/ ___ | |/ / ___ |/ /    
+\____/ .___/\___/_/ /_/\____/_/ |_/_/  |_|___/_/  |_/_/     
+    /_/                                                     
+
+OpenCRAVAT is served at localhost:8080
+(To quit: Press Ctrl-C or Ctrl-Break if run on a Terminal or Windows, or click "Cancel" and then "Quit" if run through OpenCRAVAT app on Mac OS)
+(Getting result of [example_input.sqlite]:[variant]...)
+Done getting result of [example_input.sqlite][variant] in 0.029s
+(Getting result of [example_input.sqlite]:[gene]...)
+Done getting result of [example_input.sqlite][gene] in 0.021s
+```
+
+A window should open in your web browser. If not, enter <https://localhost:8080> to view the GUI. 
+
 Now you can [browse and install the available annotators](#browse-annotators)
 
 ## Browse Annotators (Web)
