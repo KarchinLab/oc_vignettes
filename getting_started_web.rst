@@ -211,7 +211,7 @@ Visualize Results
 
 [Video here]
 
-Now that we’ve filtered, let’s go back to the Visualize Tab:
+Now that we’ve filtered, let’s go back to the Summary Tab:
 
 |image6| In the Visualize tab, we can see information about the
 annotated variants, such as from the sequence ontology. We can get the

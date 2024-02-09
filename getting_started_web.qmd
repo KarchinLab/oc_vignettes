@@ -166,7 +166,7 @@ How many variants are left after the filtering?
 
 [Video here]
 
-Now that we've filtered, let's go back to the Visualize Tab:
+Now that we've filtered, let's go back to the Summary Tab:
 
 ![](images/oc-visualize-tab.png)
 In the Visualize tab, we can see information about the annotated variants, such as from the sequence ontology. We can get the counts within a sequence ontology category by mousing over that category in our plot:
