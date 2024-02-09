@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -48,10 +82,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#understanding-the-context-for-our-task" id="toc-understanding-the-context-for-our-task" class="nav-link active" data-scroll-target="#understanding-the-context-for-our-task">Understanding the Context for our Task</a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#creating-an-open-cravat-account" id="toc-creating-an-open-cravat-account" class="nav-link" data-scroll-target="#creating-an-open-cravat-account">Creating an Open Cravat Account</a></li>
-  <li><a href="#browse-annotators" id="toc-browse-annotators" class="nav-link" data-scroll-target="#browse-annotators">Browse Annotators</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#understanding-the-context-for-our-task" id="toc-understanding-the-context-for-our-task" class="nav-link" data-scroll-target="#understanding-the-context-for-our-task">Understanding the Context for our Task</a></li>
+  <li><a href="#creating-an-opencravat-account-web" id="toc-creating-an-opencravat-account-web" class="nav-link" data-scroll-target="#creating-an-opencravat-account-web">Creating an OpenCravat Account (Web)</a></li>
+  <li><a href="#installing-opencravat-via-installer-local" id="toc-installing-opencravat-via-installer-local" class="nav-link" data-scroll-target="#installing-opencravat-via-installer-local">Installing OpenCravat via Installer (Local)</a>
+  <ul class="collapse">
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
+  <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos">MacOS</a></li>
+  <li><a href="#linux" id="toc-linux" class="nav-link" data-scroll-target="#linux">Linux</a></li>
+  <li><a href="#start-opencravat-gui" id="toc-start-opencravat-gui" class="nav-link" data-scroll-target="#start-opencravat-gui">Start OpenCravat GUI</a></li>
+  </ul></li>
+  <li><a href="#browse-annotators-web" id="toc-browse-annotators-web" class="nav-link" data-scroll-target="#browse-annotators-web">Browse Annotators (Web)</a></li>
   <li><a href="#convert-to-input-file-format" id="toc-convert-to-input-file-format" class="nav-link" data-scroll-target="#convert-to-input-file-format">Convert to Input File Format</a></li>
   <li><a href="#submit-annotation-job" id="toc-submit-annotation-job" class="nav-link" data-scroll-target="#submit-annotation-job">Submit Annotation Job</a></li>
   <li><a href="#filter-results" id="toc-filter-results" class="nav-link" data-scroll-target="#filter-results">Filter Results</a></li>
@@ -79,6 +120,19 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this tutorial, you should be able to:</p>
+<ul>
+<li><strong>Create</strong> as user account on the open cravat site</li>
+<li><strong>Install</strong> OpenCravat locally using an installer</li>
+<li><strong>Search</strong> for available annotators on the open cravat site</li>
+<li><strong>Upload</strong> and <strong>annotate</strong> variant files on the site</li>
+<li><strong>Filter</strong> annotated results for visualization</li>
+<li><strong>Visualize</strong> and <strong>Summarize</strong> Results in Open-Cravat</li>
+<li><strong>Export</strong> and <strong>Share</strong> annotation results with others</li>
+</ul>
+</section>
 <section id="understanding-the-context-for-our-task" class="level2">
 <h2 class="anchored" data-anchor-id="understanding-the-context-for-our-task">Understanding the Context for our Task</h2>
 <p>Let’s start with a research question we’re interested in. We have a list of exome variants that we’ve found in our patient population of interest. Our research question is:</p>
@@ -86,27 +140,53 @@ ul.task-list li input[type="checkbox"] {
 <p>Given this list of variants, which are potentially pathogenic?</p>
 </blockquote>
 <p>This research question will take us through understanding how the Open-Cravat annotator works.</p>
-</section>
-<section id="learning-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
-<ul>
-<li><strong>Create</strong> as user account on the open cravat site</li>
-<li><strong>Search</strong> for available annotators on the open cravat site</li>
-<li><strong>Upload</strong> and <strong>annotate</strong> variant files on the site</li>
-<li><strong>Filter</strong> annotated results for visualization</li>
-<li><strong>Visualize</strong> and <strong>Summarize</strong> Results in Open-Cravat</li>
-<li><strong>Export</strong> and <strong>Share</strong> annotation results with others</li>
-</ul>
-<p>You can click on each box in the diagram below to go to the relevant section.</p>
+<p>To start, you can either install OpenCravat locally, or create an account on the website. Then you’ll follow the paths below. Here’s a comparison of both approaches:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>OpenCravat Web</th>
+<th>OpenCravat Local</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Create Account</td>
+<td>Yes on Web</td>
+<td>Not required</td>
+</tr>
+<tr class="even">
+<td>Install Annotators</td>
+<td>Pre-installed</td>
+<td>Install in Store</td>
+</tr>
+<tr class="odd">
+<td>Scriptable</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td><strong>Protected Data</strong></td>
+<td>No</td>
+<td>Yes, with appropriate protections</td>
+</tr>
+</tbody>
+</table>
+<p>Most importantly, <strong>if you are using protected data, you should go the local installer route</strong>, with appropriate protections on your machine.</p>
+<p>You can click on each box in the diagram below to go to the relevant section. We’ll have an appropriate callout to highlight the differences where the two approaches differ.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
     L[Creating an Open-Cravat Account] --&gt; A
-    click L "#creating-an-open-cravat-account"
+    click L "#creating-an-open-cravat-account-web"
+    M[Installing OpenCravat via Installer] --&gt; N
+    N["Install Annotators"] --&gt; B
+    click M "#installing-open-cravat-via-installer-local"
+    click N "#install-annotators-local"
     A[Browse and select annotators] --&gt; B[Convert to Input File Format]
-    click A "#browse-annotators"
+    click A "#browse-annotators-web"
     click B "#convert-to-input-file-format"
     B --&gt;|Variant File Input| C[Submit Annotation Job]
     click C "#submit-annotation-job"
@@ -119,25 +199,65 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="creating-an-open-cravat-account" class="level2">
-<h2 class="anchored" data-anchor-id="creating-an-open-cravat-account">Creating an Open Cravat Account</h2>
-<p>Let’s start out by creating an account on <a href="https://run.opencravat.org" class="uri">https://run.opencravat.org</a>. If your organization is running Open-Cravat locally, you will need to find out the appropriate URL for the instance of Open-Cravat.</p>
-<p>Here’s the iniial screen we’ll see when we go to <a href="https://run.opencravat.org" class="uri">https://run.opencravat.org</a>. You’ll click on the “Sign Up” Button to create an account.</p>
+<section id="creating-an-opencravat-account-web" class="level2">
+<h2 class="anchored" data-anchor-id="creating-an-opencravat-account-web">Creating an OpenCravat Account (Web)</h2>
+<p>Let’s start out by creating an account on <a href="https://run.opencravat.org" class="uri">https://run.opencravat.org</a>. If your organization is running OpenCravat locally, you will need to find out the appropriate URL for the instance of Open-Cravat.</p>
+<p>Here’s the iniial screen we’ll see when we go to <a href="https://run.opencravat.org" class="uri">https://run.opencravat.org</a>. You’ll click on the <strong>Sign Up</strong> Button to create an account.</p>
 <p><img src="images/oc-first.png" class="img-fluid"> Enter your details in the form, and sign up. You’ll automatically be signed into the interface and will be ready to go for the next step.</p>
 <p><img src="images/oc-signup.png" class="img-fluid"></p>
+<p>Now you’re ready to browse the <a href="#browse-annotators-web">Open Cravat Store</a> to look for annotators.</p>
 </section>
-<section id="browse-annotators" class="level2">
-<h2 class="anchored" data-anchor-id="browse-annotators">Browse Annotators</h2>
+<section id="installing-opencravat-via-installer-local" class="level2">
+<h2 class="anchored" data-anchor-id="installing-opencravat-via-installer-local">Installing OpenCravat via Installer (Local)</h2>
+<p>You can install OpenCravat via the installers below:</p>
+<section id="windows" class="level3">
+<h3 class="anchored" data-anchor-id="windows">Windows</h3>
+<p><a href="https://karchinlab.org/opencravat/installers/OpenCRAVAT-2.4.1.exe">Windows installer</a></p>
+<p>Windows Defender may indicate that it prevented an unknown application from running. If so, click the ‘More’ link on the message and then select ‘Run Anyway’. An “OpenCRAVAT” icon will be created on the Desktop and the Start Menu.</p>
+</section>
+<section id="macos" class="level3">
+<h3 class="anchored" data-anchor-id="macos">MacOS</h3>
+<p><a href="https://karchinlab.org/opencravat/installers/OpenCRAVAT.2.2.9.pkg">Mac OS installer</a></p>
+<p>Right-click the downloaded file and select “Open”. Your Mac may ask you to confirm stating that the file was not downloaded from the App Store. Click “Open” button. Just double-clicking the installer may not enable this “Open” option.</p>
+</section>
+<section id="linux" class="level3">
+<h3 class="anchored" data-anchor-id="linux">Linux</h3>
+<p>Linux Users should refer to the Command Line Quickstart to install via <code>pip</code>/<code>pip3</code>.</p>
+</section>
+<section id="start-opencravat-gui" class="level3">
+<h3 class="anchored" data-anchor-id="start-opencravat-gui">Start OpenCravat GUI</h3>
+<p>Now that OpenCravat is installed, we can run the GUI. In a command prompt (PowerShell or Terminal), you can start the OpenCravat GUI by typing:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> gui</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now you can <a href="#browse-annotators">browse and install the available annotators</a></p>
+</section>
+</section>
+<section id="browse-annotators-web" class="level2">
+<h2 class="anchored" data-anchor-id="browse-annotators-web">Browse Annotators (Web)</h2>
 <p>[Video Here]</p>
-<p>If we click on the <code>STORE</code> tab in the top left of the interface, we’ll see the variety of annotators that are available to us.</p>
+<p>If we click on the <strong>STORE</strong> tab in the top left of the interface, we’ll see the variety of annotators that are available to us.</p>
 <p><img src="images/oc-browse-annotators-1.png" class="img-fluid"></p>
-<p>Let’s browse the clinically relevant annotators by clicking on the “Clinically Relevant” checkbox:</p>
+<p>Let’s browse the clinically relevant annotators by clicking on the <code>Clinically Relevant</code> checkbox:</p>
 <p><img src="images/oc-browse-annotators-2.png" class="img-fluid"></p>
 <p>As we browse the annotators available to us, we notice two specific annotators we want to work with. Let’s use two clinically relevant annotators: <a href="https://civicdb.org/welcome">CiViC</a> (Clinical Interpretations of Variants in Cancer) and <a href="https://www.ncbi.nlm.nih.gov/clinvar/">ClinVar</a>, a public archive of interpretations of clinically relevant patients.</p>
-<p>To get more information, click on the box with the CiViC:</p>
+<p>To get more information, click on the CiViC box:</p>
 <p><img src="images/oc-browse-annotators-3.png" class="img-fluid"> And you’ll see more information about the annotator:</p>
 <p><img src="images/oc-browse-annotators-4-civic.png" class="img-fluid"></p>
-<p>Now we know which annotators we want to use, so let’s annotate a file.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+For Local Users
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you have installed Open-Cravat locally, you will have the option to install annotators on the store page. You can do this by clicking “Install” for the annotator of interest. Please note that some of the annotators use a lot of disk space, so keep that in mind before installing locally.</p>
+<p><img src="images/oc-install-annotators.png" class="img-fluid"></p>
+<p>You already have CiViC and ClinVar installed by default, so you don’t need to install them locally.</p>
+</div>
+</div>
+<p>Now we know which annotators we want to use, let’s <a href="#convert-to-input-file-format">review input file formats</a>.</p>
 </section>
 <section id="convert-to-input-file-format" class="level2">
 <h2 class="anchored" data-anchor-id="convert-to-input-file-format">Convert to Input File Format</h2>
@@ -154,31 +274,52 @@ chr1    965667  CC  -
 chr1    973858  G   C</code></pre>
 <p>This format contains the following columns: <code>chromosome</code>, <code>position</code>, <code>reference</code>, and <code>allele</code>.</p>
 <p>Much more information about the supported file formats are here: <a href="https://open-cravat.readthedocs.io/en/latest/File-Formats.html">File Formats</a>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+For Local Users
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can download the example to annotate <a href="">here</a>.</p>
+</div>
+</div>
+<p>Now we have our input file, we can move on to <a href="#submit-annotation-job">submitting our job</a>.</p>
 </section>
 <section id="submit-annotation-job" class="level2">
 <h2 class="anchored" data-anchor-id="submit-annotation-job">Submit Annotation Job</h2>
 <p>[video here]</p>
 <p>Before we move on, let’s take a look at the overall workflow for annotating in the GUI. We’ll start out by 1) submitting our input file, 2) selecting the annotators, and then 3) submitting our job.</p>
 <p><img src="images/oc-gui-workflow.png" class="img-fluid"></p>
-<p>Let’s start the workflow. We can now add our variant file to annotate and submit a job. Select the <code>JOBS</code> tab in the top left corner of the interface.</p>
+<ol type="1">
+<li>Let’s start the workflow. We can now add our variant file to annotate and submit a job. Select the <code>JOBS</code> tab in the top left corner of the interface.</li>
+</ol>
 <p><img src="images/oc-jobs.png" class="img-fluid"></p>
 <p>Our exome file corresponds to the <code>hg19/GRCH37</code> build, so make sure that this genome is selected under the Genome field</p>
 <p><img src="images/oc-jobs-genome.png" class="img-fluid"></p>
 <p>Now we’ll add our input file. Add your <code>Pedja_exome.tsv</code> file here by clicking the “ADD INPUT FILES” button:</p>
 <p><img src="images/oc-jobs-input.png" class="img-fluid"></p>
-<p>Now we can select our annotators. Under annotations in the box below “Variants”, click on the “Clinical Relevance” category.</p>
+<ol start="2" type="1">
+<li>Now we can select our annotators. Under annotations in the box below “Variants”, click on the “Clinical Relevance” category.</li>
+</ol>
 <p><img src="images/oc-jobs-category.png" class="img-fluid"></p>
 <p>Select the <code>CiViC</code> (not <code>CiViC Gene</code>) and <code>ClinVar</code> annotation checkboxes.</p>
 <p><img src="images/oc-jobs-annotators.png" class="img-fluid"></p>
-<p>Now we’re ready to annotate. Click the <code>ANNOTATE</code> button at the bottom of the webpage. Now you’ve submitted your job.</p>
+<ol start="3" type="1">
+<li>Now we’re ready to annotate. Click the <strong>ANNOTATE</strong> button at the bottom of the webpage. Now you’ve submitted your job.</li>
+</ol>
 <p><img src="images/oc-jobs-submit.png" class="img-fluid"></p>
 <p>Depending on the size of your Variant file, it may take time for your job to finish. You’ll see the job running in the table on the right of the interface.</p>
+<p>When our job is finished, we can <a href="#filter-results">view our results and filter them</a>.</p>
 </section>
 <section id="filter-results" class="level2">
 <h2 class="anchored" data-anchor-id="filter-results">Filter Results</h2>
 <p>[Video here]</p>
 <blockquote class="blockquote">
-<p>We are interested in those variants that are associated with Breast Cancer in ClinVar. How do we find those?</p>
+<p>We are interested in those variants that have ClinVar annotation. How do we find those?</p>
 </blockquote>
 <p>Now we take a look at our results in the web interface. Under the list of jobs, we can see our job. Let’s select <code>Open Result Viewer</code> under the <strong>Status</strong> tab:</p>
 <p><img src="images/oc-filter-job.png" class="img-fluid"> Keep in mind that the web interface is limited to visualizing 100,000 variants, so if you have a larger result file, you’ll need to filter the results down. So let’s take a look at how to filter our variants down.</p>
@@ -188,21 +329,50 @@ chr1    973858  G   C</code></pre>
 <p><img src="images/oc-filter-query-builder.png" class="img-fluid"></p>
 <p>We’ll add a rule (a logical condition) to our filter using the <code>+</code> button:</p>
 <p><img src="images/oc-filter-add-rule.png" class="img-fluid"></p>
-<p>Now we’ll add a rule and select those that have <code>ClinVar</code> annotations. To do this, we’ll first select <code>ClinVar</code> on the left, the <code>Clinical Significance</code> column, and <code>has data</code>:</p>
-<p><img src="images/oc-filter-create.png" class="img-fluid"> Now we can apply this rule we’ve built by clicking on the <code>Apply Filter</code> button on the bottom right of the Query Builder:</p>
+<p>Now we’ll add a rule and select those that have <code>ClinVar</code> annotations. To do this, we’ll first select a) <code>ClinVar</code> on the left, the b) <code>Clinical Significance</code> column, and c) <code>has data</code>:</p>
+<p><img src="images/oc-filter-create.png" class="img-fluid"> Now we can apply this rule we’ve built by clicking on the <strong>Apply Filter</strong> button on the bottom right of the Query Builder:</p>
 <p><img src="images/oc-filter-apply.png" class="img-fluid"> How many variants are left after the filtering?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Calculating the Effect of Filters
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you have multiple filters, you can actually precalculate the numbers of variants after filtering by using the icon below.</p>
+<p><img src="images/oc-filter-precalculate.png" class="img-fluid"></p>
+<p>This can be helpful to check if your filters are too strict (that is, they won’t return anything).</p>
+<p>Just note that the filter is not actually applied to the data until you hit the <strong>Apply Filter</strong> Button.</p>
+</div>
+</div>
 </section>
 <section id="visualize-results" class="level2">
 <h2 class="anchored" data-anchor-id="visualize-results">Visualize Results</h2>
 <p>[Video here]</p>
 <p>Now that we’ve filtered, let’s go back to the Summary Tab:</p>
 <p><img src="images/oc-visualize-tab.png" class="img-fluid"> In the Visualize tab, we can see information about the annotated variants, such as from the sequence ontology. We can get the counts within a sequence ontology category by mousing over that category in our plot:</p>
-<p><img src="images/oc-visualize-seq-ontology.png" class="img-fluid"> Using the save icon, you can also save these visualizations.</p>
+<p><img src="images/oc-visualize-seq-ontology.png" class="img-fluid"> These visualizations can be moved around and pinned. Using the camera icon, you can also save these visualizations.</p>
 <p>Let’s move over to the <strong>Variant</strong> tab and look for pathogenic variants. First, we’ll click over to the <strong>Variant</strong> tab:</p>
 <p><img src="images/oc-visualize-variant.png" class="img-fluid"> Scrolling to the right, we can see there is a column for the ClinVar annotations. Notice the <strong>+</strong> on the top right. We’ll click that to expand the ClinVar annotations:</p>
 <p><img src="images/oc-visualize-clinvar.png" class="img-fluid"> In the <strong>Clinical Significance</strong> column, we can see that we can filter. Let’s select those variants that have <strong>pathogenic</strong> significance. Clicking into the search box underneath this column, we can select <strong>pathogenic</strong>:</p>
 <p><img src="images/oc-visualize-pathogenic.png" class="img-fluid"></p>
 <p>How many variants are pathogenic?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Multiple Rules
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that we could have limited our search to pathogenic variants by adding another filter rule like we did above in the filtering step. We’re showing this way in case you didn’t know the available categories within the <code>Clinical Significance</code> column.</p>
+</div>
+</div>
 </section>
 <section id="what-you-learned" class="level2">
 <h2 class="anchored" data-anchor-id="what-you-learned">What you learned</h2>
