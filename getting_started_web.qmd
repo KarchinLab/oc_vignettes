@@ -1,5 +1,5 @@
 ---
-title: "Getting Started (Website)"
+title: "Getting Started (Website/GUI)"
 format: 
   html: default
   rst: default
