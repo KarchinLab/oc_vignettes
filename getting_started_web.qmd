@@ -16,7 +16,7 @@ Let's start with a research question we're interested in. We have a list of exom
 This research question will take us through understanding how the Open-Cravat annotator works. 
 
 
-# Learning Objectives
+## Learning Objectives
 
 - **Create** as user account on the open cravat site
 - **Search** for available annotators on the open cravat site
@@ -25,6 +25,7 @@ This research question will take us through understanding how the Open-Cravat an
 - **Visualize** and **Summarize** Results in Open-Cravat 
 - **Export** and **Share** annotation results with others 
  
+You can click on each box in the diagram below to go to the relevant section.
 
 ```{mermaid}
 flowchart TD
@@ -53,7 +54,7 @@ Enter your details in the form, and sign up. You'll automatically be signed into
 
 ## Browse Annotators
 
-[Video Here]()
+[Video Here]
 
 If we click on the `STORE` tab in the top left of the interface, we'll see the variety of annotators that are available to us. 
 
@@ -98,6 +99,8 @@ Much more information about the supported file formats are here: [File Formats](
 
 ## Submit Annotation Job
 
+[video here]
+
 Before we move on, let's take a look at the overall workflow for annotating in the GUI. We'll start out by 1) submitting our input file, 2) selecting the annotators, and then 3) submitting our job. 
 
 ![](images/oc-gui-workflow.png)
@@ -130,6 +133,8 @@ Depending on the size of your Variant file, it may take time for your job to fin
 
 ## Filter Results
 
+[Video here]
+
 > We are interested in those variants that are associated with Breast Cancer in ClinVar. How do we find those?
 
 Now we take a look at our results in the web interface. Under the list of jobs, we can see our job. Let's select `Open Result Viewer` under the **Status** tab:
@@ -158,6 +163,8 @@ Now we can apply this rule we've built by clicking on the `Apply Filter` button 
 How many variants are left after the filtering?
 
 ## Visualize Results
+
+[Video here]
 
 Now that we've filtered, let's go back to the Visualize Tab:
 
