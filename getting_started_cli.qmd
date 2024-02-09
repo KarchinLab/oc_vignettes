@@ -4,6 +4,7 @@ format:
   html: default
   rst: default
 toc: true
+anchor-sections: true
 ---
 
 # Learning Objectives
@@ -19,15 +20,21 @@ Working through this document, you will learn to:
 
 ## The Basic Open-Cravat Workflow
 
-In the diagram below, we'll see the basic Open-Cravat workflow on the command-line.
+In the diagram below, we'll see the basic Open-Cravat workflow on the command-line. Click the boxes below in the diagram to jump to that particular section.
 
 ```{mermaid}
 flowchart TD
     L[Prepare for Installing] --> A
-    A[Installation] --> G[Install Annotators] 
+    click L "#preparing-to-install-open-cravat"
+    A[Installation] --> G[Install Annotators]
+    click A "#installing-open-cravat"
+    click G "#installing-annotators"
     G --> B[Convert to Input File Format]
+    click B "#understanding-the-input-file-format"
     B -->|Variant File Input| C[Map Variants and Annotate]
+    click C "#annotating-our-example"
     C -->|Results|D[Visualize Results]
+    click D "#visualizing-our-results"
     C -->|Results| E[Query Results]
     C -->|Results| F[Generate Report]
 ```
@@ -86,19 +93,10 @@ Installing collected packages: distlib, platformdirs, filelock, virtualenv
 Successfully installed distlib-0.3.8 filelock-3.13.1 platformdirs-4.2.0 virtualenv-20.25.0
 ```
 
-And make a separate virtual environment using the `virtualenv` command. Here we're creating a virtual environment called `oc`:
+And make a separate virtual environment using the `venv` command. Here we're creating a virtual environment called `oc`:
 
 ```bash
-virtualenv oc
-```
-
-```
-tedladeras@teds-MacBook-Pro ~ % virtualenv oc
-created virtual environment CPython3.11.7.final.0-64 in 260ms
-  creator CPython3macOsBrew(dest=/Users/tedladeras/oc, clear=False, no_vcs_ignore=False, global=False)
-  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/Users/tedladeras/Library/Application Support/virtualenv)
-    added seed packages: pip==23.3.1, setuptools==69.0.2, wheel==0.42.0
-  activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator
+python3 -m venv oc
 ```
 
 This creates a folder called `oc` in our current directory. This is where all of our separate Python packages will live. Then we'll activate the virtual environment using `source`:
@@ -107,7 +105,7 @@ This creates a folder called `oc` in our current directory. This is where all of
 source oc/bin/activate
 ```
 
-You can double check whether the environment is activated by using `which python3` again. Note that our prompt also has an `(oc)` in front. 
+You can double check whether the environment is activated by using `which python3` again. It should poiint to the `bin` folder within your virtual environment folder.. Note that our prompt also has an `(oc)` in front. 
 
 ```bash
 which python3
@@ -269,7 +267,8 @@ Then the installation will proceed:
 [2024:01:31 14:25:17] Finished installation of wgclinvar:1.1.1
 ```
 
-## Understanding the Input File Format [to be updated with new example_input]
+## Understanding the Input File Format 
+[to be updated with new example_input]
 
 We can generate an example file using `oc new example-input`. Note the period at the end, which means that we will generate the file in the current directory:
 
@@ -361,3 +360,5 @@ Done getting result of [example_input.sqlite][gene] in 0.021s
 ```
 
 A window should open in your web browser. If not, enter https://localhost:8080 to view the file. 
+
+![](oc-gui.png)

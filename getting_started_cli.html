@@ -91,7 +91,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#installing-open-cravat" id="toc-installing-open-cravat" class="nav-link" data-scroll-target="#installing-open-cravat">Installing Open Cravat</a></li>
   <li><a href="#installing-annotators" id="toc-installing-annotators" class="nav-link" data-scroll-target="#installing-annotators">Installing annotators</a></li>
-  <li><a href="#understanding-the-input-file-format-to-be-updated-with-new-example_input" id="toc-understanding-the-input-file-format-to-be-updated-with-new-example_input" class="nav-link" data-scroll-target="#understanding-the-input-file-format-to-be-updated-with-new-example_input">Understanding the Input File Format [to be updated with new example_input]</a></li>
+  <li><a href="#understanding-the-input-file-format" id="toc-understanding-the-input-file-format" class="nav-link" data-scroll-target="#understanding-the-input-file-format">Understanding the Input File Format</a></li>
   <li><a href="#annotating-our-example" id="toc-annotating-our-example" class="nav-link" data-scroll-target="#annotating-our-example">Annotating our example</a></li>
   <li><a href="#visualizing-our-results" id="toc-visualizing-our-results" class="nav-link" data-scroll-target="#visualizing-our-results">Visualizing our results</a></li>
   </ul></li>
@@ -130,17 +130,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="the-basic-open-cravat-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="the-basic-open-cravat-workflow">The Basic Open-Cravat Workflow</h2>
-<p>In the diagram below, we’ll see the basic Open-Cravat workflow on the command-line.</p>
+<p>In the diagram below, we’ll see the basic Open-Cravat workflow on the command-line. Click the boxes below in the diagram to jump to that particular section.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
     L[Prepare for Installing] --&gt; A
-    A[Installation] --&gt; G[Install Annotators] 
+    click L "#preparing-to-install-open-cravat"
+    A[Installation] --&gt; G[Install Annotators]
+    click A "#installing-open-cravat"
+    click G "#installing-annotators"
     G --&gt; B[Convert to Input File Format]
+    click B "#understanding-the-input-file-format"
     B --&gt;|Variant File Input| C[Map Variants and Annotate]
+    click C "#annotating-our-example"
     C --&gt;|Results|D[Visualize Results]
+    click D "#visualizing-our-results"
     C --&gt;|Results| E[Query Results]
     C --&gt;|Results| F[Generate Report]
 </pre>
@@ -299,8 +305,9 @@ Proceed? ([y]/n) &gt; y</code></pre>
 [2024:01:31 14:25:17] Verifying code integrity of wgclinvar:1.1.1...
 [2024:01:31 14:25:17] Finished installation of wgclinvar:1.1.1</code></pre>
 </section>
-<section id="understanding-the-input-file-format-to-be-updated-with-new-example_input" class="level2">
-<h2 class="anchored" data-anchor-id="understanding-the-input-file-format-to-be-updated-with-new-example_input">Understanding the Input File Format [to be updated with new example_input]</h2>
+<section id="understanding-the-input-file-format" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-the-input-file-format">Understanding the Input File Format</h2>
+<p>[to be updated with new example_input]</p>
 <p>We can generate an example file using <code>oc new example-input</code>. Note the period at the end, which means that we will generate the file in the current directory:</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> new example-input .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s confirm that we created this example:</p>
@@ -361,6 +368,7 @@ Done getting result of [example_input.sqlite][variant] in 0.029s
 (Getting result of [example_input.sqlite]:[gene]...)
 Done getting result of [example_input.sqlite][gene] in 0.021s</code></pre>
 <p>A window should open in your web browser. If not, enter https://localhost:8080 to view the file.</p>
+<p><img src="oc-gui.png" class="img-fluid"></p>
 </section>
 </section>
 

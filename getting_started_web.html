@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Getting Started (Website)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="getting_started_web_files/libs/clipboard/clipboard.min.js"></script>
+<script src="getting_started_web_files/libs/quarto-html/quarto.js"></script>
+<script src="getting_started_web_files/libs/quarto-html/popper.min.js"></script>
+<script src="getting_started_web_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="getting_started_web_files/libs/quarto-html/anchor.min.js"></script>
+<link href="getting_started_web_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="getting_started_web_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="getting_started_web_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="getting_started_web_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="getting_started_web_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="getting_started_web_files/libs/quarto-diagram/mermaid.min.js"></script>
+<script src="getting_started_web_files/libs/quarto-diagram/mermaid-init.js"></script>
+<link href="getting_started_web_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#understanding-the-context-for-our-task" id="toc-understanding-the-context-for-our-task" class="nav-link active" data-scroll-target="#understanding-the-context-for-our-task">Understanding the Context for our Task</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a>
+  <ul class="collapse">
+  <li><a href="#creating-an-open-cravat-account" id="toc-creating-an-open-cravat-account" class="nav-link" data-scroll-target="#creating-an-open-cravat-account">Creating an Open Cravat Account</a></li>
+  <li><a href="#browse-annotators" id="toc-browse-annotators" class="nav-link" data-scroll-target="#browse-annotators">Browse Annotators</a></li>
+  <li><a href="#convert-to-input-file-format" id="toc-convert-to-input-file-format" class="nav-link" data-scroll-target="#convert-to-input-file-format">Convert to Input File Format</a></li>
+  <li><a href="#submit-annotation-job" id="toc-submit-annotation-job" class="nav-link" data-scroll-target="#submit-annotation-job">Submit Annotation Job</a></li>
+  <li><a href="#filter-results" id="toc-filter-results" class="nav-link" data-scroll-target="#filter-results">Filter Results</a></li>
+  <li><a href="#visualize-results" id="toc-visualize-results" class="nav-link" data-scroll-target="#visualize-results">Visualize Results</a></li>
+  <li><a href="#what-you-learned" id="toc-what-you-learned" class="nav-link" data-scroll-target="#what-you-learned">What you learned</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="getting_started_web.rst"><i class="bi bi-file"></i>reST</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Getting Started (Website)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="understanding-the-context-for-our-task" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-the-context-for-our-task">Understanding the Context for our Task</h2>
+<p>Let’s start with a research question we’re interested in. We have a list of exome variants that we’ve found in our patient population of interest. Our research question is:</p>
+<blockquote class="blockquote">
+<p>Given this list of variants, which are potentially pathogenic?</p>
+</blockquote>
+<p>This research question will take us through understanding how the Open-Cravat annotator works.</p>
+</section>
+<section id="learning-objectives" class="level1">
+<h1>Learning Objectives</h1>
+<ul>
+<li><strong>Create</strong> as user account on the open cravat site</li>
+<li><strong>Search</strong> for available annotators on the open cravat site</li>
+<li><strong>Upload</strong> and <strong>annotate</strong> variant files on the site</li>
+<li><strong>Filter</strong> annotated results for visualization</li>
+<li><strong>Visualize</strong> and <strong>Summarize</strong> Results in Open-Cravat</li>
+<li><strong>Export</strong> and <strong>Share</strong> annotation results with others</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    L[Creating an Open-Cravat Account] --&gt; A
+    click L "#creating-an-open-cravat-account"
+    A[Browse and select annotators] --&gt; B[Convert to Input File Format]
+    click A "#browse-annotators"
+    click B "#convert-to-input-file-format"
+    B --&gt;|Variant File Input| C[Submit Annotation Job]
+    click C "#submit-annotation-job"
+    C --&gt;|Results|D["Filter Results"] --&gt; E[Visualize Results]
+    click D "#filter-results"
+    click E "#visualize-results"
+</pre>
+</div>
+</div>
+</div>
+</div>
+<section id="creating-an-open-cravat-account" class="level2">
+<h2 class="anchored" data-anchor-id="creating-an-open-cravat-account">Creating an Open Cravat Account</h2>
+<p>Let’s start out by creating an account on <a href="https://run.opencravat.org" class="uri">https://run.opencravat.org</a>. If your organization is running Open-Cravat locally, you will need to find out the appropriate URL for the instance of Open-Cravat.</p>
+<p>Here’s the iniial screen we’ll see when we go to <a href="https://run.opencravat.org" class="uri">https://run.opencravat.org</a>. You’ll click on the “Sign Up” Button to create an account.</p>
+<p><img src="images/oc-first.png" class="img-fluid"> Enter your details in the form, and sign up. You’ll automatically be signed into the interface and will be ready to go for the next step.</p>
+<p><img src="images/oc-signup.png" class="img-fluid"></p>
+</section>
+<section id="browse-annotators" class="level2">
+<h2 class="anchored" data-anchor-id="browse-annotators">Browse Annotators</h2>
+<p><a href="">Video Here</a></p>
+<p>If we click on the <code>STORE</code> tab in the top left of the interface, we’ll see the variety of annotators that are available to us.</p>
+<p><img src="images/oc-browse-annotators-1.png" class="img-fluid"></p>
+<p>Let’s browse the clinically relevant annotators by clicking on the “Clinically Relevant” checkbox:</p>
+<p><img src="images/oc-browse-annotators-2.png" class="img-fluid"></p>
+<p>As we browse the annotators available to us, we notice two specific annotators we want to work with. Let’s use two clinically relevant annotators: <a href="https://civicdb.org/welcome">CiViC</a> (Clinical Interpretations of Variants in Cancer) and <a href="https://www.ncbi.nlm.nih.gov/clinvar/">ClinVar</a>, a public archive of interpretations of clinically relevant patients.</p>
+<p>To get more information, click on the box with the CiViC:</p>
+<p><img src="images/oc-browse-annotators-3.png" class="img-fluid"> And you’ll see more information about the annotator:</p>
+<p><img src="images/oc-browse-annotators-4-civic.png" class="img-fluid"></p>
+<p>Now we know which annotators we want to use, so let’s annotate a file.</p>
+</section>
+<section id="convert-to-input-file-format" class="level2">
+<h2 class="anchored" data-anchor-id="convert-to-input-file-format">Convert to Input File Format</h2>
+<p>Open-Cravat supports VCF files for input, but also has a simplified format to be used for input files.</p>
+<p>We’ll use an exome example and annotate it. Let’s take a look at the first few lines of this file to understand the input format.</p>
+<pre><code>chr1    946247  G   A
+chr1    952421  A   G
+chr1    953259  T   C
+chr1    953279  T   C
+chr1    961945  G   C
+chr1    965125  G   C
+chr1    965338  TTAT    -
+chr1    965667  CC  -
+chr1    973858  G   C</code></pre>
+<p>This format contains the following columns: <code>chromosome</code>, <code>position</code>, <code>reference</code>, and <code>allele</code>.</p>
+<p>Much more information about the supported file formats are here: <a href="https://open-cravat.readthedocs.io/en/latest/File-Formats.html">File Formats</a>.</p>
+</section>
+<section id="submit-annotation-job" class="level2">
+<h2 class="anchored" data-anchor-id="submit-annotation-job">Submit Annotation Job</h2>
+<p>Before we move on, let’s take a look at the overall workflow for annotating in the GUI. We’ll start out by 1) submitting our input file, 2) selecting the annotators, and then 3) submitting our job.</p>
+<p><img src="images/oc-gui-workflow.png" class="img-fluid"></p>
+<p>Let’s start the workflow. We can now add our variant file to annotate and submit a job. Select the <code>JOBS</code> tab in the top left corner of the interface.</p>
+<p><img src="images/oc-jobs.png" class="img-fluid"></p>
+<p>Our exome file corresponds to the <code>hg19/GRCH37</code> build, so make sure that this genome is selected under the Genome field</p>
+<p><img src="images/oc-jobs-genome.png" class="img-fluid"></p>
+<p>Now we’ll add our input file. Add your <code>Pedja_exome.tsv</code> file here by clicking the “ADD INPUT FILES” button:</p>
+<p><img src="images/oc-jobs-input.png" class="img-fluid"></p>
+<p>Now we can select our annotators. Under annotations in the box below “Variants”, click on the “Clinical Relevance” category.</p>
+<p><img src="images/oc-jobs-category.png" class="img-fluid"></p>
+<p>Select the <code>CiViC</code> (not <code>CiViC Gene</code>) and <code>ClinVar</code> annotation checkboxes.</p>
+<p><img src="images/oc-jobs-annotators.png" class="img-fluid"></p>
+<p>Now we’re ready to annotate. Click the <code>ANNOTATE</code> button at the bottom of the webpage. Now you’ve submitted your job.</p>
+<p><img src="images/oc-jobs-submit.png" class="img-fluid"></p>
+<p>Depending on the size of your Variant file, it may take time for your job to finish. You’ll see the job running in the table on the right of the interface.</p>
+</section>
+<section id="filter-results" class="level2">
+<h2 class="anchored" data-anchor-id="filter-results">Filter Results</h2>
+<blockquote class="blockquote">
+<p>We are interested in those variants that are associated with Breast Cancer in ClinVar. How do we find those?</p>
+</blockquote>
+<p>Now we take a look at our results in the web interface. Under the list of jobs, we can see our job. Let’s select <code>Open Result Viewer</code> under the <strong>Status</strong> tab:</p>
+<p><img src="images/oc-filter-job.png" class="img-fluid"> Keep in mind that the web interface is limited to visualizing 100,000 variants, so if you have a larger result file, you’ll need to filter the results down. So let’s take a look at how to filter our variants down.</p>
+<p>We can filter variants by selecting the Filter tab in the Results viewer:</p>
+<p><img src="images/oc-filter-select-tab.png" class="img-fluid"></p>
+<p>Under “Variant Properties” we can limit our list of variants to those that have ClinVar annotations. Let’s build a filter using the Query Builder, which will allow us to impose multiple criteria as a filter.</p>
+<p><img src="images/oc-filter-query-builder.png" class="img-fluid"></p>
+<p>We’ll add a rule (a logical condition) to our filter using the <code>+</code> button:</p>
+<p><img src="images/oc-filter-add-rule.png" class="img-fluid"></p>
+<p>Now we’ll add a rule and select those that have <code>ClinVar</code> annotations. To do this, we’ll first select <code>ClinVar</code> on the left, the <code>Clinical Significance</code> column, and <code>has data</code>:</p>
+<p><img src="images/oc-filter-create.png" class="img-fluid"> Now we can apply this rule we’ve built by clicking on the <code>Apply Filter</code> button on the bottom right of the Query Builder:</p>
+<p><img src="images/oc-filter-apply.png" class="img-fluid"> How many variants are left after the filtering?</p>
+</section>
+<section id="visualize-results" class="level2">
+<h2 class="anchored" data-anchor-id="visualize-results">Visualize Results</h2>
+<p>Now that we’ve filtered, let’s go back to the Visualize Tab:</p>
+<p><img src="images/oc-visualize-tab.png" class="img-fluid"> In the Visualize tab, we can see information about the annotated variants, such as from the sequence ontology. We can get the counts within a sequence ontology category by mousing over that category in our plot:</p>
+<p><img src="images/oc-visualize-seq-ontology.png" class="img-fluid"> Using the save icon, you can also save these visualizations.</p>
+<p>Let’s move over to the <strong>Variant</strong> tab and look for pathogenic variants. First, we’ll click over to the <strong>Variant</strong> tab:</p>
+<p><img src="images/oc-visualize-variant.png" class="img-fluid"> Scrolling to the right, we can see there is a column for the ClinVar annotations. Notice the <strong>+</strong> on the top right. We’ll click that to expand the ClinVar annotations:</p>
+<p><img src="images/oc-visualize-clinvar.png" class="img-fluid"> In the <strong>Clinical Significance</strong> column, we can see that we can filter. Let’s select those variants that have <strong>pathogenic</strong> significance. Clicking into the search box underneath this column, we can select <strong>pathogenic</strong>:</p>
+<p><img src="images/oc-visualize-pathogenic.png" class="img-fluid"></p>
+<p>How many variants are pathogenic?</p>
+</section>
+<section id="what-you-learned" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-learned">What you learned</h2>
+<p>You learned a lot in this section. You learned how to:</p>
+<ul>
+<li>Create a User Account</li>
+<li>Browse Open-Cravat’s store to look for annotators</li>
+<li>Submit a job to the Open-Cravat server</li>
+<li>Filter results in the Results Viewer</li>
+<li>Visualize results in the Results Viewer</li>
+</ul>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
