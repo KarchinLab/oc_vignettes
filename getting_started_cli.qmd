@@ -271,7 +271,8 @@ Then the installation will proceed:
 ```
 
 ## Understanding the Input File Format 
-[to be updated with new example_input]
+
+[Video Here]
 
 We can generate an example file using `oc new example-input`. Note the period at the end, which means that we will generate the file in the current directory:
 
@@ -297,15 +298,22 @@ cat example_input | head
 ```
 
 ```
-chr10	121593817	-	A	T	s0
-chr10	2987654	+	T	A	s1
-chr10	43077259	+	A	T	s2
-chr10	8055656	+	A	T	s3
-chr10	87864470	+	A	T	s4
-chr10	87864486	+	A	-	s0
+chr1	69091	+	A	C	s0
+chr1	69091	+	ATG	C	s0
+chr6	31039077	+	C	G	s0
+chr1	27612918	+	G	a	s1
+chr1	27612918	+	G	A	s0
+chrM	235	+	A	G	clinvar
+chrM	3308	+	T	C	omim
+chr8	54626835	+	A	T	s0
+chr4	1804372	+	A	G	s1
+chr4	1804372	+	AT	GC	s1
+chr4	1804372	+	A	T	s1
 ```
 
 ## Annotating our example
+
+<iframe src="https://share.descript.com/embed/sxm0Qpy7NfL" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
 Now we have our example, we can run Open Cravat. This will annotate our `example_input` file with all available annotators. 
 
@@ -337,6 +345,8 @@ Finished normally. Runtime: 4.539s
 ```
 
 ## Visualizing our results
+
+<iframe src="https://share.descript.com/embed/LK0lwMCjeIe" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
 We saw that one of the files generated was an `.sqlite` file. These are our results, which we can visualize using `oc gui`, which will launch the a web server so we can examine our results using the GUI:
 

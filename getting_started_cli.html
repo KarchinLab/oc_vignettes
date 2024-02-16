@@ -309,7 +309,7 @@ Proceed? ([y]/n) &gt; y</code></pre>
 </section>
 <section id="understanding-the-input-file-format" class="level2">
 <h2 class="anchored" data-anchor-id="understanding-the-input-file-format">Understanding the Input File Format</h2>
-<p>[to be updated with new example_input]</p>
+<p>[Video Here]</p>
 <p>We can generate an example file using <code>oc new example-input</code>. Note the period at the end, which means that we will generate the file in the current directory:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> new example-input .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s confirm that we created this example:</p>
@@ -318,15 +318,22 @@ Proceed? ([y]/n) &gt; y</code></pre>
 -rw-r--r--  1 tedladeras  staff    9036 Jan 31 14:27 example_input</code></pre>
 <p>Note the created file has an underscore (<code>_</code>) rather than a dash (<code>-</code>). Let’s take a look at the <code>example_input</code> file that we created:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> example_input <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>chr10   121593817   -   A   T   s0
-chr10   2987654 +   T   A   s1
-chr10   43077259    +   A   T   s2
-chr10   8055656 +   A   T   s3
-chr10   87864470    +   A   T   s4
-chr10   87864486    +   A   -   s0</code></pre>
+<pre><code>chr1    69091   +   A   C   s0
+chr1    69091   +   ATG C   s0
+chr6    31039077    +   C   G   s0
+chr1    27612918    +   G   a   s1
+chr1    27612918    +   G   A   s0
+chrM    235 +   A   G   clinvar
+chrM    3308    +   T   C   omim
+chr8    54626835    +   A   T   s0
+chr4    1804372 +   A   G   s1
+chr4    1804372 +   AT  GC  s1
+chr4    1804372 +   A   T   s1</code></pre>
 </section>
 <section id="annotating-our-example" class="level2">
 <h2 class="anchored" data-anchor-id="annotating-our-example">Annotating our example</h2>
+<iframe src="https://share.descript.com/embed/sxm0Qpy7NfL" width="640" height="360" frameborder="0" allowfullscreen="">
+</iframe>
 <p>Now we have our example, we can run Open Cravat. This will annotate our <code>example_input</code> file with all available annotators.</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> run ./example_input <span class="at">-l</span> hg38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro ~ % oc run ./example_input -l hg38
@@ -352,6 +359,8 @@ Finished normally. Runtime: 4.539s</code></pre>
 </section>
 <section id="visualizing-our-results" class="level2">
 <h2 class="anchored" data-anchor-id="visualizing-our-results">Visualizing our results</h2>
+<iframe src="https://share.descript.com/embed/LK0lwMCjeIe" width="640" height="360" frameborder="0" allowfullscreen="">
+</iframe>
 <p>We saw that one of the files generated was an <code>.sqlite</code> file. These are our results, which we can visualize using <code>oc gui</code>, which will launch the a web server so we can examine our results using the GUI:</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> gui example_input.sqlite</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro ~ % oc gui example_input.sqlite
