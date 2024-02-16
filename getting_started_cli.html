@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -85,11 +85,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a>
   <ul class="collapse">
   <li><a href="#the-basic-open-cravat-workflow" id="toc-the-basic-open-cravat-workflow" class="nav-link" data-scroll-target="#the-basic-open-cravat-workflow">The Basic Open-Cravat Workflow</a></li>
-  <li><a href="#preparing-to-install-open-cravat" id="toc-preparing-to-install-open-cravat" class="nav-link" data-scroll-target="#preparing-to-install-open-cravat">Preparing to Install Open Cravat</a>
+  <li><a href="#preparing-and-installing-open-cravat" id="toc-preparing-and-installing-open-cravat" class="nav-link" data-scroll-target="#preparing-and-installing-open-cravat">Preparing and Installing Open Cravat</a>
   <ul class="collapse">
   <li><a href="#using-a-virtual-environment-optional" id="toc-using-a-virtual-environment-optional" class="nav-link" data-scroll-target="#using-a-virtual-environment-optional">Using a Virtual Environment (optional)</a></li>
-  </ul></li>
   <li><a href="#installing-open-cravat" id="toc-installing-open-cravat" class="nav-link" data-scroll-target="#installing-open-cravat">Installing Open Cravat</a></li>
+  </ul></li>
   <li><a href="#installing-annotators" id="toc-installing-annotators" class="nav-link" data-scroll-target="#installing-annotators">Installing annotators</a></li>
   <li><a href="#understanding-the-input-file-format" id="toc-understanding-the-input-file-format" class="nav-link" data-scroll-target="#understanding-the-input-file-format">Understanding the Input File Format</a></li>
   <li><a href="#annotating-our-example" id="toc-annotating-our-example" class="nav-link" data-scroll-target="#annotating-our-example">Annotating our example</a></li>
@@ -115,7 +115,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="learning-objectives" class="level1">
 <h1>Learning Objectives</h1>
@@ -131,13 +133,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-basic-open-cravat-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="the-basic-open-cravat-workflow">The Basic Open-Cravat Workflow</h2>
 <p>In the diagram below, we’ll see the basic Open-Cravat workflow on the command-line. Click the boxes below in the diagram to jump to that particular section.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
     L[Prepare for Installing] --&gt; A
-    click L "#preparing-to-install-open-cravat"
+    click L "#preparing-and-installing-open-cravat"
     A[Installation] --&gt; G[Install Annotators]
     click A "#installing-open-cravat"
     click G "#installing-annotators"
@@ -151,12 +154,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     C --&gt;|Results| F[Generate Report]
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 </section>
-<section id="preparing-to-install-open-cravat" class="level2">
-<h2 class="anchored" data-anchor-id="preparing-to-install-open-cravat">Preparing to Install Open Cravat</h2>
+<section id="preparing-and-installing-open-cravat" class="level2">
+<h2 class="anchored" data-anchor-id="preparing-and-installing-open-cravat">Preparing and Installing Open Cravat</h2>
+<iframe src="https://share.descript.com/embed/Fraiw5qh2gJ" width="640" height="360" frameborder="0" allowfullscreen="">
+</iframe>
 <p>Make sure you know where your Python is installed using the <code>which</code> command. In my example, I have python 3.11 installed via Homebrew, which is the python I want to use. In my case, since I’m on MacOS, I know that I run python programs using <code>python3</code> rather than <code>python</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> python3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro ~ % which python3
@@ -186,26 +192,19 @@ Downloading filelock-3.13.1-py3-none-any.whl (11 kB)
 Downloading platformdirs-4.2.0-py3-none-any.whl (17 kB)
 Installing collected packages: distlib, platformdirs, filelock, virtualenv
 Successfully installed distlib-0.3.8 filelock-3.13.1 platformdirs-4.2.0 virtualenv-20.25.0</code></pre>
-<p>And make a separate virtual environment using the <code>virtualenv</code> command. Here we’re creating a virtual environment called <code>oc</code>:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">virtualenv</span> oc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>tedladeras@teds-MacBook-Pro ~ % virtualenv oc
-created virtual environment CPython3.11.7.final.0-64 in 260ms
-  creator CPython3macOsBrew(dest=/Users/tedladeras/oc, clear=False, no_vcs_ignore=False, global=False)
-  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/Users/tedladeras/Library/Application Support/virtualenv)
-    added seed packages: pip==23.3.1, setuptools==69.0.2, wheel==0.42.0
-  activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator</code></pre>
+<p>And make a separate virtual environment using the <code>venv</code> command. Here we’re creating a virtual environment called <code>oc</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv oc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This creates a folder called <code>oc</code> in our current directory. This is where all of our separate Python packages will live. Then we’ll activate the virtual environment using <code>source</code>:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> oc/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can double check whether the environment is activated by using <code>which python3</code> again. Note that our prompt also has an <code>(oc)</code> in front.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> python3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> oc/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can double check whether the environment is activated by using <code>which python3</code> again. It should poiint to the <code>bin</code> folder within your virtual environment folder.. Note that our prompt also has an <code>(oc)</code> in front.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> python3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>(oc) tedladeras@teds-MacBook-Pro ~ % which python3
 /Users/tedladeras/oc/bin/python3</code></pre>
 </section>
-</section>
-<section id="installing-open-cravat" class="level2">
-<h2 class="anchored" data-anchor-id="installing-open-cravat">Installing Open Cravat</h2>
+<section id="installing-open-cravat" class="level3">
+<h3 class="anchored" data-anchor-id="installing-open-cravat">Installing Open Cravat</h3>
 <p>Now we can install Open Cravat using <code>pip</code>/<code>pip3</code>.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install open-cravat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install open-cravat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro local % pip3 install open-cravat
 Collecting open-cravat
   Downloading open-cravat-2.4.2.tar.gz (3.1 MB)
@@ -218,7 +217,7 @@ Collecting requests (from open-cravat)
 Collecting requests-toolbelt (from open-cravat)
   Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)</code></pre>
 <p>Confirm that Open Cravat is installed:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro ~ % oc --help
 usage: oc [-h] {run,report,gui,module,config,new,store,util,version,feedback} ...
 
@@ -240,13 +239,16 @@ Commands:
     version             Show version
     feedback            Send feedback to the developers</code></pre>
 <p>All of our interactions with Open-Cravat will be prefaced by <code>oc</code>. For example, we can launch the Open-Cravat GUI as a webserver on our machine using</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> gui</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> gui</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now you’re ready to start installing annotators.</p>
+</section>
 </section>
 <section id="installing-annotators" class="level2">
 <h2 class="anchored" data-anchor-id="installing-annotators">Installing annotators</h2>
+<iframe src="https://share.descript.com/embed/Fraiw5qh2gJ" width="640" height="360" frameborder="0" allowfullscreen="">
+</iframe>
 <p>The first thing we’ll need to install are some core bits of Open Cravat, called <code>install-base</code>. We’ll do this with the command <code>oc module</code>:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> module install-base</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> module install-base</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro local % oc module install-base
 Installing: casecontrol:1.2.0, cravat-converter:1.1.2, excelreporter:2.1.1, go:2022.11.01, hg38:1.11.0, hg38wgs:1.0.0, oldcravat-converter:1.1.2, tagsampler:1.1.6, textreporter:2.1.0, varmeta:1.0.0, vcf-converter:2.2.1, vcfinfo:2.0.0, wgbase:1.1.3, wgcasecontrols:1.0.1, wgcasecontrolsummary:1.0.1, wgcircossummary:2.2.0, wgcodingvsnoncodingsummary:2.0.0, wggo:1.2.0, wggosummary:2.4.0, wghg19:1.0.3, wglollipop:2.2.1, wgncrna:1.1.0, wgndex:1.1.0, wgnote:3.0.0, wgrankscore:1.1.0, wgsosamplesummary:2.2.0, wgsosummary:1.5.0, wgvcfinfo:1.0.3
 [2024:01:31 14:17:48] Starting to install casecontrol:1.2.0...
@@ -265,7 +267,7 @@ Installing: casecontrol:1.2.0, cravat-converter:1.1.2, excelreporter:2.1.1, go:2
 [2024:01:31 14:19:57] Verifying code integrity of wgvcfinfo:1.0.3...
 [2024:01:31 14:19:57] Finished installation of wgvcfinfo:1.0.3</code></pre>
 <p>Let’s list the available annotators. This is a very large list of annotators. This is just the first few entries.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tedladeras@teds-MacBook-Pro</span> local % oc module  ls <span class="at">-a</span> <span class="at">-t</span> annotator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tedladeras@teds-MacBook-Pro</span> local % oc module  ls <span class="at">-a</span> <span class="at">-t</span> annotator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>Name                               Title                                                 Type       Installed  Store ver   Store data ver     Local ver   Local data ver  Size      
 abraom                             ABRaOM                                                annotator             1.0.0                                                      113.6 MB  
 alfa                               ALFA: Allele Frequency Aggregator                     annotator             1.0.0       2020.02.29                                     19.8 GB   
@@ -277,12 +279,12 @@ alfa_other                         ALFA: Allele Frequency Aggregator Others
 
 ....</code></pre>
 <p>We’re actually looking for ClinVar, which is a list of clinically relevant annotations. Note that all of the annotators are in lower snake case (such as <code>alfa_asian</code>). So we can add <code>clinvar</code> in with our query.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> module ls <span class="at">-a</span> clinvar <span class="at">-t</span> annotator </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> module ls <span class="at">-a</span> clinvar <span class="at">-t</span> annotator </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro local % oc module ls -a clinvar -t annotator 
 Name     Title    Type       Installed  Store ver   Store data ver  Local ver  Local data ver  Size      
 clinvar  ClinVar  annotator             2023.02.01  2023.02.01.1                               381.8 MB  </code></pre>
 <p>Ok, now we know our annotator exists, and we can install it with the <code>oc module install</code> command:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> module install clinvar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> module install clinvar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We’ll need to confirm <code>y</code> to proceed:</p>
 <pre><code>tedladeras@teds-MacBook-Pro local % oc module install clinvar
 Installing: clinvar:2023.02.01, wgclinvar:1.1.1
@@ -309,13 +311,13 @@ Proceed? ([y]/n) &gt; y</code></pre>
 <h2 class="anchored" data-anchor-id="understanding-the-input-file-format">Understanding the Input File Format</h2>
 <p>[to be updated with new example_input]</p>
 <p>We can generate an example file using <code>oc new example-input</code>. Note the period at the end, which means that we will generate the file in the current directory:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> new example-input .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> new example-input .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s confirm that we created this example:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> example<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> example<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro ~ % ls -l example*
 -rw-r--r--  1 tedladeras  staff    9036 Jan 31 14:27 example_input</code></pre>
 <p>Note the created file has an underscore (<code>_</code>) rather than a dash (<code>-</code>). Let’s take a look at the <code>example_input</code> file that we created:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> example_input <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> example_input <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>chr10   121593817   -   A   T   s0
 chr10   2987654 +   T   A   s1
 chr10   43077259    +   A   T   s2
@@ -326,7 +328,7 @@ chr10   87864486    +   A   -   s0</code></pre>
 <section id="annotating-our-example" class="level2">
 <h2 class="anchored" data-anchor-id="annotating-our-example">Annotating our example</h2>
 <p>Now we have our example, we can run Open Cravat. This will annotate our <code>example_input</code> file with all available annotators.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> run ./example_input <span class="at">-l</span> hg38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> run ./example_input <span class="at">-l</span> hg38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro ~ % oc run ./example_input -l hg38
 Input file(s): /Users/tedladeras/example_input
 Genome assembly: hg38
@@ -351,7 +353,7 @@ Finished normally. Runtime: 4.539s</code></pre>
 <section id="visualizing-our-results" class="level2">
 <h2 class="anchored" data-anchor-id="visualizing-our-results">Visualizing our results</h2>
 <p>We saw that one of the files generated was an <code>.sqlite</code> file. These are our results, which we can visualize using <code>oc gui</code>, which will launch the a web server so we can examine our results using the GUI:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> gui example_input.sqlite</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> gui example_input.sqlite</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro ~ % oc gui example_input.sqlite
 
    ____                   __________  ___ _    _____  ______
@@ -453,10 +455,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -466,8 +467,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -480,6 +490,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -523,6 +652,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -548,6 +678,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -608,6 +764,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

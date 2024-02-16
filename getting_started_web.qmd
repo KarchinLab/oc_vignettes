@@ -164,18 +164,23 @@ Open-Cravat supports VCF files for input, but also has a simplified format to be
 We'll use an exome example and annotate it. Let's take a look at the first few lines of this file to understand the input format.
 
 ```
-chr1	946247	G	A
-chr1	952421	A	G
-chr1	953259	T	C
-chr1	953279	T	C
-chr1	961945	G	C
-chr1	965125	G	C
-chr1	965338	TTAT	-
-chr1	965667	CC	-
-chr1	973858	G	C
+chr1	69091	+	A	C	s0
+chr1	69091	+	ATG	C	s0
+chr6	31039077	+	C	G	s0
+chr1	27612918	+	G	a	s1
+chr1	27612918	+	G	A	s0
+chrM	235	+	A	G	clinvar
+chrM	3308	+	T	C	omim
+chr8	54626835	+	A	T	s0
+chr4	1804372	+	A	G	s1
+chr4	1804372	+	AT	GC	s1
+chr4	1804372	+	A	T	s1
+chr1	369551	+	G	C	s0
+chr10	121593817	-	A	T	s0
+chr10	2987654	+	T	A	s1
 ```
 
-This format contains the following columns: `chromosome`, `position`, `reference`, and `allele`.
+This format contains the following columns: `chromosome`, `position`, `strand`, `reference`, and `allele`.
 
 Much more information about the supported file formats are here: [File Formats](https://open-cravat.readthedocs.io/en/latest/File-Formats.html).
 

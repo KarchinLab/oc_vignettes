@@ -25,7 +25,7 @@ In the diagram below, we'll see the basic Open-Cravat workflow on the command-li
 ```{mermaid}
 flowchart TD
     L[Prepare for Installing] --> A
-    click L "#preparing-to-install-open-cravat"
+    click L "#preparing-and-installing-open-cravat"
     A[Installation] --> G[Install Annotators]
     click A "#installing-open-cravat"
     click G "#installing-annotators"
@@ -39,8 +39,9 @@ flowchart TD
     C -->|Results| F[Generate Report]
 ```
 
+## Preparing and Installing Open Cravat
 
-## Preparing to Install Open Cravat
+<iframe src="https://share.descript.com/embed/Fraiw5qh2gJ" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
 Make sure you know where your Python is installed using the `which` command. In my example, I have python 3.11 installed via Homebrew, which is the python I want to use. In my case, since I'm on MacOS, I know that I run python programs using `python3` rather than `python`.
 
@@ -116,7 +117,7 @@ which python3
 /Users/tedladeras/oc/bin/python3
 ```
 
-## Installing Open Cravat
+### Installing Open Cravat
 
 Now we can install Open Cravat using `pip`/`pip3`. 
 
@@ -176,6 +177,8 @@ oc gui
 Now you're ready to start installing annotators. 
 
 ## Installing annotators
+
+<iframe src="https://share.descript.com/embed/Fraiw5qh2gJ" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
 The first thing we'll need to install are some core bits of Open Cravat, called `install-base`. We'll do this with the command `oc module`:
 
