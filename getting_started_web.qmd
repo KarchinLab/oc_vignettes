@@ -84,6 +84,8 @@ Windows Defender may indicate that it prevented an unknown application from runn
 
 ### MacOS
 
+<iframe src="https://share.descript.com/embed/xflvSqCDFQL" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
 [Mac OS installer](https://karchinlab.org/opencravat/installers/OpenCRAVAT.2.2.9.pkg)
 
 Right-click the downloaded file and select “Open”. Your Mac may ask you to confirm stating that the file was not downloaded from the App Store. Click “Open” button. Just double-clicking the installer may not enable this “Open” option. 
@@ -94,11 +96,15 @@ Linux Users should refer to the Command Line Quickstart to install via `pip`/`pi
 
 ### Start OpenCravat GUI
 
+<iframe src="https://share.descript.com/embed/NRF4BVXMbcD" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
 Now that OpenCravat is installed, we can run the GUI. In a command prompt (PowerShell or Terminal), you can start the OpenCravat GUI by typing:
 
 ```bash
 oc gui
 ```
+
+In MacOS, you can also launch OpenCravat via clicking on the application in your Applications folder. In Windows, you can click the desktop Icon to launch it.
 
 You should see the following in your terminal:
 
@@ -126,7 +132,7 @@ Now you can [browse and install the available annotators](#browse-annotators)
 
 ## Browse Annotators (Web)
 
-[Video Here]
+<iframe src="https://share.descript.com/embed/Tk01UzdKZIG" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
 If we click on the **STORE** tab in the top left of the interface, we'll see the variety of annotators that are available to us. 
 
@@ -158,6 +164,8 @@ You already have CiViC and ClinVar installed by default, so you don't need to in
 Now we know which annotators we want to use, let's [review input file formats](#convert-to-input-file-format).
 
 ## Convert to Input File Format
+
+
 
 Open-Cravat supports VCF files for input, but also has a simplified format to be used for input files.
 
@@ -194,7 +202,7 @@ Now we have our input file, we can move on to [submitting our job](#submit-annot
 
 ## Submit Annotation Job
 
-[video here]
+<iframe src="https://share.descript.com/embed/raakHVZK4EK" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
 Before we move on, let's take a look at the overall workflow for annotating in the GUI. We'll start out by 1) submitting our input file, 2) selecting the annotators, and then 3) submitting our job. 
 
@@ -230,7 +238,7 @@ When our job is finished, we can [view our results and filter them](#filter-resu
 
 ## Filter Results
 
-[Video here]
+<iframe src="https://share.descript.com/embed/rHJGmx6i9e5" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
 > We are interested in those variants that have ClinVar annotation. How do we find those?
 

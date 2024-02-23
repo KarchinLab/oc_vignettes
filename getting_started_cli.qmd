@@ -375,3 +375,7 @@ Done getting result of [example_input.sqlite][gene] in 0.021s
 A window should open in your web browser. If not, enter https://localhost:8080 to view the file. 
 
 ![](oc-gui.png)
+
+## Examining our Results File and Filtering
+
+<iframe src="https://share.descript.com/embed/rHJGmx6i9e5" width="640" height="360" frameborder="0" allowfullscreen></iframe>

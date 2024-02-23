@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -118,7 +118,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="learning-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
@@ -174,9 +176,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>Most importantly, <strong>if you are using protected data, you should go the local installer route</strong>, with appropriate protections on your machine.</p>
 <p>You can click on each box in the diagram below to go to the relevant section. We’ll have an appropriate callout to highlight the differences where the two approaches differ.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
     L[Creating an Open-Cravat Account] --&gt; A
@@ -195,6 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     click E "#visualize-results"
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -217,6 +221,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="macos" class="level3">
 <h3 class="anchored" data-anchor-id="macos">MacOS</h3>
+<iframe src="https://share.descript.com/embed/xflvSqCDFQL" width="640" height="360" frameborder="0" allowfullscreen="">
+</iframe>
 <p><a href="https://karchinlab.org/opencravat/installers/OpenCRAVAT.2.2.9.pkg">Mac OS installer</a></p>
 <p>Right-click the downloaded file and select “Open”. Your Mac may ask you to confirm stating that the file was not downloaded from the App Store. Click “Open” button. Just double-clicking the installer may not enable this “Open” option.</p>
 </section>
@@ -226,8 +232,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="start-opencravat-gui" class="level3">
 <h3 class="anchored" data-anchor-id="start-opencravat-gui">Start OpenCravat GUI</h3>
+<iframe src="https://share.descript.com/embed/NRF4BVXMbcD" width="640" height="360" frameborder="0" allowfullscreen="">
+</iframe>
 <p>Now that OpenCravat is installed, we can run the GUI. In a command prompt (PowerShell or Terminal), you can start the OpenCravat GUI by typing:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> gui</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In MacOS, you can also launch OpenCravat via clicking on the application in your Applications folder. In Windows, you can click the desktop Icon to launch it.</p>
 <p>You should see the following in your terminal:</p>
 <pre><code>tedladeras@teds-MacBook-Pro ~ % oc gui
 
@@ -250,7 +259,8 @@ Done getting result of [example_input.sqlite][gene] in 0.021s</code></pre>
 </section>
 <section id="browse-annotators-web" class="level2">
 <h2 class="anchored" data-anchor-id="browse-annotators-web">Browse Annotators (Web)</h2>
-<p>[Video Here]</p>
+<iframe src="https://share.descript.com/embed/Tk01UzdKZIG" width="640" height="360" frameborder="0" allowfullscreen="">
+</iframe>
 <p>If we click on the <strong>STORE</strong> tab in the top left of the interface, we’ll see the variety of annotators that are available to us.</p>
 <p><img src="images/oc-browse-annotators-1.png" class="img-fluid"></p>
 <p>Let’s browse the clinically relevant annotators by clicking on the <code>Clinically Relevant</code> checkbox:</p>
@@ -280,16 +290,21 @@ For Local Users
 <h2 class="anchored" data-anchor-id="convert-to-input-file-format">Convert to Input File Format</h2>
 <p>Open-Cravat supports VCF files for input, but also has a simplified format to be used for input files.</p>
 <p>We’ll use an exome example and annotate it. Let’s take a look at the first few lines of this file to understand the input format.</p>
-<pre><code>chr1    946247  G   A
-chr1    952421  A   G
-chr1    953259  T   C
-chr1    953279  T   C
-chr1    961945  G   C
-chr1    965125  G   C
-chr1    965338  TTAT    -
-chr1    965667  CC  -
-chr1    973858  G   C</code></pre>
-<p>This format contains the following columns: <code>chromosome</code>, <code>position</code>, <code>reference</code>, and <code>allele</code>.</p>
+<pre><code>chr1    69091   +   A   C   s0
+chr1    69091   +   ATG C   s0
+chr6    31039077    +   C   G   s0
+chr1    27612918    +   G   a   s1
+chr1    27612918    +   G   A   s0
+chrM    235 +   A   G   clinvar
+chrM    3308    +   T   C   omim
+chr8    54626835    +   A   T   s0
+chr4    1804372 +   A   G   s1
+chr4    1804372 +   AT  GC  s1
+chr4    1804372 +   A   T   s1
+chr1    369551  +   G   C   s0
+chr10   121593817   -   A   T   s0
+chr10   2987654 +   T   A   s1</code></pre>
+<p>This format contains the following columns: <code>chromosome</code>, <code>position</code>, <code>strand</code>, <code>reference</code>, and <code>allele</code>.</p>
 <p>Much more information about the supported file formats are here: <a href="https://open-cravat.readthedocs.io/en/latest/File-Formats.html">File Formats</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -308,7 +323,8 @@ For Local Users
 </section>
 <section id="submit-annotation-job" class="level2">
 <h2 class="anchored" data-anchor-id="submit-annotation-job">Submit Annotation Job</h2>
-<p>[video here]</p>
+<iframe src="https://share.descript.com/embed/raakHVZK4EK" width="640" height="360" frameborder="0" allowfullscreen="">
+</iframe>
 <p>Before we move on, let’s take a look at the overall workflow for annotating in the GUI. We’ll start out by 1) submitting our input file, 2) selecting the annotators, and then 3) submitting our job.</p>
 <p><img src="images/oc-gui-workflow.png" class="img-fluid"></p>
 <ol type="1">
@@ -334,7 +350,8 @@ For Local Users
 </section>
 <section id="filter-results" class="level2">
 <h2 class="anchored" data-anchor-id="filter-results">Filter Results</h2>
-<p>[Video here]</p>
+<iframe src="https://share.descript.com/embed/rHJGmx6i9e5" width="640" height="360" frameborder="0" allowfullscreen="">
+</iframe>
 <blockquote class="blockquote">
 <p>We are interested in those variants that have ClinVar annotation. How do we find those?</p>
 </blockquote>
@@ -484,10 +501,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -497,8 +513,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -511,6 +536,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -554,6 +698,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -579,6 +724,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -639,6 +810,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
