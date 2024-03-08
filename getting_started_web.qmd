@@ -22,7 +22,7 @@ By the end of this tutorial, you should be able to:
 
 ## Understanding the Context for our Task
 
-Let's start with a research question we're interested in. We have a list of exome variants that we've found in our patient population of interest. Our research question is:
+Let's start with a research question we're interested in. We have a list of variants that we've found in our patient population of interest. Our research question is:
 
 > Given this list of variants, which are potentially pathogenic?
 
@@ -214,11 +214,11 @@ Before we move on, let's take a look at the overall workflow for annotating in t
 
 ![](images/oc-jobs.png)
 
-Our exome file corresponds to the `hg19/GRCH37` build, so make sure that this genome is selected under the Genome field
+Our example file corresponds to the `hg19/GRCH37` build, so make sure that this genome is selected under the Genome field
 
 ![](images/oc-jobs-genome.png)
 
-Now we'll add our input file. Add your `Pedja_exome.tsv` file here by clicking the "ADD INPUT FILES" button:
+Now we'll add our input file. Add your variant file here by clicking the "ADD INPUT FILES" button. If you are using the built in example, you won't need to add it. 
 
 ![](images/oc-jobs-input.png)
 
