@@ -84,13 +84,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
   <li><a href="#understanding-the-context-for-our-task" id="toc-understanding-the-context-for-our-task" class="nav-link" data-scroll-target="#understanding-the-context-for-our-task">Understanding the Context for our Task</a></li>
-  <li><a href="#creating-an-opencravat-account-web" id="toc-creating-an-opencravat-account-web" class="nav-link" data-scroll-target="#creating-an-opencravat-account-web">Creating an OpenCravat Account (Web)</a></li>
-  <li><a href="#installing-opencravat-via-installer-local" id="toc-installing-opencravat-via-installer-local" class="nav-link" data-scroll-target="#installing-opencravat-via-installer-local">Installing OpenCravat via Installer (Local)</a>
+  <li><a href="#creating-an-opencravat-account-web" id="toc-creating-an-opencravat-account-web" class="nav-link" data-scroll-target="#creating-an-opencravat-account-web">Creating an OpenCRAVAT Account (Web)</a></li>
+  <li><a href="#installing-opencravat-via-installer-local" id="toc-installing-opencravat-via-installer-local" class="nav-link" data-scroll-target="#installing-opencravat-via-installer-local">Installing OpenCRAVAT via Installer (Local)</a>
   <ul class="collapse">
   <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
   <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos">MacOS</a></li>
   <li><a href="#linux" id="toc-linux" class="nav-link" data-scroll-target="#linux">Linux</a></li>
-  <li><a href="#start-opencravat-gui" id="toc-start-opencravat-gui" class="nav-link" data-scroll-target="#start-opencravat-gui">Start OpenCravat GUI</a></li>
+  <li><a href="#start-opencravat-gui" id="toc-start-opencravat-gui" class="nav-link" data-scroll-target="#start-opencravat-gui">Start OpenCRAVAT GUI</a></li>
   </ul></li>
   <li><a href="#browse-annotators-web" id="toc-browse-annotators-web" class="nav-link" data-scroll-target="#browse-annotators-web">Browse Annotators (Web)</a></li>
   <li><a href="#convert-to-input-file-format" id="toc-convert-to-input-file-format" class="nav-link" data-scroll-target="#convert-to-input-file-format">Convert to Input File Format</a></li>
@@ -126,12 +126,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <p>By the end of this tutorial, you should be able to:</p>
 <ul>
-<li><strong>Create</strong> as user account on the open cravat site</li>
+<li><strong>Create</strong> as user account on the OpenCRAVAT site</li>
 <li><strong>Install</strong> OpenCravat locally using an installer</li>
 <li><strong>Search</strong> for available annotators on the open cravat site</li>
 <li><strong>Upload</strong> and <strong>annotate</strong> variant files on the site</li>
 <li><strong>Filter</strong> annotated results for visualization</li>
-<li><strong>Visualize</strong> and <strong>Summarize</strong> Results in Open-Cravat</li>
+<li><strong>Visualize</strong> and <strong>Summarize</strong> Results in OpenCRAVAT</li>
 <li><strong>Export</strong> and <strong>Share</strong> annotation results with others</li>
 </ul>
 </section>
@@ -141,14 +141,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>Given this list of variants, which are potentially pathogenic?</p>
 </blockquote>
-<p>This research question will take us through understanding how the Open-Cravat annotator works.</p>
-<p>To start, you can either install OpenCravat locally, or create an account on the website. Then you’ll follow the paths below. Here’s a comparison of both approaches:</p>
+<p>This research question will take us through understanding how the OpenCRAVAT annotator works.</p>
+<p>To start, you can either install OpenCRAVAT locally, or create an account on the website. Then you’ll follow the paths below. Here’s a comparison of both approaches:</p>
 <table class="table">
 <thead>
 <tr class="header">
 <th>Feature</th>
-<th>OpenCravat Web</th>
-<th>OpenCravat Local</th>
+<th>OpenCRAVAT Web</th>
+<th>OpenCRAVAT Local</th>
 </tr>
 </thead>
 <tbody>
@@ -182,11 +182,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
-    L[Creating an Open-Cravat Account] --&gt; A
-    click L "#creating-an-open-cravat-account-web"
-    M[Installing OpenCravat via Installer] --&gt; N
+    L[Creating an Open-CRAVAT Account] --&gt; A
+    click L "#creating-an-opencravat-account-web"
+    M[Installing OpenCRAVAT via Installer] --&gt; N
     N["Install Annotators"] --&gt; B
-    click M "#installing-open-cravat-via-installer-local"
+    click M "#installing-opencravat-via-installer-local"
     click N "#install-annotators-local"
     A[Browse and select annotators] --&gt; B[Convert to Input File Format]
     click A "#browse-annotators-web"
@@ -204,16 +204,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="creating-an-opencravat-account-web" class="level2">
-<h2 class="anchored" data-anchor-id="creating-an-opencravat-account-web">Creating an OpenCravat Account (Web)</h2>
-<p>Let’s start out by creating an account on <a href="https://run.opencravat.org" class="uri">https://run.opencravat.org</a>. If your organization is running OpenCravat locally, you will need to find out the appropriate URL for the instance of Open-Cravat.</p>
-<p>Here’s the iniial screen we’ll see when we go to <a href="https://run.opencravat.org" class="uri">https://run.opencravat.org</a>. You’ll click on the <strong>Sign Up</strong> Button to create an account.</p>
+<h2 class="anchored" data-anchor-id="creating-an-opencravat-account-web">Creating an OpenCRAVAT Account (Web)</h2>
+<p>Let’s start out by creating an account on <a href="https://run.opencravat.org" class="uri">https://run.opencravat.org</a>. If your organization is running OpenCRAVAT locally, you will need to find out the appropriate URL for the instance of OpenCravat.</p>
+<p>Here’s the initial screen we’ll see when we go to <a href="https://run.opencravat.org" class="uri">https://run.opencravat.org</a>. You’ll click on the <strong>Sign Up</strong> Button to create an account.</p>
 <p><img src="images/oc-first.png" class="img-fluid"> Enter your details in the form, and sign up. You’ll automatically be signed into the interface and will be ready to go for the next step.</p>
 <p><img src="images/oc-signup.png" class="img-fluid"></p>
-<p>Now you’re ready to browse the <a href="#browse-annotators-web">Open Cravat Store</a> to look for annotators.</p>
+<p>Now you’re ready to browse the <a href="#browse-annotators-web">OpenCRAVAT Store</a> to look for annotators.</p>
 </section>
 <section id="installing-opencravat-via-installer-local" class="level2">
-<h2 class="anchored" data-anchor-id="installing-opencravat-via-installer-local">Installing OpenCravat via Installer (Local)</h2>
-<p>You can install OpenCravat via the installers below:</p>
+<h2 class="anchored" data-anchor-id="installing-opencravat-via-installer-local">Installing OpenCRAVAT via Installer (Local)</h2>
+<p>You can install OpenCRAVAT via the installers below:</p>
 <section id="windows" class="level3">
 <h3 class="anchored" data-anchor-id="windows">Windows</h3>
 <p><a href="https://karchinlab.org/opencravat/installers/OpenCRAVAT-2.4.1.exe">Windows installer</a></p>
@@ -231,12 +231,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Linux Users should refer to the Command Line Quickstart to install via <code>pip</code>/<code>pip3</code>.</p>
 </section>
 <section id="start-opencravat-gui" class="level3">
-<h3 class="anchored" data-anchor-id="start-opencravat-gui">Start OpenCravat GUI</h3>
+<h3 class="anchored" data-anchor-id="start-opencravat-gui">Start OpenCRAVAT GUI</h3>
 <iframe src="https://share.descript.com/embed/NRF4BVXMbcD" width="640" height="360" frameborder="0" allowfullscreen="">
 </iframe>
-<p>Now that OpenCravat is installed, we can run the GUI. In a command prompt (PowerShell or Terminal), you can start the OpenCravat GUI by typing:</p>
+<p>Now that OpenCRAVAT is installed, we can run the GUI. In a command prompt (PowerShell or Terminal), you can start the OpenCRAVAT GUI by typing:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> gui</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>In MacOS, you can also launch OpenCravat via clicking on the application in your Applications folder. In Windows, you can click the desktop Icon to launch it.</p>
+<p>In MacOS, you can also launch OpenCRAVAT via clicking on the application in your Applications folder. In Windows, you can click the desktop Icon to launch it.</p>
 <p>You should see the following in your terminal:</p>
 <pre><code>tedladeras@teds-MacBook-Pro ~ % oc gui
 
@@ -279,7 +279,7 @@ For Local Users
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you have installed Open-Cravat locally, you will have the option to install annotators on the store page. You can do this by clicking “Install” for the annotator of interest. Please note that some of the annotators use a lot of disk space, so keep that in mind before installing locally.</p>
+<p>If you have installed OpenCRAVAT locally, you will have the option to install annotators on the store page. You can do this by clicking “Install” for the annotator of interest. Please note that some of the annotators use a lot of disk space, so keep that in mind before installing locally.</p>
 <p><img src="images/oc-install-annotators.png" class="img-fluid"></p>
 <p>You already have CiViC and ClinVar installed by default, so you don’t need to install them locally.</p>
 </div>
@@ -288,7 +288,7 @@ For Local Users
 </section>
 <section id="convert-to-input-file-format" class="level2">
 <h2 class="anchored" data-anchor-id="convert-to-input-file-format">Convert to Input File Format</h2>
-<p>Open-Cravat supports VCF files for input, but also has a simplified format to be used for input files.</p>
+<p>OpenCRAVAT supports VCF files for input, but also has a simplified format to be used for input files.</p>
 <p>We’ll use an exome example and annotate it. Let’s take a look at the first few lines of this file to understand the input format.</p>
 <pre><code>chr1    69091   +   A   C   s0
 chr1    69091   +   ATG C   s0
@@ -385,15 +385,19 @@ Calculating the Effect of Filters
 </section>
 <section id="visualize-results" class="level2">
 <h2 class="anchored" data-anchor-id="visualize-results">Visualize Results</h2>
-<p>[Video here]</p>
+<iframe src="https://share.descript.com/embed/13Ww6z6RV6j" width="640" height="360" frameborder="0" allowfullscreen="">
+</iframe>
 <p>Now that we’ve filtered, let’s go back to the Summary Tab:</p>
-<p><img src="images/oc-visualize-tab.png" class="img-fluid"> In the Visualize tab, we can see information about the annotated variants, such as from the sequence ontology. We can get the counts within a sequence ontology category by mousing over that category in our plot:</p>
+<p><img src="images/oc-visualize-tab.png" class="img-fluid"> In the Summary tab, we can see information about the annotated variants, such as from the sequence ontology. We can get the counts within a sequence ontology category by mousing over that category in our plot:</p>
 <p><img src="images/oc-visualize-seq-ontology.png" class="img-fluid"> These visualizations can be moved around and pinned. Using the camera icon, you can also save these visualizations.</p>
 <p>Let’s move over to the <strong>Variant</strong> tab and look for pathogenic variants. First, we’ll click over to the <strong>Variant</strong> tab:</p>
 <p><img src="images/oc-visualize-variant.png" class="img-fluid"> Scrolling to the right, we can see there is a column for the ClinVar annotations. Notice the <strong>+</strong> on the top right. We’ll click that to expand the ClinVar annotations:</p>
 <p><img src="images/oc-visualize-clinvar.png" class="img-fluid"> In the <strong>Clinical Significance</strong> column, we can see that we can filter. Let’s select those variants that have <strong>pathogenic</strong> significance. Clicking into the search box underneath this column, we can select <strong>pathogenic</strong>:</p>
 <p><img src="images/oc-visualize-pathogenic.png" class="img-fluid"></p>
 <p>How many variants are pathogenic?</p>
+<p>The last thing we might want to do is to export our results. We can use the export button at the bottom of the table:</p>
+<p><img src="images/oc-export-table.png" class="img-fluid"></p>
+<p>When you click that, you will have the option to export the variant level results as a tab seperated value (TSV) file. Note that this result table will have filters applied to it as well.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -413,7 +417,7 @@ Multiple Rules
 <p>You learned a lot in this section. You learned how to:</p>
 <ul>
 <li>Create a User Account</li>
-<li>Browse Open-Cravat’s store to look for annotators</li>
+<li>Browse OpenCRAVAT’s store to look for annotators</li>
 <li>Submit a job to the Open-Cravat server</li>
 <li>Filter results in the Results Viewer</li>
 <li>Visualize results in the Results Viewer</li>
