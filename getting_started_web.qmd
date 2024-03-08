@@ -169,7 +169,9 @@ Now we know which annotators we want to use, let's [review input file formats](#
 
 OpenCRAVAT supports VCF files for input, but also has a simplified format to be used for input files.
 
-We'll use an exome example and annotate it. Let's take a look at the first few lines of this file to understand the input format.
+We'll use an example and annotate it. Let's take a look at the first few lines of this file to understand the input format. This example is available by clicking the "TSV" button next to "example":
+
+![](images/oc-annotate-example.png)
 
 ```
 chr1	69091	+	A	C	s0
