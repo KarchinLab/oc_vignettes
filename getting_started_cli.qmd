@@ -1,5 +1,5 @@
 ---
-title: "Getting Started with Open-Cravat on the Command Line"
+title: "Getting Started with OpenCRAVAT on the Command Line"
 format: 
   html: default
   rst: default
@@ -11,32 +11,34 @@ anchor-sections: true
 
 Working through this document, you will learn to:
 
-- **Prepare** your system for installing open-cravat
-- **Install** the open-cravat software locally using `pip`
+- **Prepare** your system for installing OpenCRAVAT
+- **Install** the OpenCRAVAT software locally using `pip`
 - **Search** for and **Install** available annotators
 - **Explain** compatible variant formats
 - **Annotate** variant files using the CLI tools
-- **Visualize** and **Summarize** Results in Open-Cravat 
+- **Visualize** and **Summarize** Results in OpenCRAVAT 
 
-## The Basic Open-Cravat Workflow
+## The Basic OpenCRAVAT Workflow
 
-In the diagram below, we'll see the basic Open-Cravat workflow on the command-line. Click the boxes below in the diagram to jump to that particular section.
+In the diagram below, we'll see the basic OpenCRAVAT workflow on the command-line. Click the boxes below in the diagram to jump to that particular section.
 
 ```{mermaid}
 flowchart TD
     L[Prepare for Installing] --> A
     click L "#preparing-and-installing-open-cravat"
     A[Installation] --> G[Install Annotators]
-    click A "#installing-open-cravat"
+    click A "#installing-opencravat"
     click G "#installing-annotators"
     G --> B[Convert to Input File Format]
     click B "#understanding-the-input-file-format"
     B -->|Variant File Input| C[Map Variants and Annotate]
     click C "#annotating-our-example"
-    C -->|Results|D[Visualize Results]
-    click D "#visualizing-our-results"
-    C -->|Results| E[Query Results]
-    C -->|Results| F[Generate Report]
+    C -->|Results|D[Start Results Viewer]
+    click D "#starting-the-results-viewer"
+    D -->|Results| E[Filter Results]
+    click E "#examining-our-results-file-and-filtering"
+    E -->|Results| F[Visualizing Filtered Results]
+    click F "#visualizing-our-filtered-results"
 ```
 
 ## Preparing and Installing Open Cravat
@@ -67,7 +69,7 @@ tedladeras@teds-MacBook-Pro ~ % which pip3
 
 ### Using a Virtual Environment (optional)
 
-You may want to consider making a new virtual environment so that your open-cravat installation is isolated from other installations.
+You may want to consider making a new virtual environment so that your OpenCRAVAT installation is isolated from other installations.
 
 You can install the `virtualenv` package with `pip`/`pip3`:
 
@@ -117,7 +119,7 @@ which python3
 /Users/tedladeras/oc/bin/python3
 ```
 
-### Installing Open Cravat
+### Installing OpenCRAVAT
 
 Now we can install Open Cravat using `pip`/`pip3`. 
 
@@ -168,7 +170,7 @@ Commands:
     feedback            Send feedback to the developers
 ```
 
-All of our interactions with Open-Cravat will be prefaced by `oc`. For example, we can launch the Open-Cravat GUI as a webserver on our machine using
+All of our interactions with OpenCRAVAT will be prefaced by `oc`. For example, we can launch the OpenCRAVAT GUI as a webserver on our machine using
 
 ```bash
 oc gui
@@ -344,7 +346,7 @@ Running postaggregators...
 Finished normally. Runtime: 4.539s
 ```
 
-## Visualizing our results
+## Starting the Results Viewer
 
 <iframe src="https://share.descript.com/embed/FRREXxdcxXH" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
@@ -378,4 +380,87 @@ A window should open in your web browser. If not, enter https://localhost:8080 t
 
 ## Examining our Results File and Filtering
 
-<iframe src="https://share.descript.com/embed/rHJGmx6i9e5" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+Now we take a look at our results in the web interface. Under the list of jobs, we can see our job. Let's select `Open Result Viewer` under the **Status** tab:
+
+![](images/oc-filter-job.png)
+
+Keep in mind that the web interface is limited to visualizing 100,000 variants, so if you have a larger result file, you'll need to filter the results down. So let's take a look at how to filter our variants down. 
+
+We can filter variants by selecting the Filter tab in the Results viewer:
+
+![](images/oc-filter-select-tab.png)
+
+Under "Variant Properties" we can limit our list of variants to those that have ClinVar annotations. Let's build a filter using the Query Builder, which will allow us to impose multiple criteria as a filter. 
+
+![](images/oc-filter-query-builder.png)
+
+We'll add a rule (a logical condition) to our filter using the `+` button:
+
+![](images/oc-filter-add-rule.png)
+
+Now we'll add a rule and select those that have `ClinVar` annotations. To do this, we'll first select a) `ClinVar` on the left, the b) `Clinical Significance` column, and c) `has data`:
+
+![](images/oc-filter-create.png)
+Now we can apply this rule we've built by clicking on the **Apply Filter** button on the bottom right of the Query Builder:
+
+![](images/oc-filter-apply.png)
+How many variants are left after the filtering?
+
+:::{.callout-note}
+## Calculating the Effect of Filters
+
+If you have multiple filters, you can actually precalculate the numbers of variants after filtering by using the icon below.
+
+![](images/oc-filter-precalculate.png)
+
+This can be helpful to check if your filters are too strict (that is, they won't return anything).
+
+Just note that the filter is not actually applied to the data until you hit the **Apply Filter** Button.
+:::
+
+## Visualizing Our Filtered Results
+
+<iframe src="https://share.descript.com/embed/13Ww6z6RV6j" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+Now that we've filtered, let's go back to the Summary Tab:
+
+![](images/oc-visualize-tab.png)
+In the Summary tab, we can see information about the annotated variants, such as from the sequence ontology. We can get the counts within a sequence ontology category by mousing over that category in our plot:
+
+![](images/oc-visualize-seq-ontology.png)
+These visualizations can be moved around and pinned. Using the camera icon, you can also save these visualizations.
+
+Let's move over to the **Variant** tab and look for pathogenic variants. First, we'll click over to the **Variant** tab:
+
+![](images/oc-visualize-variant.png)
+Scrolling to the right, we can see there is a column for the ClinVar annotations. Notice the **+** on the top right. We'll click that to expand the ClinVar annotations:
+
+![](images/oc-visualize-clinvar.png)
+In the **Clinical Significance** column, we can see that we can filter. Let's select those variants that have **pathogenic** significance. Clicking into the search box underneath this column, we can select **pathogenic**:
+
+![](images/oc-visualize-pathogenic.png)
+
+How many variants are pathogenic?
+
+The last thing we might want to do is to export our results. We can use the export button at the bottom of the table:
+
+![](images/oc-export-table.png)
+
+When you click that, you will have the option to export the variant level results as a tab seperated value (TSV) file. Note that this result table will have filters applied to it as well. 
+
+:::{.callout-note}
+## Multiple Rules
+
+Note that we could have limited our search to pathogenic variants by adding another filter rule like we did above in the filtering step. We're showing this way in case you didn't know the available categories within the `Clinical Significance` column.
+:::
+
+## What You Learned
+
+We learned the following in this section:
+
+- **Prepare** your system for installing OpenCRAVAT
+- **Install** the OpenCRAVAT software locally using `pip`
+- **Search** for and **Install** available annotators
+- **Explain** compatible variant formats
+- **Annotate** variant files using the CLI tools
+- **Visualize** and **Summarize** Results in OpenCRAVAT 

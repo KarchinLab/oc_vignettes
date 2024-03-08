@@ -43,7 +43,7 @@ You can click on each box in the diagram below to go to the relevant section. We
 
 ```{mermaid}
 flowchart TD
-    L[Creating an Open-CRAVAT Account] --> A
+    L[Creating an OpenCRAVAT Account] --> A
     click L "#creating-an-opencravat-account-web"
     M[Installing OpenCRAVAT via Installer] --> N
     N["Install Annotators"] --> B
@@ -279,7 +279,7 @@ This can be helpful to check if your filters are too strict (that is, they won't
 Just note that the filter is not actually applied to the data until you hit the **Apply Filter** Button.
 :::
 
-## Visualize Results
+## Visualize Filtered Results
 
 <iframe src="https://share.descript.com/embed/13Ww6z6RV6j" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Getting Started with Open-Cravat on the Command Line</title>
+<title>Getting Started with OpenCRAVAT on the Command Line</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,17 +84,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a>
   <ul class="collapse">
-  <li><a href="#the-basic-open-cravat-workflow" id="toc-the-basic-open-cravat-workflow" class="nav-link" data-scroll-target="#the-basic-open-cravat-workflow">The Basic Open-Cravat Workflow</a></li>
+  <li><a href="#the-basic-opencravat-workflow" id="toc-the-basic-opencravat-workflow" class="nav-link" data-scroll-target="#the-basic-opencravat-workflow">The Basic OpenCRAVAT Workflow</a></li>
   <li><a href="#preparing-and-installing-open-cravat" id="toc-preparing-and-installing-open-cravat" class="nav-link" data-scroll-target="#preparing-and-installing-open-cravat">Preparing and Installing Open Cravat</a>
   <ul class="collapse">
   <li><a href="#using-a-virtual-environment-optional" id="toc-using-a-virtual-environment-optional" class="nav-link" data-scroll-target="#using-a-virtual-environment-optional">Using a Virtual Environment (optional)</a></li>
-  <li><a href="#installing-open-cravat" id="toc-installing-open-cravat" class="nav-link" data-scroll-target="#installing-open-cravat">Installing Open Cravat</a></li>
+  <li><a href="#installing-opencravat" id="toc-installing-opencravat" class="nav-link" data-scroll-target="#installing-opencravat">Installing OpenCRAVAT</a></li>
   </ul></li>
   <li><a href="#installing-annotators" id="toc-installing-annotators" class="nav-link" data-scroll-target="#installing-annotators">Installing annotators</a></li>
   <li><a href="#understanding-the-input-file-format" id="toc-understanding-the-input-file-format" class="nav-link" data-scroll-target="#understanding-the-input-file-format">Understanding the Input File Format</a></li>
   <li><a href="#annotating-our-example" id="toc-annotating-our-example" class="nav-link" data-scroll-target="#annotating-our-example">Annotating our example</a></li>
-  <li><a href="#visualizing-our-results" id="toc-visualizing-our-results" class="nav-link" data-scroll-target="#visualizing-our-results">Visualizing our results</a></li>
+  <li><a href="#starting-the-results-viewer" id="toc-starting-the-results-viewer" class="nav-link" data-scroll-target="#starting-the-results-viewer">Starting the Results Viewer</a></li>
   <li><a href="#examining-our-results-file-and-filtering" id="toc-examining-our-results-file-and-filtering" class="nav-link" data-scroll-target="#examining-our-results-file-and-filtering">Examining our Results File and Filtering</a></li>
+  <li><a href="#visualizing-our-filtered-results" id="toc-visualizing-our-filtered-results" class="nav-link" data-scroll-target="#visualizing-our-filtered-results">Visualizing Our Filtered Results</a></li>
+  <li><a href="#what-you-learned" id="toc-what-you-learned" class="nav-link" data-scroll-target="#what-you-learned">What You Learned</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="getting_started_cli.rst"><i class="bi bi-file"></i>reST</a></li></ul></div></nav>
@@ -103,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Getting Started with Open-Cravat on the Command Line</h1>
+<h1 class="title">Getting Started with OpenCRAVAT on the Command Line</h1>
 </div>
 
 
@@ -124,16 +126,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Learning Objectives</h1>
 <p>Working through this document, you will learn to:</p>
 <ul>
-<li><strong>Prepare</strong> your system for installing open-cravat</li>
-<li><strong>Install</strong> the open-cravat software locally using <code>pip</code></li>
+<li><strong>Prepare</strong> your system for installing OpenCRAVAT</li>
+<li><strong>Install</strong> the OpenCRAVAT software locally using <code>pip</code></li>
 <li><strong>Search</strong> for and <strong>Install</strong> available annotators</li>
 <li><strong>Explain</strong> compatible variant formats</li>
 <li><strong>Annotate</strong> variant files using the CLI tools</li>
-<li><strong>Visualize</strong> and <strong>Summarize</strong> Results in Open-Cravat</li>
+<li><strong>Visualize</strong> and <strong>Summarize</strong> Results in OpenCRAVAT</li>
 </ul>
-<section id="the-basic-open-cravat-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="the-basic-open-cravat-workflow">The Basic Open-Cravat Workflow</h2>
-<p>In the diagram below, we’ll see the basic Open-Cravat workflow on the command-line. Click the boxes below in the diagram to jump to that particular section.</p>
+<section id="the-basic-opencravat-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="the-basic-opencravat-workflow">The Basic OpenCRAVAT Workflow</h2>
+<p>In the diagram below, we’ll see the basic OpenCRAVAT workflow on the command-line. Click the boxes below in the diagram to jump to that particular section.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -143,16 +145,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     L[Prepare for Installing] --&gt; A
     click L "#preparing-and-installing-open-cravat"
     A[Installation] --&gt; G[Install Annotators]
-    click A "#installing-open-cravat"
+    click A "#installing-opencravat"
     click G "#installing-annotators"
     G --&gt; B[Convert to Input File Format]
     click B "#understanding-the-input-file-format"
     B --&gt;|Variant File Input| C[Map Variants and Annotate]
     click C "#annotating-our-example"
-    C --&gt;|Results|D[Visualize Results]
-    click D "#visualizing-our-results"
-    C --&gt;|Results| E[Query Results]
-    C --&gt;|Results| F[Generate Report]
+    C --&gt;|Results|D[Start Results Viewer]
+    click D "#starting-the-results-viewer"
+    D --&gt;|Results| E[Filter Results]
+    click E "#examining-our-results-file-and-filtering"
+    E --&gt;|Results| F[Visualizing Filtered Results]
+    click F "#visualizing-our-filtered-results"
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -174,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 /opt/homebrew/bin/pip3</code></pre>
 <section id="using-a-virtual-environment-optional" class="level3">
 <h3 class="anchored" data-anchor-id="using-a-virtual-environment-optional">Using a Virtual Environment (optional)</h3>
-<p>You may want to consider making a new virtual environment so that your open-cravat installation is isolated from other installations.</p>
+<p>You may want to consider making a new virtual environment so that your OpenCRAVAT installation is isolated from other installations.</p>
 <p>You can install the <code>virtualenv</code> package with <code>pip</code>/<code>pip3</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install virtualenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>Collecting virtualenv
@@ -202,8 +206,8 @@ Successfully installed distlib-0.3.8 filelock-3.13.1 platformdirs-4.2.0 virtuale
 <pre><code>(oc) tedladeras@teds-MacBook-Pro ~ % which python3
 /Users/tedladeras/oc/bin/python3</code></pre>
 </section>
-<section id="installing-open-cravat" class="level3">
-<h3 class="anchored" data-anchor-id="installing-open-cravat">Installing Open Cravat</h3>
+<section id="installing-opencravat" class="level3">
+<h3 class="anchored" data-anchor-id="installing-opencravat">Installing OpenCRAVAT</h3>
 <p>Now we can install Open Cravat using <code>pip</code>/<code>pip3</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install open-cravat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro local % pip3 install open-cravat
@@ -239,7 +243,7 @@ Commands:
     util                Utilities
     version             Show version
     feedback            Send feedback to the developers</code></pre>
-<p>All of our interactions with Open-Cravat will be prefaced by <code>oc</code>. For example, we can launch the Open-Cravat GUI as a webserver on our machine using</p>
+<p>All of our interactions with OpenCRAVAT will be prefaced by <code>oc</code>. For example, we can launch the OpenCRAVAT GUI as a webserver on our machine using</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> gui</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now you’re ready to start installing annotators.</p>
 </section>
@@ -358,8 +362,8 @@ Running postaggregators...
     Tag Sampler (tagsampler)        finished in 0.008s
 Finished normally. Runtime: 4.539s</code></pre>
 </section>
-<section id="visualizing-our-results" class="level2">
-<h2 class="anchored" data-anchor-id="visualizing-our-results">Visualizing our results</h2>
+<section id="starting-the-results-viewer" class="level2">
+<h2 class="anchored" data-anchor-id="starting-the-results-viewer">Starting the Results Viewer</h2>
 <iframe src="https://share.descript.com/embed/FRREXxdcxXH" width="640" height="360" frameborder="0" allowfullscreen="">
 </iframe>
 <p>We saw that one of the files generated was an <code>.sqlite</code> file. These are our results, which we can visualize using <code>oc gui</code>, which will launch the a web server so we can examine our results using the GUI:</p>
@@ -384,8 +388,75 @@ Done getting result of [example_input.sqlite][gene] in 0.021s</code></pre>
 </section>
 <section id="examining-our-results-file-and-filtering" class="level2">
 <h2 class="anchored" data-anchor-id="examining-our-results-file-and-filtering">Examining our Results File and Filtering</h2>
-<iframe src="https://share.descript.com/embed/rHJGmx6i9e5" width="640" height="360" frameborder="0" allowfullscreen="">
+<p>Now we take a look at our results in the web interface. Under the list of jobs, we can see our job. Let’s select <code>Open Result Viewer</code> under the <strong>Status</strong> tab:</p>
+<p><img src="images/oc-filter-job.png" class="img-fluid"></p>
+<p>Keep in mind that the web interface is limited to visualizing 100,000 variants, so if you have a larger result file, you’ll need to filter the results down. So let’s take a look at how to filter our variants down.</p>
+<p>We can filter variants by selecting the Filter tab in the Results viewer:</p>
+<p><img src="images/oc-filter-select-tab.png" class="img-fluid"></p>
+<p>Under “Variant Properties” we can limit our list of variants to those that have ClinVar annotations. Let’s build a filter using the Query Builder, which will allow us to impose multiple criteria as a filter.</p>
+<p><img src="images/oc-filter-query-builder.png" class="img-fluid"></p>
+<p>We’ll add a rule (a logical condition) to our filter using the <code>+</code> button:</p>
+<p><img src="images/oc-filter-add-rule.png" class="img-fluid"></p>
+<p>Now we’ll add a rule and select those that have <code>ClinVar</code> annotations. To do this, we’ll first select a) <code>ClinVar</code> on the left, the b) <code>Clinical Significance</code> column, and c) <code>has data</code>:</p>
+<p><img src="images/oc-filter-create.png" class="img-fluid"> Now we can apply this rule we’ve built by clicking on the <strong>Apply Filter</strong> button on the bottom right of the Query Builder:</p>
+<p><img src="images/oc-filter-apply.png" class="img-fluid"> How many variants are left after the filtering?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Calculating the Effect of Filters
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you have multiple filters, you can actually precalculate the numbers of variants after filtering by using the icon below.</p>
+<p><img src="images/oc-filter-precalculate.png" class="img-fluid"></p>
+<p>This can be helpful to check if your filters are too strict (that is, they won’t return anything).</p>
+<p>Just note that the filter is not actually applied to the data until you hit the <strong>Apply Filter</strong> Button.</p>
+</div>
+</div>
+</section>
+<section id="visualizing-our-filtered-results" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-our-filtered-results">Visualizing Our Filtered Results</h2>
+<iframe src="https://share.descript.com/embed/13Ww6z6RV6j" width="640" height="360" frameborder="0" allowfullscreen="">
 </iframe>
+<p>Now that we’ve filtered, let’s go back to the Summary Tab:</p>
+<p><img src="images/oc-visualize-tab.png" class="img-fluid"> In the Summary tab, we can see information about the annotated variants, such as from the sequence ontology. We can get the counts within a sequence ontology category by mousing over that category in our plot:</p>
+<p><img src="images/oc-visualize-seq-ontology.png" class="img-fluid"> These visualizations can be moved around and pinned. Using the camera icon, you can also save these visualizations.</p>
+<p>Let’s move over to the <strong>Variant</strong> tab and look for pathogenic variants. First, we’ll click over to the <strong>Variant</strong> tab:</p>
+<p><img src="images/oc-visualize-variant.png" class="img-fluid"> Scrolling to the right, we can see there is a column for the ClinVar annotations. Notice the <strong>+</strong> on the top right. We’ll click that to expand the ClinVar annotations:</p>
+<p><img src="images/oc-visualize-clinvar.png" class="img-fluid"> In the <strong>Clinical Significance</strong> column, we can see that we can filter. Let’s select those variants that have <strong>pathogenic</strong> significance. Clicking into the search box underneath this column, we can select <strong>pathogenic</strong>:</p>
+<p><img src="images/oc-visualize-pathogenic.png" class="img-fluid"></p>
+<p>How many variants are pathogenic?</p>
+<p>The last thing we might want to do is to export our results. We can use the export button at the bottom of the table:</p>
+<p><img src="images/oc-export-table.png" class="img-fluid"></p>
+<p>When you click that, you will have the option to export the variant level results as a tab seperated value (TSV) file. Note that this result table will have filters applied to it as well.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Multiple Rules
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that we could have limited our search to pathogenic variants by adding another filter rule like we did above in the filtering step. We’re showing this way in case you didn’t know the available categories within the <code>Clinical Significance</code> column.</p>
+</div>
+</div>
+</section>
+<section id="what-you-learned" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-learned">What You Learned</h2>
+<p>We learned the following in this section:</p>
+<ul>
+<li><strong>Prepare</strong> your system for installing OpenCRAVAT</li>
+<li><strong>Install</strong> the OpenCRAVAT software locally using <code>pip</code></li>
+<li><strong>Search</strong> for and <strong>Install</strong> available annotators</li>
+<li><strong>Explain</strong> compatible variant formats</li>
+<li><strong>Annotate</strong> variant files using the CLI tools</li>
+<li><strong>Visualize</strong> and <strong>Summarize</strong> Results in OpenCRAVAT</li>
+</ul>
 </section>
 </section>
 
