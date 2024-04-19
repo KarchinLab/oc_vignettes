@@ -67,36 +67,11 @@ tedladeras@teds-MacBook-Pro ~ % which pip3
 /opt/homebrew/bin/pip3
 ```
 
-### Using a Virtual Environment (optional)
+### Using a Virtual Environment
 
-You may want to consider making a new virtual environment so that your OpenCRAVAT installation is isolated from other installations.
+You should create a virtual environment so that your OpenCRAVAT installation is isolated from other installations. We'll use `venv`, which installed in the default Python distribution.
 
-You can install the `virtualenv` package with `pip`/`pip3`:
-
-```bash
-pip3 install virtualenv
-```
-
-```
-Collecting virtualenv
-  Downloading virtualenv-20.25.0-py3-none-any.whl.metadata (4.5 kB)
-Collecting distlib<1,>=0.3.7 (from virtualenv)
-  Downloading distlib-0.3.8-py2.py3-none-any.whl.metadata (5.1 kB)
-Collecting filelock<4,>=3.12.2 (from virtualenv)
-  Downloading filelock-3.13.1-py3-none-any.whl.metadata (2.8 kB)
-Collecting platformdirs<5,>=3.9.1 (from virtualenv)
-  Downloading platformdirs-4.2.0-py3-none-any.whl.metadata (11 kB)
-Downloading virtualenv-20.25.0-py3-none-any.whl (3.8 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 17.0 MB/s eta 0:00:00
-Downloading distlib-0.3.8-py2.py3-none-any.whl (468 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 468.9/468.9 kB 18.5 MB/s eta 0:00:00
-Downloading filelock-3.13.1-py3-none-any.whl (11 kB)
-Downloading platformdirs-4.2.0-py3-none-any.whl (17 kB)
-Installing collected packages: distlib, platformdirs, filelock, virtualenv
-Successfully installed distlib-0.3.8 filelock-3.13.1 platformdirs-4.2.0 virtualenv-20.25.0
-```
-
-And make a separate virtual environment using the `venv` command. Here we're creating a virtual environment called `oc`:
+We'll make a separate virtual environment using the `venv` command. Here we're creating a virtual environment called `oc`:
 
 ```bash
 python3 -m venv oc
@@ -177,6 +152,37 @@ oc gui
 ```
 
 Now you're ready to start installing annotators. 
+
+## Installing via Bioconda
+
+<iframe src="https://share.descript.com/embed/5ya31CMgDf5" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+If you prefer to install via `conda`/`mamba`, here are directions for you. You will want to install `mamba` via `miniforge`: download the installation scripts here.
+
+When `mamba` has been installed, you'll need to create a conda environment and install open-cravat via a single command:
+
+```bash
+mamba create --name oc open-cravat
+```
+
+This will create an environment called `oc`
+
+When you're ready to use Open-Cravat, you can activate this `oc` environment:
+
+```bash
+mamba activate oc
+```
+
+Confirm that you can see the `oc` executable with `which`. It should be where you installed miniforge:
+
+```bash
+which oc
+```
+```
+/Users/tedladeras/miniforge3/envs/oc/bin/oc
+```
+
+Now you can use Open-Cravat as below and install annotators.
 
 ## Installing annotators
 
@@ -453,6 +459,22 @@ When you click that, you will have the option to export the variant level result
 
 Note that we could have limited our search to pathogenic variants by adding another filter rule like we did above in the filtering step. We're showing this way in case you didn't know the available categories within the `Clinical Significance` column.
 :::
+
+## Deactivating Your Environment
+
+When you're done using Open-Cravat and it's installed by an environment, make sure to deactivate:
+
+For the `python/venv` installation:
+
+```bash
+deactivate
+```
+
+For the `mamba/conda` installation:
+
+```bash
+mamba deactivate
+```
 
 ## What You Learned
 

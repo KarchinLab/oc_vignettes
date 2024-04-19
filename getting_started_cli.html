@@ -87,15 +87,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#the-basic-opencravat-workflow" id="toc-the-basic-opencravat-workflow" class="nav-link" data-scroll-target="#the-basic-opencravat-workflow">The Basic OpenCRAVAT Workflow</a></li>
   <li><a href="#preparing-and-installing-open-cravat" id="toc-preparing-and-installing-open-cravat" class="nav-link" data-scroll-target="#preparing-and-installing-open-cravat">Preparing and Installing Open Cravat</a>
   <ul class="collapse">
-  <li><a href="#using-a-virtual-environment-optional" id="toc-using-a-virtual-environment-optional" class="nav-link" data-scroll-target="#using-a-virtual-environment-optional">Using a Virtual Environment (optional)</a></li>
+  <li><a href="#using-a-virtual-environment" id="toc-using-a-virtual-environment" class="nav-link" data-scroll-target="#using-a-virtual-environment">Using a Virtual Environment</a></li>
   <li><a href="#installing-opencravat" id="toc-installing-opencravat" class="nav-link" data-scroll-target="#installing-opencravat">Installing OpenCRAVAT</a></li>
   </ul></li>
+  <li><a href="#installing-via-bioconda" id="toc-installing-via-bioconda" class="nav-link" data-scroll-target="#installing-via-bioconda">Installing via Bioconda</a></li>
   <li><a href="#installing-annotators" id="toc-installing-annotators" class="nav-link" data-scroll-target="#installing-annotators">Installing annotators</a></li>
   <li><a href="#understanding-the-input-file-format" id="toc-understanding-the-input-file-format" class="nav-link" data-scroll-target="#understanding-the-input-file-format">Understanding the Input File Format</a></li>
   <li><a href="#annotating-our-example" id="toc-annotating-our-example" class="nav-link" data-scroll-target="#annotating-our-example">Annotating our example</a></li>
   <li><a href="#starting-the-results-viewer" id="toc-starting-the-results-viewer" class="nav-link" data-scroll-target="#starting-the-results-viewer">Starting the Results Viewer</a></li>
   <li><a href="#examining-our-results-file-and-filtering" id="toc-examining-our-results-file-and-filtering" class="nav-link" data-scroll-target="#examining-our-results-file-and-filtering">Examining our Results File and Filtering</a></li>
   <li><a href="#visualizing-our-filtered-results" id="toc-visualizing-our-filtered-results" class="nav-link" data-scroll-target="#visualizing-our-filtered-results">Visualizing Our Filtered Results</a></li>
+  <li><a href="#deactivating-your-environment" id="toc-deactivating-your-environment" class="nav-link" data-scroll-target="#deactivating-your-environment">Deactivating Your Environment</a></li>
   <li><a href="#what-you-learned" id="toc-what-you-learned" class="nav-link" data-scroll-target="#what-you-learned">What You Learned</a></li>
   </ul></li>
   </ul>
@@ -176,40 +178,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> pip3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro ~ % which pip3
 /opt/homebrew/bin/pip3</code></pre>
-<section id="using-a-virtual-environment-optional" class="level3">
-<h3 class="anchored" data-anchor-id="using-a-virtual-environment-optional">Using a Virtual Environment (optional)</h3>
-<p>You may want to consider making a new virtual environment so that your OpenCRAVAT installation is isolated from other installations.</p>
-<p>You can install the <code>virtualenv</code> package with <code>pip</code>/<code>pip3</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install virtualenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>Collecting virtualenv
-  Downloading virtualenv-20.25.0-py3-none-any.whl.metadata (4.5 kB)
-Collecting distlib&lt;1,&gt;=0.3.7 (from virtualenv)
-  Downloading distlib-0.3.8-py2.py3-none-any.whl.metadata (5.1 kB)
-Collecting filelock&lt;4,&gt;=3.12.2 (from virtualenv)
-  Downloading filelock-3.13.1-py3-none-any.whl.metadata (2.8 kB)
-Collecting platformdirs&lt;5,&gt;=3.9.1 (from virtualenv)
-  Downloading platformdirs-4.2.0-py3-none-any.whl.metadata (11 kB)
-Downloading virtualenv-20.25.0-py3-none-any.whl (3.8 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 17.0 MB/s eta 0:00:00
-Downloading distlib-0.3.8-py2.py3-none-any.whl (468 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 468.9/468.9 kB 18.5 MB/s eta 0:00:00
-Downloading filelock-3.13.1-py3-none-any.whl (11 kB)
-Downloading platformdirs-4.2.0-py3-none-any.whl (17 kB)
-Installing collected packages: distlib, platformdirs, filelock, virtualenv
-Successfully installed distlib-0.3.8 filelock-3.13.1 platformdirs-4.2.0 virtualenv-20.25.0</code></pre>
-<p>And make a separate virtual environment using the <code>venv</code> command. Here we’re creating a virtual environment called <code>oc</code>:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv oc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="using-a-virtual-environment" class="level3">
+<h3 class="anchored" data-anchor-id="using-a-virtual-environment">Using a Virtual Environment</h3>
+<p>You should create a virtual environment so that your OpenCRAVAT installation is isolated from other installations. We’ll use <code>venv</code>, which installed in the default Python distribution.</p>
+<p>We’ll make a separate virtual environment using the <code>venv</code> command. Here we’re creating a virtual environment called <code>oc</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv oc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This creates a folder called <code>oc</code> in our current directory. This is where all of our separate Python packages will live. Then we’ll activate the virtual environment using <code>source</code>:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> oc/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> oc/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can double check whether the environment is activated by using <code>which python3</code> again. It should poiint to the <code>bin</code> folder within your virtual environment folder.. Note that our prompt also has an <code>(oc)</code> in front.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> python3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> python3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>(oc) tedladeras@teds-MacBook-Pro ~ % which python3
 /Users/tedladeras/oc/bin/python3</code></pre>
 </section>
 <section id="installing-opencravat" class="level3">
 <h3 class="anchored" data-anchor-id="installing-opencravat">Installing OpenCRAVAT</h3>
 <p>Now we can install Open Cravat using <code>pip</code>/<code>pip3</code>.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install open-cravat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install open-cravat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro local % pip3 install open-cravat
 Collecting open-cravat
   Downloading open-cravat-2.4.2.tar.gz (3.1 MB)
@@ -222,7 +206,7 @@ Collecting requests (from open-cravat)
 Collecting requests-toolbelt (from open-cravat)
   Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)</code></pre>
 <p>Confirm that Open Cravat is installed:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro ~ % oc --help
 usage: oc [-h] {run,report,gui,module,config,new,store,util,version,feedback} ...
 
@@ -244,16 +228,31 @@ Commands:
     version             Show version
     feedback            Send feedback to the developers</code></pre>
 <p>All of our interactions with OpenCRAVAT will be prefaced by <code>oc</code>. For example, we can launch the OpenCRAVAT GUI as a webserver on our machine using</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> gui</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> gui</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now you’re ready to start installing annotators.</p>
 </section>
+</section>
+<section id="installing-via-bioconda" class="level2">
+<h2 class="anchored" data-anchor-id="installing-via-bioconda">Installing via Bioconda</h2>
+<iframe src="https://share.descript.com/embed/5ya31CMgDf5" width="640" height="360" frameborder="0" allowfullscreen="">
+</iframe>
+<p>If you prefer to install via <code>conda</code>/<code>mamba</code>, here are directions for you. You will want to install <code>mamba</code> via <code>miniforge</code>: download the installation scripts here.</p>
+<p>When <code>mamba</code> has been installed, you’ll need to create a conda environment and install open-cravat via a single command:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">--name</span> oc open-cravat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will create an environment called <code>oc</code></p>
+<p>When you’re ready to use Open-Cravat, you can activate this <code>oc</code> environment:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate oc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Confirm that you can see the <code>oc</code> executable with <code>which</code>. It should be where you installed miniforge:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> oc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>/Users/tedladeras/miniforge3/envs/oc/bin/oc</code></pre>
+<p>Now you can use Open-Cravat as below and install annotators.</p>
 </section>
 <section id="installing-annotators" class="level2">
 <h2 class="anchored" data-anchor-id="installing-annotators">Installing annotators</h2>
 <iframe src="https://share.descript.com/embed/Fraiw5qh2gJ" width="640" height="360" frameborder="0" allowfullscreen="">
 </iframe>
 <p>The first thing we’ll need to install are some core bits of Open Cravat, called <code>install-base</code>. We’ll do this with the command <code>oc module</code>:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> module install-base</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> module install-base</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro local % oc module install-base
 Installing: casecontrol:1.2.0, cravat-converter:1.1.2, excelreporter:2.1.1, go:2022.11.01, hg38:1.11.0, hg38wgs:1.0.0, oldcravat-converter:1.1.2, tagsampler:1.1.6, textreporter:2.1.0, varmeta:1.0.0, vcf-converter:2.2.1, vcfinfo:2.0.0, wgbase:1.1.3, wgcasecontrols:1.0.1, wgcasecontrolsummary:1.0.1, wgcircossummary:2.2.0, wgcodingvsnoncodingsummary:2.0.0, wggo:1.2.0, wggosummary:2.4.0, wghg19:1.0.3, wglollipop:2.2.1, wgncrna:1.1.0, wgndex:1.1.0, wgnote:3.0.0, wgrankscore:1.1.0, wgsosamplesummary:2.2.0, wgsosummary:1.5.0, wgvcfinfo:1.0.3
 [2024:01:31 14:17:48] Starting to install casecontrol:1.2.0...
@@ -272,7 +271,7 @@ Installing: casecontrol:1.2.0, cravat-converter:1.1.2, excelreporter:2.1.1, go:2
 [2024:01:31 14:19:57] Verifying code integrity of wgvcfinfo:1.0.3...
 [2024:01:31 14:19:57] Finished installation of wgvcfinfo:1.0.3</code></pre>
 <p>Let’s list the available annotators. This is a very large list of annotators. This is just the first few entries.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tedladeras@teds-MacBook-Pro</span> local % oc module  ls <span class="at">-a</span> <span class="at">-t</span> annotator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tedladeras@teds-MacBook-Pro</span> local % oc module  ls <span class="at">-a</span> <span class="at">-t</span> annotator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>Name                               Title                                                 Type       Installed  Store ver   Store data ver     Local ver   Local data ver  Size      
 abraom                             ABRaOM                                                annotator             1.0.0                                                      113.6 MB  
 alfa                               ALFA: Allele Frequency Aggregator                     annotator             1.0.0       2020.02.29                                     19.8 GB   
@@ -284,12 +283,12 @@ alfa_other                         ALFA: Allele Frequency Aggregator Others
 
 ....</code></pre>
 <p>We’re actually looking for ClinVar, which is a list of clinically relevant annotations. Note that all of the annotators are in lower snake case (such as <code>alfa_asian</code>). So we can add <code>clinvar</code> in with our query.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> module ls <span class="at">-a</span> clinvar <span class="at">-t</span> annotator </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> module ls <span class="at">-a</span> clinvar <span class="at">-t</span> annotator </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro local % oc module ls -a clinvar -t annotator 
 Name     Title    Type       Installed  Store ver   Store data ver  Local ver  Local data ver  Size      
 clinvar  ClinVar  annotator             2023.02.01  2023.02.01.1                               381.8 MB  </code></pre>
 <p>Ok, now we know our annotator exists, and we can install it with the <code>oc module install</code> command:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> module install clinvar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> module install clinvar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We’ll need to confirm <code>y</code> to proceed:</p>
 <pre><code>tedladeras@teds-MacBook-Pro local % oc module install clinvar
 Installing: clinvar:2023.02.01, wgclinvar:1.1.1
@@ -316,13 +315,13 @@ Proceed? ([y]/n) &gt; y</code></pre>
 <h2 class="anchored" data-anchor-id="understanding-the-input-file-format">Understanding the Input File Format</h2>
 <p>[Video Here]</p>
 <p>We can generate an example file using <code>oc new example-input</code>. Note the period at the end, which means that we will generate the file in the current directory:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> new example-input .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> new example-input .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s confirm that we created this example:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> example<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> example<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro ~ % ls -l example*
 -rw-r--r--  1 tedladeras  staff    9036 Jan 31 14:27 example_input</code></pre>
 <p>Note the created file has an underscore (<code>_</code>) rather than a dash (<code>-</code>). Let’s take a look at the <code>example_input</code> file that we created:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> example_input <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> example_input <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>chr1    69091   +   A   C   s0
 chr1    69091   +   ATG C   s0
 chr6    31039077    +   C   G   s0
@@ -340,7 +339,7 @@ chr4    1804372 +   A   T   s1</code></pre>
 <iframe src="https://share.descript.com/embed/sxm0Qpy7NfL" width="640" height="360" frameborder="0" allowfullscreen="">
 </iframe>
 <p>Now we have our example, we can run Open Cravat. This will annotate our <code>example_input</code> file with all available annotators.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> run ./example_input <span class="at">-l</span> hg38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> run ./example_input <span class="at">-l</span> hg38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro ~ % oc run ./example_input -l hg38
 Input file(s): /Users/tedladeras/example_input
 Genome assembly: hg38
@@ -367,7 +366,7 @@ Finished normally. Runtime: 4.539s</code></pre>
 <iframe src="https://share.descript.com/embed/FRREXxdcxXH" width="640" height="360" frameborder="0" allowfullscreen="">
 </iframe>
 <p>We saw that one of the files generated was an <code>.sqlite</code> file. These are our results, which we can visualize using <code>oc gui</code>, which will launch the a web server so we can examine our results using the GUI:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> gui example_input.sqlite</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> gui example_input.sqlite</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro ~ % oc gui example_input.sqlite
 
    ____                   __________  ___ _    _____  ______
@@ -445,6 +444,14 @@ Multiple Rules
 <p>Note that we could have limited our search to pathogenic variants by adding another filter rule like we did above in the filtering step. We’re showing this way in case you didn’t know the available categories within the <code>Clinical Significance</code> column.</p>
 </div>
 </div>
+</section>
+<section id="deactivating-your-environment" class="level2">
+<h2 class="anchored" data-anchor-id="deactivating-your-environment">Deactivating Your Environment</h2>
+<p>When you’re done using Open-Cravat and it’s installed by an environment, make sure to deactivate:</p>
+<p>For the <code>python/venv</code> installation:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For the <code>mamba/conda</code> installation:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> deactivate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="what-you-learned" class="level2">
 <h2 class="anchored" data-anchor-id="what-you-learned">What You Learned</h2>
