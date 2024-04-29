@@ -1,0 +1,48 @@
+---
+title: "Making an Annotator Module"
+format: html
+---
+
+```{mermaid}
+flowchart LR
+  A[oc new annotator sift] --> B
+  B["sift.py\nqueries data file"]
+  A --> C["sift.json\nMaps annotation columns"]
+  A --> D["data/sift.sqlite\ncontains annotation data"]
+```
+
+```{bash}
+oc config md
+```
+
+```{bash}
+#| eval:false
+oc new annotator sift_annotator
+```
+
+```
+Annotator sift_annotator created at /Users/Shared/open-cravat/modules/annotators/sift_annotator
+```
+
+```{bash}
+tree  /Users/Shared/open-cravat/modules/annotators/sift_annotator/
+```
+
+```
+/Users/Shared/open-cravat/modules/annotators/sift_annotator/
+├── __pycache__
+│   └── sift_annotator.cpython-311.pyc
+├── data
+│   └── sift_annotator.sqlite
+├── sift_annotator.md
+├── sift_annotator.py
+└── sift_annotator.yml
+
+3 directories, 5 files
+```
+
+
+```{bash}
+sqlite3 /Users/Shared/open-cravat/modules/annotators/sift_annotator/data/sift_annotator.sqlite 'select * from sift limit 10;'
+```
+
