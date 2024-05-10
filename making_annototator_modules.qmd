@@ -3,21 +3,29 @@ title: "Making an Annotator Module"
 format: html
 ---
 
+## Annotator Basic Structure
+
+<iframe src="https://share.descript.com/embed/TybKsmLT2Rx" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
 ```{mermaid}
 flowchart LR
   A[oc new annotator sift] --> B
   B["sift.py\n(queries data file)"]
-  A --> C["sift.json\n(Maps variants to annotation)"]
+  A --> C["sift.yml\n(Maps variants to annotation)"]
   A --> D["data/sift.sqlite\n(contains annotation table)"]
 ```
 
 ```
-sift_annotator/
+/Users/Shared/open-cravat/modules/annotators/sift
+├── __pycache__
+│   └── sift.cpython-310.pyc
 ├── data
-│   └── sift_annotator.sqlite     ## contains annotations in sqlite format
-├── sift_annotator.md             ## describes how to use annotator
-├── sift_annotator.py             ## maps annotation columns to variant input
-└── sift_annotator.yml            ## configures output columns
+│   └── sift.sqlite               ## contains annotations in sqlite format
+├── sift.md                       ## describes how to use annotator
+├── sift.py                       ## maps annotation columns to variant input
+└── sift.yml                      ## configures output columns
+
+3 directories, 5 files
 ```
 
 
@@ -49,6 +57,16 @@ tree  /Users/Shared/open-cravat/modules/annotators/sift_annotator/
 └── sift_annotator.yml
 
 3 directories, 5 files
+```
+
+## Fetching our SQLite annotations
+
+<iframe src="https://share.descript.com/embed/i8O7qSP87s4" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+## Navigate to directory
+
+```{bash}
+wget "https://github.com/KarchinLab/open-cravat-modules-karchinlab/blob/master/annotators/example/data/example.sqlite?raw=true"
 ```
 
 
