@@ -85,7 +85,7 @@ flowchart LR
 ```
 
 ```{bash}
-cat /Users/Shared/open-cravat/modules/annotators/sift_annotator/sift_annotator.py
+cat /Users/Shared/open-cravat/modules/annotators/sift/sift.py
 ```
 
 ### `annotate()` function
