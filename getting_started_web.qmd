@@ -84,7 +84,7 @@ Windows Defender may indicate that it prevented an unknown application from runn
 
 ### MacOS
 
-<iframe src="https://share.descript.com/embed/xflvSqCDFQL" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+{{< video https://youtu.be/6f5fB6fVdBs >}}
 
 [Mac OS installer](https://karchinlab.org/opencravat/installers/OpenCRAVAT.2.2.9.pkg)
 
@@ -96,7 +96,7 @@ Linux Users should refer to the Command Line Quickstart to install via `pip`/`pi
 
 ### Start OpenCRAVAT GUI
 
-<iframe src="https://share.descript.com/embed/NRF4BVXMbcD" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+{{< video https://youtu.be/cNDrAPhPffg >}}
 
 Now that OpenCRAVAT is installed, we can run the GUI. In a command prompt (PowerShell or Terminal), you can start the OpenCRAVAT GUI by typing:
 
@@ -132,7 +132,7 @@ Now you can [browse and install the available annotators](#browse-annotators)
 
 ## Browse Annotators (Web)
 
-<iframe src="https://share.descript.com/embed/Tk01UzdKZIG" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+{{< video https://youtu.be/B2jiQcIkX8c >}}
 
 If we click on the **STORE** tab in the top left of the interface, we'll see the variety of annotators that are available to us. 
 
@@ -204,7 +204,7 @@ Now we have our input file, we can move on to [submitting our job](#submit-annot
 
 ## Submit Annotation Job
 
-<iframe src="https://share.descript.com/embed/raakHVZK4EK" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+{{< video https://youtu.be/xSOxEbsW--c >}}
 
 Before we move on, let's take a look at the overall workflow for annotating in the GUI. We'll start out by 1) submitting our input file, 2) selecting the annotators, and then 3) submitting our job. 
 
@@ -240,7 +240,7 @@ When our job is finished, we can [view our results and filter them](#filter-resu
 
 ## Filter Results
 
-<iframe src="https://share.descript.com/embed/rHJGmx6i9e5" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+{{< video https://youtu.be/TYs3dGDFzQQ >}}
 
 > We are interested in those variants that have ClinVar annotation. How do we find those?
 
@@ -283,7 +283,7 @@ Just note that the filter is not actually applied to the data until you hit the 
 
 ## Visualize Filtered Results
 
-<iframe src="https://share.descript.com/embed/13Ww6z6RV6j" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+{{< video https://youtu.be/MPW2MXBJG7w >}}
 
 Now that we've filtered, let's go back to the Summary Tab:
 

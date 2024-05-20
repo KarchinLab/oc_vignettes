@@ -90,6 +90,39 @@ cat /Users/Shared/open-cravat/modules/annotators/sift/sift.py
 
 ### `annotate()` function
 
+::::{.columns}
+:::{.column}
+```{mermaid}
+erDiagram
+    input_data{
+      string chrom
+      int pos
+      string ref_base
+      string alt_base
+    }
+    Annotation{
+        string chrom
+        int pos
+        string ref
+        string alt
+        float score
+        int nseq
+    }
+```
+:::
+:::{.column}
+```sql
+chrom = input_data["chrom"]
+pos = input_data["pos"]
+query = (f'select score, nseq from sift' \
+          'where chrom="{chrom}"'\
+          'and pos="{pos}"')
+self.cursor.execute(query)
+result = self.cursor.fetchone()
+```
+:::
+::::
+
 ```python
 def annotate(self, input_data, secondary_data=None):
     chrom = input_data['chrom']
@@ -113,6 +146,53 @@ def annotate(self, input_data, secondary_data=None):
         }
     else:
         return None
+```
+
+
+## Importing a Tab Separated Value file to SQLite
+
+```sql
+sqlite3 sift.sqlite
+create table "sift" ('chrom' TEXT, 'pos' INT, 
+                     'ref' TEXT, 'alt' TEXT, 
+                     'score' REAL, 'nseq' INT);
+.mode csv
+.import --skip 1 sift.csv sift
+
+.schema
+.mode box
+select * from sift limit 5;
+
+.exit
+```
+
+
+
+```sql
+.mode tabs
+create table "hpo" ('ncbi_gene_id' int, "gene_symbol" TEXT, 
+                    "hpo_id" TEXT, "hpo_name" TEXT, "frequency" TEXT, 
+                    "disease_id" TEXT);
+.import --skip 1 genes_to_phenotype.txt hpo
+
+
+.mode box
+.schema
+select * from hpo limit 10;
+```
+
+
+```sql
+.mode tabs
+create table "vcf" ("chrom" TEXT, "pos" INT, "id" TEXT, 
+                    "ref" TEXT, "alt" TEXT, "qual" INT, 
+                    "filter" TEXT, "info" TEXT);
+.import --skip 5 GRCh38.RNAediting.vcf vcf
+
+.mode box.m
+.schema
+select * from vcf limit 10;
+
 ```
 
 
