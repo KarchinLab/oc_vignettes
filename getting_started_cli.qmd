@@ -43,7 +43,7 @@ flowchart TD
 
 ## Preparing and Installing Open Cravat
 
-<iframe src="https://share.descript.com/embed/Fraiw5qh2gJ" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+{{< video https://youtu.be/24awSa0ry9M >}}
 
 Make sure you know where your Python is installed using the `which` command. In my example, I have python 3.11 installed via Homebrew, which is the python I want to use. In my case, since I'm on MacOS, I know that I run python programs using `python3` rather than `python`.
 
@@ -155,7 +155,7 @@ Now you're ready to start installing annotators.
 
 ## Installing via Bioconda
 
-<iframe src="https://share.descript.com/embed/5ya31CMgDf5" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+{{< video >}}
 
 If you prefer to install via `conda`/`mamba`, here are directions for you. You will want to install `mamba` via `miniforge`: download the installation scripts here.
 
@@ -186,7 +186,7 @@ Now you can use Open-Cravat as below and install annotators.
 
 ## Installing annotators
 
-<iframe src="https://share.descript.com/embed/Fraiw5qh2gJ" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+{{<.video https://youtu.be/N6cPmt1kNaU >}}
 
 The first thing we'll need to install are some core bits of Open Cravat, called `install-base`. We'll do this with the command `oc module`:
 
@@ -280,8 +280,6 @@ Then the installation will proceed:
 
 ## Understanding the Input File Format 
 
-[Video Here]
-
 We can generate an example file using `oc new example-input`. Note the period at the end, which means that we will generate the file in the current directory:
 
 ```bash
@@ -321,7 +319,7 @@ chr4	1804372	+	A	T	s1
 
 ## Annotating our example
 
-<iframe src="https://share.descript.com/embed/sxm0Qpy7NfL" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+{{< video https://youtu.be/gSeeDM9GUgQ >}}
 
 Now we have our example, we can run Open Cravat. This will annotate our `example_input` file with all available annotators. 
 
@@ -354,7 +352,7 @@ Finished normally. Runtime: 4.539s
 
 ## Starting the Results Viewer
 
-<iframe src="https://share.descript.com/embed/FRREXxdcxXH" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+{{< video https://youtu.be/cNDrAPhPffg >}}
 
 We saw that one of the files generated was an `.sqlite` file. These are our results, which we can visualize using `oc gui`, which will launch the a web server so we can examine our results using the GUI:
 
@@ -385,6 +383,8 @@ A window should open in your web browser. If not, enter https://localhost:8080 t
 ![](oc-gui.png)
 
 ## Examining our Results File and Filtering
+
+{{< video https://youtu.be/TYs3dGDFzQQ >}}
 
 Now we take a look at our results in the web interface. Under the list of jobs, we can see our job. Let's select `Open Result Viewer` under the **Status** tab:
 
@@ -426,7 +426,7 @@ Just note that the filter is not actually applied to the data until you hit the 
 
 ## Visualizing Our Filtered Results
 
-<iframe src="https://share.descript.com/embed/13Ww6z6RV6j" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+{{< video https://youtu.be/q75mk2SxqTA >}}
 
 Now that we've filtered, let's go back to the Summary Tab:
 

@@ -3,6 +3,7 @@ title: "Getting Started (Website/GUI)"
 format: 
   html: default
   rst: default
+  gfm: default
 toc: true
 anchor-sections: true
 ---
