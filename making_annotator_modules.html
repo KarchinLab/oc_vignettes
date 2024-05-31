@@ -103,6 +103,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="annotator-basic-structure">Annotator Basic Structure</h2>
 <iframe src="https://share.descript.com/embed/TybKsmLT2Rx" width="640" height="360" frameborder="0" allowfullscreen="">
 </iframe>
+<p>Creating an annotator module requires the following:</p>
+<ol type="1">
+<li>Creating an new annotator skeleton using <code>oc new annotator &lt;modulename&gt;</code></li>
+<li>Loading an annotator file into a SQLite database using</li>
+</ol>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -131,29 +136,132 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 3 directories, 5 files</code></pre>
 <pre class="{bash}"><code>oc config md</code></pre>
 <pre class="{bash}"><code>#| eval: false
-oc new annotator sift_annotator</code></pre>
-<pre><code>Annotator sift_annotator created at /Users/Shared/open-cravat/modules/annotators/sift_annotator</code></pre>
-<pre class="{bash}"><code>tree  /Users/Shared/open-cravat/modules/annotators/sift_annotator/</code></pre>
-<pre><code>/Users/Shared/open-cravat/modules/annotators/sift_annotator/
+oc new annotator sift</code></pre>
+<pre><code>Annotator sift_annotator created at /Users/Shared/open-cravat/modules/annotators/sift</code></pre>
+<pre class="{bash}"><code>tree  /Users/Shared/open-cravat/modules/annotators/sift/</code></pre>
+<pre><code>/Users/Shared/open-cravat/modules/annotators/sift/
 ├── __pycache__
-│   └── sift_annotator.cpython-311.pyc
+│   └── sift.cpython-311.pyc
 ├── data
-│   └── sift_annotator.sqlite
-├── sift_annotator.md
-├── sift_annotator.py
-└── sift_annotator.yml
+│   └── sift.sqlite
+├── sift.md
+├── sift.py
+└── sift.yml
 
 3 directories, 5 files</code></pre>
 </section>
-<section id="fetching-our-sqlite-annotations" class="level2">
-<h2 class="anchored" data-anchor-id="fetching-our-sqlite-annotations">Fetching our SQLite annotations</h2>
+<section id="loading-annotations-as-a-sqlite-file" class="level2">
+<h2 class="anchored" data-anchor-id="loading-annotations-as-a-sqlite-file">Loading annotations as a SQLite file</h2>
+<p>OpenCravat requires us to supply our annotations as a SQLite file. <code>sqlite3</code> is a database system that allows us to package our annotations in the <code>.sqlite</code> format, which makes our annotations accessible to OpenCravat.</p>
+<p>SQLite is available on most systems (MacOS/PC/Linux) as the <code>sqlite3</code> command.</p>
+<section id="fetching-our-sqlite-annotations" class="level3">
+<h3 class="anchored" data-anchor-id="fetching-our-sqlite-annotations">Fetching our SQLite annotations</h3>
 <iframe src="https://share.descript.com/embed/i8O7qSP87s4" width="640" height="360" frameborder="0" allowfullscreen="">
 </iframe>
+<p>Let’s take a look at an example sqlite file before we load our own. In our annotator’s <code>data/</code> directory (for example, <code>/Users/Shared/open-cravat/modules/annotators/sift/data/</code>), we can fetch an example <code>.sqlite</code> file. We’ll rename it <code>sift.sqlite</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="st">"https://github.com/KarchinLab/open-cravat-modules-karchinlab/blob/master/annotators/example/data/example.sqlite?raw=true"</span> <span class="at">-O</span> sift.sqlite</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>--2024-05-24 07:31:22--  https://github.com/KarchinLab/open-cravat-modules-karchinlab/blob/master/annotators/example/data/example.sqlite
+Resolving github.com (github.com)... 140.82.113.4
+Connecting to github.com (github.com)|140.82.113.4|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘example.sqlite’
+
+example.sqlite                      [  &lt;=&gt;                                                ] 157.51K   602KB/s    in 0.3s    
+
+2024-05-24 07:31:23 (602 KB/s) - ‘example.sqlite’ saved [161288]
+</code></pre>
+<p>Now that we have it in our annotator’s <code>data/</code> directory, we can query it.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sqlite3</span> sift.sqlite <span class="st">'select * from sift limit 10;'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>chr17|43045681|G|A|1.0|7
+chr17|43045681|G|G|1.0|7
+chr17|43045682|T|A|0.0|7
+chr17|43045682|T|C|0.0|7
+chr17|43045682|T|G|0.0|7
+chr17|43045682|T|T|1.0|7
+chr17|43045683|A|A|1.0|7
+chr17|43045683|A|C|0.0|7
+chr17|43045683|A|G|0.0|7
+chr17|43045683|A|T|0.0|7</code></pre>
 </section>
-<section id="navigate-to-directory" class="level2">
-<h2 class="anchored" data-anchor-id="navigate-to-directory">Navigate to directory</h2>
-<pre class="{bash}"><code>wget "https://github.com/KarchinLab/open-cravat-modules-karchinlab/blob/master/annotators/example/data/example.sqlite?raw=true"</code></pre>
-<pre class="{bash}"><code>sqlite3 /Users/Shared/open-cravat/modules/annotators/sift_annotator/data/sift_annotator.sqlite 'select * from sift limit 10;'</code></pre>
+<section id="importing-a-comma-separated-value-file-to-sqlite" class="level3">
+<h3 class="anchored" data-anchor-id="importing-a-comma-separated-value-file-to-sqlite">Importing a Comma Separated Value file to SQLite</h3>
+<iframe src="https://share.descript.com/embed/nZAa2LJpI9S" width="640" height="360" frameborder="0" allowfullscreen="">
+</iframe>
+<p>Now that we’re more familiar with the SQLite format, we can start loading our own version.</p>
+<p>We’ll first create the <code>sift.sqlite</code> file by using <code>sqlite3</code>. This will put us into the <code>sqlite3</code> prompt interface.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sqlite3 sift.sqlite</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>SQLite version 3.43.2 2023-10-10 13:08:14
+Enter ".help" for usage hints.
+sqlite&gt;</code></pre>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interacting with the <code>sqlite3</code> prompt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There are two main ways we can interact with the <code>sqlite3</code> interface: <strong>SQL Queries</strong>:</p>
+<pre><code>SELECT * from SIFT LIMIT 5;</code></pre>
+<p>Note that SQL queries always end with a <code>;</code>.</p>
+<p>The other way we can interact with the interface are <strong>dot commands</strong>, such as <code>.mode</code> or <code>.schema</code> - these do not end with a <code>;</code>. These dot commands are are often used to change internal settings for the sqlite database. For example, to set the import format to <code>.csv</code>, we can use:</p>
+<pre><code>.mode csv</code></pre>
+<p>Again, note that these commands <strong>don’t</strong> end with a <code>;</code>. You will get errors if you terminate them with <code>;</code>.</p>
+</div>
+</div>
+</section>
+<section id="creating-our-table" class="level3">
+<h3 class="anchored" data-anchor-id="creating-our-table">Creating our Table</h3>
+<p>Before we load our data in, we need to create our table.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">create</span> <span class="kw">table</span> <span class="ot">"sift"</span> (<span class="st">'chrom'</span> TEXT, <span class="st">'pos'</span> <span class="dt">INT</span>, </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'ref'</span> TEXT, <span class="st">'alt'</span> TEXT, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'score'</span> <span class="dt">REAL</span>, <span class="st">'nseq'</span> <span class="dt">INT</span>);</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">INDEX</span> main_index <span class="kw">on</span> sift (chrom, pos, <span class="fu">ref</span>, alt);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now that the table is created, we can load our <code>sift.csv</code> file. We need to change the mode to <code>csv</code>.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>.<span class="kw">mode</span> csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now we can import our data using the <code>.import</code> dot command. Because our <code>sift.csv</code></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>.import <span class="co">--skip 1 sift.csv sift</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can check that we loaded in our data correctly by using the <code>.schema</code> command</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>.<span class="kw">schema</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>CREATE TABLE sift (chrom text, pos int, ref text, alt text, score real, nseq int);
+CREATE INDEX main_index on sift (chrom, pos, ref, alt);</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>.<span class="kw">mode</span> box</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> <span class="op">*</span> <span class="kw">from</span> sift <span class="kw">limit</span> <span class="dv">5</span>;</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>.exit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>┌───────┬──────────┬─────┬─────┬───────┬──────┐
+│ chrom │   pos    │ ref │ alt │ score │ nseq │
+├───────┼──────────┼─────┼─────┼───────┼──────┤
+│ chr17 │ 43045681 │ G   │ A   │ 1.0   │ 7    │
+│ chr17 │ 43045681 │ G   │ G   │ 1.0   │ 7    │
+│ chr17 │ 43045682 │ T   │ A   │ 0.0   │ 7    │
+│ chr17 │ 43045682 │ T   │ C   │ 0.0   │ 7    │
+│ chr17 │ 43045682 │ T   │ G   │ 0.0   │ 7    │
+└───────┴──────────┴─────┴─────┴───────┴──────┘</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>.<span class="kw">mode</span> tabs</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">create</span> <span class="kw">table</span> <span class="ot">"hpo"</span> (<span class="st">'ncbi_gene_id'</span> <span class="dt">int</span>, <span class="ot">"gene_symbol"</span> TEXT, </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                    <span class="ot">"hpo_id"</span> TEXT, <span class="ot">"hpo_name"</span> TEXT, <span class="ot">"frequency"</span> TEXT, </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                    <span class="ot">"disease_id"</span> TEXT);</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>.import <span class="co">--skip 1 genes_to_phenotype.txt hpo</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>.<span class="kw">mode</span> box</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>.<span class="kw">schema</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> <span class="op">*</span> <span class="kw">from</span> hpo <span class="kw">limit</span> <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>.<span class="kw">mode</span> tabs</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">create</span> <span class="kw">table</span> <span class="ot">"vcf"</span> (<span class="ot">"chrom"</span> TEXT, <span class="ot">"pos"</span> <span class="dt">INT</span>, <span class="ot">"id"</span> TEXT, </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                    <span class="ot">"ref"</span> TEXT, <span class="ot">"alt"</span> TEXT, <span class="ot">"qual"</span> <span class="dt">INT</span>, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                    <span class="ot">"filter"</span> TEXT, <span class="ot">"info"</span> TEXT);</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>.import <span class="co">--skip 5 GRCh38.RNAediting.vcf vcf</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>.<span class="kw">mode</span> box.m</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>.<span class="kw">schema</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> <span class="op">*</span> <span class="kw">from</span> vcf <span class="kw">limit</span> <span class="dv">10</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="fill-out-sift_annotator.py" class="level2">
 <h2 class="anchored" data-anchor-id="fill-out-sift_annotator.py">Fill out <code>sift_annotator.py</code></h2>
@@ -195,6 +303,7 @@ oc new annotator sift_annotator</code></pre>
         string ref
         string alt
         float score
+        int nseq
     }
 </pre>
 </div>
@@ -203,34 +312,37 @@ oc new annotator sift_annotator</code></pre>
 </div>
 </div>
 </div><div class="column">
-<div class="sourceCode" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pos <span class="op">=</span> input_data[<span class="ot">"pos"</span>]</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">query</span> <span class="op">=</span> f<span class="st">'select score, nseq from sift where chrom="{chrom}"'</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>self.<span class="kw">cursor</span>.<span class="kw">execute</span>(<span class="kw">query</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> self.<span class="kw">cursor</span>.fetchone()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>chrom <span class="op">=</span> input_data[<span class="ot">"chrom"</span>]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>pos <span class="op">=</span> input_data[<span class="ot">"pos"</span>]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="kw">query</span> <span class="op">=</span> (f<span class="st">'select score, nseq from sift'</span> \</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>          <span class="st">'where chrom="{chrom}"'</span>\</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>          <span class="st">'and pos="{pos}"'</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>self.<span class="kw">cursor</span>.<span class="kw">execute</span>(<span class="kw">query</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> self.<span class="kw">cursor</span>.fetchone()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> annotate(<span class="va">self</span>, input_data, secondary_data<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    chrom <span class="op">=</span> input_data[<span class="st">'chrom'</span>]</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    pos <span class="op">=</span> input_data[<span class="st">'pos'</span>]</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    ref_base <span class="op">=</span> input_data[<span class="st">'ref_base'</span>]</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    alt_base <span class="op">=</span> input_data[<span class="st">'alt_base'</span>]</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    query <span class="op">=</span> <span class="ss">f'select score, nseq from sift where chrom="</span><span class="sc">{</span>chrom<span class="sc">}</span><span class="ss">" and pos=</span><span class="sc">{</span>pos<span class="sc">}</span><span class="ss"> and ref="</span><span class="sc">{</span>ref_base<span class="sc">}</span><span class="ss">" and alt="</span><span class="sc">{</span>alt_base<span class="sc">}</span><span class="ss">";'</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.cursor.execute(query)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="va">self</span>.cursor.fetchone()</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> result <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        score <span class="op">=</span> result[<span class="dv">0</span>]</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        num_seq <span class="op">=</span> result[<span class="dv">1</span>]</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> score <span class="op">&lt;=</span> <span class="fl">0.05</span>:</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>            prediction <span class="op">=</span> <span class="st">'Damaging'</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>            prediction <span class="op">=</span> <span class="st">'Tolerated'</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">'score'</span>: score,</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">'seq_count'</span>: num_seq,</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">'prediction'</span>: prediction,</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> annotate(<span class="va">self</span>, input_data, secondary_data<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    chrom <span class="op">=</span> input_data[<span class="st">'chrom'</span>]</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    pos <span class="op">=</span> input_data[<span class="st">'pos'</span>]</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    ref_base <span class="op">=</span> input_data[<span class="st">'ref_base'</span>]</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    alt_base <span class="op">=</span> input_data[<span class="st">'alt_base'</span>]</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    query <span class="op">=</span> <span class="ss">f'select score, nseq from sift where chrom="</span><span class="sc">{</span>chrom<span class="sc">}</span><span class="ss">" and pos=</span><span class="sc">{</span>pos<span class="sc">}</span><span class="ss"> and ref="</span><span class="sc">{</span>ref_base<span class="sc">}</span><span class="ss">" and alt="</span><span class="sc">{</span>alt_base<span class="sc">}</span><span class="ss">";'</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.cursor.execute(query)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="va">self</span>.cursor.fetchone()</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> result <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>        score <span class="op">=</span> result[<span class="dv">0</span>]</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>        num_seq <span class="op">=</span> result[<span class="dv">1</span>]</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> score <span class="op">&lt;=</span> <span class="fl">0.05</span>:</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>            prediction <span class="op">=</span> <span class="st">'Damaging'</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>            prediction <span class="op">=</span> <span class="st">'Tolerated'</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">'score'</span>: score,</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">'seq_count'</span>: num_seq,</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">'prediction'</span>: prediction,</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="configure-sift_annotator.yml" class="level2">

@@ -7,6 +7,11 @@ format: html
 
 <iframe src="https://share.descript.com/embed/TybKsmLT2Rx" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
+Creating an annotator module requires the following:
+
+1. Creating an new annotator skeleton using `oc new annotator <modulename>`
+2. Loading an annotator file into a SQLite database using 
+
 ```{mermaid}
 flowchart LR
   A[oc new annotator sift] --> B
@@ -35,47 +40,205 @@ oc config md
 
 ```{bash}
 #| eval: false
-oc new annotator sift_annotator
+oc new annotator sift
 ```
 
 ```
-Annotator sift_annotator created at /Users/Shared/open-cravat/modules/annotators/sift_annotator
+Annotator sift_annotator created at /Users/Shared/open-cravat/modules/annotators/sift
 ```
 
 ```{bash}
-tree  /Users/Shared/open-cravat/modules/annotators/sift_annotator/
+tree  /Users/Shared/open-cravat/modules/annotators/sift/
 ```
 
 ```
-/Users/Shared/open-cravat/modules/annotators/sift_annotator/
+/Users/Shared/open-cravat/modules/annotators/sift/
 ├── __pycache__
-│   └── sift_annotator.cpython-311.pyc
+│   └── sift.cpython-311.pyc
 ├── data
-│   └── sift_annotator.sqlite
-├── sift_annotator.md
-├── sift_annotator.py
-└── sift_annotator.yml
+│   └── sift.sqlite
+├── sift.md
+├── sift.py
+└── sift.yml
 
 3 directories, 5 files
 ```
 
-## Fetching our SQLite annotations
+## Loading annotations as a SQLite file
+
+OpenCravat requires us to supply our annotations as a SQLite file. `sqlite3` is a database system that allows us to package our annotations in the `.sqlite` format, which makes our annotations accessible to OpenCravat.
+
+SQLite is available on most systems (MacOS/PC/Linux) as the `sqlite3` command. 
+
+### Fetching our SQLite annotations
 
 <iframe src="https://share.descript.com/embed/i8O7qSP87s4" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
-## Navigate to directory
+Let's take a look at an example sqlite file before we load our own. In our annotator's `data/` directory (for example, `/Users/Shared/open-cravat/modules/annotators/sift/data/`), we can fetch an example `.sqlite` file. We'll rename it `sift.sqlite`.
 
-```{bash}
-wget "https://github.com/KarchinLab/open-cravat-modules-karchinlab/blob/master/annotators/example/data/example.sqlite?raw=true"
+```bash
+wget "https://github.com/KarchinLab/open-cravat-modules-karchinlab/blob/master/annotators/example/data/example.sqlite?raw=true" -O sift.sqlite
+
+```
+
+```
+--2024-05-24 07:31:22--  https://github.com/KarchinLab/open-cravat-modules-karchinlab/blob/master/annotators/example/data/example.sqlite
+Resolving github.com (github.com)... 140.82.113.4
+Connecting to github.com (github.com)|140.82.113.4|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘example.sqlite’
+
+example.sqlite                      [  <=>                                                ] 157.51K   602KB/s    in 0.3s    
+
+2024-05-24 07:31:23 (602 KB/s) - ‘example.sqlite’ saved [161288]
+
+```
+
+Now that we have it in our annotator's `data/` directory, we can query it.
+
+```bash
+sqlite3 sift.sqlite 'select * from sift limit 10;'
+```
+
+```
+chr17|43045681|G|A|1.0|7
+chr17|43045681|G|G|1.0|7
+chr17|43045682|T|A|0.0|7
+chr17|43045682|T|C|0.0|7
+chr17|43045682|T|G|0.0|7
+chr17|43045682|T|T|1.0|7
+chr17|43045683|A|A|1.0|7
+chr17|43045683|A|C|0.0|7
+chr17|43045683|A|G|0.0|7
+chr17|43045683|A|T|0.0|7
+```
+
+### Importing a Comma Separated Value file to SQLite
+
+<iframe src="https://share.descript.com/embed/nZAa2LJpI9S" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+Now that we're more familiar with the SQLite format, we can start loading our own version. 
+
+We'll first create the `sift.sqlite` file by using `sqlite3`. This will put us into the `sqlite3` prompt interface.
+
+```sql
+sqlite3 sift.sqlite
+```
+
+```
+SQLite version 3.43.2 2023-10-10 13:08:14
+Enter ".help" for usage hints.
+sqlite>
+```
+
+:::{.callout-note}
+## Interacting with the `sqlite3` prompt
+
+There are two main ways we can interact with the `sqlite3` interface: **SQL Queries**: 
+
+```
+SELECT * from SIFT LIMIT 5;
+```
+
+Note that SQL queries always end with a `;`.
+
+The other way we can interact with the interface are **dot commands**, such as `.mode` or `.schema` - these do not end with a `;`. These dot commands are are often used to change internal settings for the sqlite database. For example, to set the import format to `.csv`, we can use:
+
+```
+.mode csv
+```
+
+Again, note that these commands **don't** end with a `;`. You will get errors if you terminate them with `;`.
+
+To make things easier to distinguish, we'll use all caps for SQL and lowercase for dot commands.
+:::
+
+### Creating our Table
+
+Before we load our data in, we need to create our table. 
+
+```sql
+CREATE TABLE "sift" ('chrom' TEXT, 'pos' INT, 
+                     'ref' TEXT, 'alt' TEXT, 
+                     'score' REAL, 'nseq' INT);
+CREATE INDEX main_index on sift (chrom, pos, ref, alt);
+```
+
+Now that the table is created, we can load our `sift.csv` file. We need to change the mode to `csv`. 
+
+```sql
+.mode csv
+```
+
+Now we can import our data using the `.import` dot command. Because our `sift.csv` has a header row, we need to skip it, so we use the `--skip 1` argument. 
+
+```sql
+.import --skip 1 sift.csv sift
+```
+
+We can check that we loaded in our data correctly by using the `.schema` command and a `SELECT *` query:
+
+```sql
+.schema
+```
+```
+CREATE TABLE sift (chrom text, pos int, ref text, alt text, score real, nseq int);
+CREATE INDEX main_index on sift (chrom, pos, ref, alt);
+```
+
+cha
+
+```sql
+.mode box
+SELECT * FROM sift LIMIT 5;
+```
+```
+┌───────┬──────────┬─────┬─────┬───────┬──────┐
+│ chrom │   pos    │ ref │ alt │ score │ nseq │
+├───────┼──────────┼─────┼─────┼───────┼──────┤
+│ chr17 │ 43045681 │ G   │ A   │ 1.0   │ 7    │
+│ chr17 │ 43045681 │ G   │ G   │ 1.0   │ 7    │
+│ chr17 │ 43045682 │ T   │ A   │ 0.0   │ 7    │
+│ chr17 │ 43045682 │ T   │ C   │ 0.0   │ 7    │
+│ chr17 │ 43045682 │ T   │ G   │ 0.0   │ 7    │
+└───────┴──────────┴─────┴─────┴───────┴──────┘
 ```
 
 
-```{bash}
-sqlite3 /Users/Shared/open-cravat/modules/annotators/sift_annotator/data/sift_annotator.sqlite 'select * from sift limit 10;'
+
+When we're done, we can 
+
+```sql
+.exit
 ```
 
+:::{.callout-note}
+## Loading VCF Files as Annotations
 
-## Fill out `sift_annotator.py`
+
+
+```sql
+.mode tabs
+create table "vcf" ("chrom" TEXT, "pos" INT, "id" TEXT, 
+                    "ref" TEXT, "alt" TEXT, "qual" INT, 
+                    "filter" TEXT, "info" TEXT);
+.import --skip 5 GRCh38.RNAediting.vcf vcf
+
+.mode box.m
+.schema
+select * from vcf limit 10;
+
+```
+:::
+
+
+
+
+
+## Fill out `sift.py`
+
+Now that our data is loaded into our `.sqlite` file, we need to set up our mapping. If we look in `sift.py`, we'll see there are stubs for three methods: `setup()`, `annotate()`, and `cleanup()`:
 
 ```{mermaid}
 flowchart LR
@@ -84,11 +247,78 @@ flowchart LR
   A --method-->D["cleanup()"]
 ```
 
-```{bash}
+This is what they look like: 
+
+```bash
 cat /Users/Shared/open-cravat/modules/annotators/sift/sift.py
 ```
 
-### `annotate()` function
+```
+import sys
+from cravat import BaseAnnotator
+from cravat import InvalidData
+import sqlite3
+import os
+
+class CravatAnnotator(BaseAnnotator):
+
+    def setup(self): 
+        """
+        Set up data sources. 
+        Cravat will automatically make a connection to 
+        data/example_annotator.sqlite using the sqlite3 python module. The 
+        sqlite3.Connection object is stored as self.dbconn, and the 
+        sqlite3.Cursor object is stored as self.cursor.
+        """
+        pass
+    
+    def annotate(self, input_data, secondary_data=None):
+        """
+        The annotator parent class will call annotate for each line of the 
+        input file. It takes one positional argument, input_data, and one
+        keyword argument, secondary_data.
+        
+        input_data is a dictionary containing the data from the current input 
+        line. The keys depend on what what file is used as the input, which can 
+        be changed in the module_name.yml file. 
+        Variant level includes the following keys: 
+            ('uid', 'chrom', 'pos', 'ref_base', 'alt_base')
+        Variant level crx files expand the key set to include:
+            ('hugo', 'transcript','so','all_mappings')
+        Gene level files include
+            ('hugo', 'num_variants', 'so', 'all_so')
+        
+        secondary_data is used to allow an annotator to access the output of
+        other annotators. It is described in more detail in the CRAVAT 
+        documentation.
+        
+        annotate should return a dictionary with keys matching the column names
+        defined in example_annotator.yml. Extra column names will be ignored, 
+        and absent column names will be filled with None. Check your output
+        carefully to ensure that your data is ending up where you intend.
+        """
+        out = {}
+        out['placeholder_annotation'] = 'placeholder value'
+        return out
+    
+    def cleanup(self):
+        """
+        cleanup is called after every input line has been processed. Use it to
+        close database connections and file handlers. Automatically opened
+        database connections are also automatically closed.
+        """
+        pass
+        
+if __name__ == '__main__':
+    annotator = CravatAnnotator(sys.argv)
+    annotator.run()
+```
+
+We will focus on the `annotate()` method first.
+
+### `annotate()` method
+
+Our `annotate()` method is where we 
 
 ::::{.columns}
 :::{.column}
@@ -111,7 +341,7 @@ erDiagram
 ```
 :::
 :::{.column}
-```sql
+```python
 chrom = input_data["chrom"]
 pos = input_data["pos"]
 query = (f'select score, nseq from sift' \
@@ -149,54 +379,11 @@ def annotate(self, input_data, secondary_data=None):
 ```
 
 
-## Importing a Tab Separated Value file to SQLite
-
-```sql
-sqlite3 sift.sqlite
-create table "sift" ('chrom' TEXT, 'pos' INT, 
-                     'ref' TEXT, 'alt' TEXT, 
-                     'score' REAL, 'nseq' INT);
-.mode csv
-.import --skip 1 sift.csv sift
-
-.schema
-.mode box
-select * from sift limit 5;
-
-.exit
-```
-
-
-
-```sql
-.mode tabs
-create table "hpo" ('ncbi_gene_id' int, "gene_symbol" TEXT, 
-                    "hpo_id" TEXT, "hpo_name" TEXT, "frequency" TEXT, 
-                    "disease_id" TEXT);
-.import --skip 1 genes_to_phenotype.txt hpo
-
-
-.mode box
-.schema
-select * from hpo limit 10;
-```
-
-
-```sql
-.mode tabs
-create table "vcf" ("chrom" TEXT, "pos" INT, "id" TEXT, 
-                    "ref" TEXT, "alt" TEXT, "qual" INT, 
-                    "filter" TEXT, "info" TEXT);
-.import --skip 5 GRCh38.RNAediting.vcf vcf
-
-.mode box.m
-.schema
-select * from vcf limit 10;
-
-```
 
 
 ## Configure `sift_annotator.yml`
+
+Now that our `annotate()` method is filled in, we need to configure how our annotations will be displayed. 
 
 ```{bash}
 #| eval: false
