@@ -155,8 +155,6 @@ Now you're ready to start installing annotators.
 
 ## Installing via Bioconda
 
-{{< video >}}
-
 If you prefer to install via `conda`/`mamba`, here are directions for you. You will want to install `mamba` via `miniforge`: download the installation scripts here.
 
 When `mamba` has been installed, you'll need to create a conda environment and install open-cravat via a single command:
@@ -186,7 +184,7 @@ Now you can use Open-Cravat as below and install annotators.
 
 ## Installing annotators
 
-{{<.video https://youtu.be/N6cPmt1kNaU >}}
+{{< video https://youtu.be/N6cPmt1kNaU >}}
 
 The first thing we'll need to install are some core bits of Open Cravat, called `install-base`. We'll do this with the command `oc module`:
 

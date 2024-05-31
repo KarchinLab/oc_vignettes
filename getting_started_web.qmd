@@ -195,12 +195,6 @@ This format contains the following columns: `chromosome`, `position`, `strand`, 
 
 Much more information about the supported file formats are here: [File Formats](https://open-cravat.readthedocs.io/en/latest/File-Formats.html).
 
-:::{.callout-note}
-## For Local Users
-
-You can download the example to annotate [here]().
-:::
-
 Now we have our input file, we can move on to [submitting our job](#submit-annotation-job).
 
 ## Submit Annotation Job

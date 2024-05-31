@@ -1,6 +1,6 @@
-====================================================
-Getting Started with Open-Cravat on the Command Line
-====================================================
+===================================================
+Getting Started with OpenCRAVAT on the Command Line
+===================================================
 
 
 .. contents::
@@ -12,18 +12,19 @@ Learning Objectives
 
 Working through this document, you will learn to:
 
--  **Install** the open-cravat software locally
+-  **Prepare** your system for installing OpenCRAVAT
+-  **Install** the OpenCRAVAT software locally using ``pip``
 -  **Search** for and **Install** available annotators
 -  **Explain** compatible variant formats
 -  **Annotate** variant files using the CLI tools
--  **Filter** annotated results for visualization
--  **Visualize** and **Summarize** Results in Open-Cravat
+-  **Visualize** and **Summarize** Results in OpenCRAVAT
 
-The Basic Open-Cravat Workflow
-------------------------------
+The Basic OpenCRAVAT Workflow
+-----------------------------
 
-In the diagram below, we’ll see the basic Open-Cravat workflow on the
-command-line.
+In the diagram below, we’ll see the basic OpenCRAVAT workflow on the
+command-line. Click the boxes below in the diagram to jump to that
+particular section.
 
 .. container:: cell
 
@@ -33,12 +34,12 @@ command-line.
 
          .. container::
 
-            .. image:: getting_started_cli_files/figure-rst/mermaid-figure-1.png
-               :width: 5.16in
-               :height: 4.38in
+            |image1|
 
-Preparing to Install Open Cravat
---------------------------------
+Preparing and Installing Open Cravat
+------------------------------------
+
+https://youtu.be/24awSa0ry9M
 
 Make sure you know where your Python is installed using the ``which``
 command. In my example, I have python 3.11 installed via Homebrew, which
@@ -66,36 +67,44 @@ it has a similar location to your ``python3``.
    tedladeras@teds-MacBook-Pro ~ % which pip3
    /opt/homebrew/bin/pip3
 
-Virtual Environments (optional)
--------------------------------
+Using a Virtual Environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You may want to consider making a new virtual environment so that your
-open-cravat installation is isolated from other installations.
+You should create a virtual environment so that your OpenCRAVAT
+installation is isolated from other installations. We’ll use ``venv``,
+which installed in the default Python distribution.
 
-You can install the ``virtualenv`` package with ``pip``/``pip3``:
-
-.. code:: bash
-
-   pip3 install virtualenv
-
-And make a separate virtual environment using the ``virtualenv``
-command. Here we’re creating one called ``oc``:
+We’ll make a separate virtual environment using the ``venv`` command.
+Here we’re creating a virtual environment called ``oc``:
 
 .. code:: bash
 
-   virtualenv oc
+   python3 -m venv oc
 
-Then we’ll activate it using ``source``:
+This creates a folder called ``oc`` in our current directory. This is
+where all of our separate Python packages will live. Then we’ll activate
+the virtual environment using ``source``:
 
-::
+.. code:: bash
 
    source oc/bin/activate
 
 You can double check whether the environment is activated by using
-``which python3`` again.
+``which python3`` again. It should poiint to the ``bin`` folder within
+your virtual environment folder.. Note that our prompt also has an
+``(oc)`` in front.
 
-Installing Open Cravat
-----------------------
+.. code:: bash
+
+   which python3
+
+::
+
+   (oc) tedladeras@teds-MacBook-Pro ~ % which python3
+   /Users/tedladeras/oc/bin/python3
+
+Installing OpenCRAVAT
+~~~~~~~~~~~~~~~~~~~~~
 
 Now we can install Open Cravat using ``pip``/``pip3``.
 
@@ -146,8 +155,8 @@ Confirm that Open Cravat is installed:
        version             Show version
        feedback            Send feedback to the developers
 
-All of our interactions with Open-Cravat will be prefaced by ``oc``. For
-example, we can launch the Open-Cravat GUI as a webserver on our machine
+All of our interactions with OpenCRAVAT will be prefaced by ``oc``. For
+example, we can launch the OpenCRAVAT GUI as a webserver on our machine
 using
 
 .. code:: bash
@@ -156,8 +165,46 @@ using
 
 Now you’re ready to start installing annotators.
 
+Installing via Bioconda
+-----------------------
+
+If you prefer to install via ``conda``/``mamba``, here are directions
+for you. You will want to install ``mamba`` via ``miniforge``: download
+the installation scripts here.
+
+When ``mamba`` has been installed, you’ll need to create a conda
+environment and install open-cravat via a single command:
+
+.. code:: bash
+
+   mamba create --name oc open-cravat
+
+This will create an environment called ``oc``
+
+When you’re ready to use Open-Cravat, you can activate this ``oc``
+environment:
+
+.. code:: bash
+
+   mamba activate oc
+
+Confirm that you can see the ``oc`` executable with ``which``. It should
+be where you installed miniforge:
+
+.. code:: bash
+
+   which oc
+
+::
+
+   /Users/tedladeras/miniforge3/envs/oc/bin/oc
+
+Now you can use Open-Cravat as below and install annotators.
+
 Installing annotators
 ---------------------
+
+https://youtu.be/N6cPmt1kNaU
 
 The first thing we’ll need to install are some core bits of Open Cravat,
 called ``install-base``. We’ll do this with the command ``oc module``:
@@ -257,8 +304,8 @@ Then the installation will proceed:
    [2024:01:31 14:25:17] Verifying code integrity of wgclinvar:1.1.1...
    [2024:01:31 14:25:17] Finished installation of wgclinvar:1.1.1
 
-Trying out our annotator
-------------------------
+Understanding the Input File Format
+-----------------------------------
 
 We can generate an example file using ``oc new example-input``. Note the
 period at the end, which means that we will generate the file in the
@@ -289,15 +336,22 @@ created:
 
 ::
 
-   chr10   121593817   -   A   T   s0
-   chr10   2987654 +   T   A   s1
-   chr10   43077259    +   A   T   s2
-   chr10   8055656 +   A   T   s3
-   chr10   87864470    +   A   T   s4
-   chr10   87864486    +   A   -   s0
+   chr1    69091   +   A   C   s0
+   chr1    69091   +   ATG C   s0
+   chr6    31039077    +   C   G   s0
+   chr1    27612918    +   G   a   s1
+   chr1    27612918    +   G   A   s0
+   chrM    235 +   A   G   clinvar
+   chrM    3308    +   T   C   omim
+   chr8    54626835    +   A   T   s0
+   chr4    1804372 +   A   G   s1
+   chr4    1804372 +   AT  GC  s1
+   chr4    1804372 +   A   T   s1
 
 Annotating our example
 ----------------------
+
+https://youtu.be/gSeeDM9GUgQ
 
 Now we have our example, we can run Open Cravat. This will annotate our
 ``example_input`` file with all available annotators.
@@ -329,8 +383,10 @@ Now we have our example, we can run Open Cravat. This will annotate our
        Tag Sampler (tagsampler)        finished in 0.008s
    Finished normally. Runtime: 4.539s
 
-Visualizing our results
------------------------
+Starting the Results Viewer
+---------------------------
+
+https://youtu.be/cNDrAPhPffg
 
 We saw that one of the files generated was an ``.sqlite`` file. These
 are our results, which we can visualize using ``oc gui``, which will
@@ -360,3 +416,157 @@ launch the a web server so we can examine our results using the GUI:
 
 A window should open in your web browser. If not, enter
 https://localhost:8080 to view the file.
+
+|image2|
+
+Examining our Results File and Filtering
+----------------------------------------
+
+https://youtu.be/TYs3dGDFzQQ
+
+Now we take a look at our results in the web interface. Under the list
+of jobs, we can see our job. Let’s select ``Open Result Viewer`` under
+the **Status** tab:
+
+|image3|
+
+Keep in mind that the web interface is limited to visualizing 100,000
+variants, so if you have a larger result file, you’ll need to filter the
+results down. So let’s take a look at how to filter our variants down.
+
+We can filter variants by selecting the Filter tab in the Results
+viewer:
+
+|image4|
+
+Under “Variant Properties” we can limit our list of variants to those
+that have ClinVar annotations. Let’s build a filter using the Query
+Builder, which will allow us to impose multiple criteria as a filter.
+
+|image5|
+
+We’ll add a rule (a logical condition) to our filter using the ``+``
+button:
+
+|image6|
+
+Now we’ll add a rule and select those that have ``ClinVar`` annotations.
+To do this, we’ll first select a) ``ClinVar`` on the left, the b)
+``Clinical Significance`` column, and c) ``has data``:
+
+|image7| Now we can apply this rule we’ve built by clicking on the
+**Apply Filter** button on the bottom right of the Query Builder:
+
+|image8| How many variants are left after the filtering?
+
+.. container::
+
+      **Calculating the Effect of Filters**
+
+      If you have multiple filters, you can actually precalculate the
+      numbers of variants after filtering by using the icon below.
+
+      |image9|
+
+      This can be helpful to check if your filters are too strict (that
+      is, they won’t return anything).
+
+      Just note that the filter is not actually applied to the data
+      until you hit the **Apply Filter** Button.
+
+Visualizing Our Filtered Results
+--------------------------------
+
+https://youtu.be/q75mk2SxqTA
+
+Now that we’ve filtered, let’s go back to the Summary Tab:
+
+|image10| In the Summary tab, we can see information about the annotated
+variants, such as from the sequence ontology. We can get the counts
+within a sequence ontology category by mousing over that category in our
+plot:
+
+|image11| These visualizations can be moved around and pinned. Using the
+camera icon, you can also save these visualizations.
+
+Let’s move over to the **Variant** tab and look for pathogenic variants.
+First, we’ll click over to the **Variant** tab:
+
+|image12| Scrolling to the right, we can see there is a column for the
+ClinVar annotations. Notice the **+** on the top right. We’ll click that
+to expand the ClinVar annotations:
+
+|image13| In the **Clinical Significance** column, we can see that we
+can filter. Let’s select those variants that have **pathogenic**
+significance. Clicking into the search box underneath this column, we
+can select **pathogenic**:
+
+|image14|
+
+How many variants are pathogenic?
+
+The last thing we might want to do is to export our results. We can use
+the export button at the bottom of the table:
+
+|image15|
+
+When you click that, you will have the option to export the variant
+level results as a tab seperated value (TSV) file. Note that this result
+table will have filters applied to it as well.
+
+.. container::
+
+      **Multiple Rules**
+
+      Note that we could have limited our search to pathogenic variants
+      by adding another filter rule like we did above in the filtering
+      step. We’re showing this way in case you didn’t know the available
+      categories within the ``Clinical Significance`` column.
+
+Deactivating Your Environment
+-----------------------------
+
+When you’re done using Open-Cravat and it’s installed by an environment,
+make sure to deactivate:
+
+For the ``python/venv`` installation:
+
+.. code:: bash
+
+   deactivate
+
+For the ``mamba/conda`` installation:
+
+.. code:: bash
+
+   mamba deactivate
+
+What You Learned
+----------------
+
+We learned the following in this section:
+
+-  **Prepare** your system for installing OpenCRAVAT
+-  **Install** the OpenCRAVAT software locally using ``pip``
+-  **Search** for and **Install** available annotators
+-  **Explain** compatible variant formats
+-  **Annotate** variant files using the CLI tools
+-  **Visualize** and **Summarize** Results in OpenCRAVAT
+
+.. |image1| image:: getting_started_cli_files/figure-rst/mermaid-figure-1.png
+   :width: 2.46in
+   :height: 7.38in
+.. |image2| image:: oc-gui.png
+.. |image3| image:: images/oc-filter-job.png
+.. |image4| image:: images/oc-filter-select-tab.png
+.. |image5| image:: images/oc-filter-query-builder.png
+.. |image6| image:: images/oc-filter-add-rule.png
+.. |image7| image:: images/oc-filter-create.png
+.. |image8| image:: images/oc-filter-apply.png
+.. |image9| image:: images/oc-filter-precalculate.png
+.. |image10| image:: images/oc-visualize-tab.png
+.. |image11| image:: images/oc-visualize-seq-ontology.png
+.. |image12| image:: images/oc-visualize-variant.png
+.. |image13| image:: images/oc-visualize-clinvar.png
+.. |image14| image:: images/oc-visualize-pathogenic.png
+.. |image15| image:: images/oc-export-table.png
