@@ -10,7 +10,9 @@ format: html
 Creating an annotator module requires the following:
 
 1. Creating an new annotator skeleton using `oc new annotator <modulename>`
-2. Loading an annotator file into a SQLite database using 
+2. Loading an annotator file into a SQLite database (`<modulename>.sqlite`ss) using `sqlite3`
+3. Mapping the annotator sqlite file in the `<modulename>.py` file
+4. Customizing the output using the `<modulename>.yml` file
 
 ```{mermaid}
 flowchart LR
