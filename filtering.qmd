@@ -54,7 +54,9 @@ These filters can also be combined using **OR** logic, which is more permissive 
 
 # Exporting Filters
 
-Filters can be exported and saved as JSON files for further reuse. 
+Filters can be exported and saved as JSON files for further reuse. They can be applied to a new set of variants in the GUI, or can be applied to result SQLite files on the command line. 
+
+# Applying filters in the GUI
 
 
 # Applying filters on the command line
