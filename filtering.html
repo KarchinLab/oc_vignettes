@@ -144,8 +144,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="variant-properties" class="level2">
 <h2 class="anchored" data-anchor-id="variant-properties">Variant Properties</h2>
-<p>In variant properties, you can filter by variant type based on your annotations. For example, let’s filter to missense variants.</p>
-<p>Under Variant Filter:</p>
+<p>In variant properties, you can filter by variant type based on your annotations. For example, let’s filter our dataset to missense variants.</p>
+<p>Under <strong>Variant Properties</strong>:</p>
 <ol type="1">
 <li>Click on “Query Builder”.</li>
 <li>Mouse into the left bottom corner of the query builder window, and click the “+” sign.</li>
@@ -250,7 +250,6 @@ ul.task-list li input[type="checkbox"] {
   E --"AND"--&gt; G["PS1 Variants AND\n(Missense OR Pathogenic)\n(n=27)"]
   A --"ClinVar ACMG\nPS1 variants"--&gt; F
   F --"AND"--&gt; G
-  
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -285,6 +284,44 @@ ul.task-list li input[type="checkbox"] {
 <section id="exporting-filters-as-json" class="level1">
 <h1>Exporting Filters as JSON</h1>
 <p>Filters can be exported and saved as JSON files for further reuse. They can be applied to a new set of variants in the GUI, or can be applied to result SQLite files on the command line.</p>
+<p>Here’s an example of what a filter looks like in the JSON format:</p>
+<pre><code>{
+  "sample": {
+    "require": [],
+    "reject": []
+  },
+  "genes": [],
+  "variant": {
+    "operator": "and",
+    "rules": [
+      {
+        "operator": "and",
+        "rules": [
+          {
+            "column": "clinvar__sig",
+            "test": "hasData",
+            "value": null,
+            "negate": false
+          },
+          {
+            "column": "clingen__disease",
+            "test": "hasData",
+            "value": null,
+            "negate": false
+          }
+        ],
+        "negate": false
+      }
+    ],
+    "negate": false
+  },
+  "smartfilter": {},
+  "samplefilter": {
+    "operator": "and",
+    "rules": [],
+    "negate": false
+  }
+}</code></pre>
 </section>
 <section id="applying-json-filters-in-the-gui" class="level1">
 <h1>Applying JSON filters in the GUI</h1>

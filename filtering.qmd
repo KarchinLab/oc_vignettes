@@ -60,9 +60,9 @@ graph TD
 
 ## Variant Properties
 
-In variant properties, you can filter by variant type based on your annotations. For example, let's filter to missense variants. 
+In variant properties, you can filter by variant type based on your annotations. For example, let's filter our dataset to missense variants. 
 
-Under Variant Filter:
+Under **Variant Properties**:
 
 1. Click on "Query Builder".
 2. Mouse into the left bottom corner of the query builder window, and click the "+" sign.
