@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.5.45">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,10 +40,11 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="filtering.rst"><i class="bi bi-file"></i>reST</a></li></ul></div></div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -77,10 +78,13 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">A["Results Viewer"] --&gt; B
-B["Build Filter in GUI"] --&gt; C["Save JSON filter"]
-C --&gt; D["Apply filter to New Set"]
-C --&gt; E["Apply Filter on CLI"]
+<pre class="mermaid mermaid-js">flowchart TD
+  A["Results Viewer"] --&gt; B
+  B["Build Filter in GUI"] 
+  B --&gt; F["Explore Filtered Data"]
+  F --&gt; G["Save JSON filter"]
+  G --&gt; D["Apply filter to New Set"]
+  G --&gt; E["Apply Filter on CLI"]
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -101,28 +105,193 @@ C --&gt; E["Apply Filter on CLI"]
 <section id="samples" class="level2">
 <h2 class="anchored" data-anchor-id="samples">Samples</h2>
 <p>You can remove variants associated with a set of sample IDs by unselecting them in the checkboxes here.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+  A["All Variants\n(n=1,738)"] --"Sample:mother"--&gt; B
+  B["Mother Variants\n(n=385)"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>For example, we can filter for</p>
 </section>
 <section id="genes" class="level2">
 <h2 class="anchored" data-anchor-id="genes">Genes</h2>
-<p>Gene-level filtering can be done here. You can dinput a list of genes, separated by line-breaks</p>
+<p>Gene-level filtering can be done here. You can input a list of genes, separated by line-breaks</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+  A["All Variants\n(n=1,738)"] --"Gene:(BRCA1,BRCA2)"--&gt; B
+  B["BRCA1/BRCA2 Genes\n(n=63)"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
 <section id="sample-properties" class="level2">
 <h2 class="anchored" data-anchor-id="sample-properties">Sample Properties</h2>
 </section>
 <section id="variant-properties" class="level2">
 <h2 class="anchored" data-anchor-id="variant-properties">Variant Properties</h2>
+<p>In variant properties, you can filter by variant type based on your annotations. For example, let’s filter to missense variants.</p>
+<p>Under Variant Filter:</p>
+<ol type="1">
+<li>Click on “Query Builder”.</li>
+<li>Mouse into the left bottom corner of the query builder window, and click the “+” sign.</li>
+</ol>
+<p><img src="images/variant-filter.png" class="img-fluid"></p>
+<p>Make your filter by selecting the following dropdown boxes:</p>
+<ol type="1">
+<li>Variant Annotation</li>
+<li>Sequence Ontology</li>
+<li>One of</li>
+<li>Missense checkbox</li>
+</ol>
+<p><img src="images/variant-filter2.png" class="img-fluid"> Finally, click the “Apply Filter” Button:</p>
+<p><img src="images/variant-apply-filter.png" class="img-fluid"></p>
+<p>You will be left with 299 variants. Here’s a visual summary of what we did:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+  A["All Variants\n(n=1,738)"] --"Sequence Ontology:\nMissense"--&gt; B["Missense Variants\n(n=299)"]
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="boolean-operations" class="level1">
 <h1>Boolean Operations</h1>
 <p>You can build more sophisticated operations by combining each filter step using Boolean logic.</p>
-<p>For example, we might want variants that …</p>
+<section id="and-logic" class="level2">
+<h2 class="anchored" data-anchor-id="and-logic">AND logic</h2>
+<p>By default, the filters are combined using <strong>AND</strong> logic, which are more restrictive, because they require variants to meet both filters.</p>
+<p>Here’s an example of using <strong>AND</strong> logic. Here we are combining two filters: Missense Variants (from Variant Annotation –&gt; Sequence Ontology) and Pathogenic variants (from ClinVar –&gt; Clinical Significance).</p>
+<p><img src="images/and-filter.png" class="img-fluid"> When we apply the filter, we get 9 variants that meet both criteria. Here’s a visual summary of the filtering:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+  A["All Variants\n(n=1,738)"] --"Sequence Ontology:\nmissense"--&gt; B["Missense Variants\(n=299)"]
+  A --"Clinical Significance:\nPathogenic"--&gt; C["Pathogenic Variants\n(n=10)"]
+  B --"AND"--&gt; E["Pathogenic AND Missense\n(n=9)"]
+  C --"AND"--&gt; E
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
-<section id="exporting-filters" class="level1">
-<h1>Exporting Filters</h1>
+<section id="or-logic" class="level2">
+<h2 class="anchored" data-anchor-id="or-logic">OR Logic</h2>
+<p>These filters can also be combined using <strong>OR</strong> logic, which is more permissive (that is, these filters will return a greater number than the <strong>AND</strong> logic) we might want variants that are either missense <strong>OR</strong> pathogenic.</p>
+<p>We can do this by clicking the “and” that links our two filters, which will switch it to an “or”:</p>
+<p><img src="images/or-filter.png" class="img-fluid"> When we apply the filter, we get 300 variants. The breakdown is below.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+  A["All Variants\n(n=1,738)"] --"Sequence Ontology:\nmissense"--&gt; B["Missense Variants\n(n=299)"]
+  A --"Clinical Significance:\nPathogenic"--&gt; C["Pathogenic Variants\n(n=10)"]
+  B --"OR"--&gt; E["Pathogenic OR Missense\n(n=300)"]
+  C --"OR"--&gt; E
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
-<section id="applying-filters-on-the-command-line" class="level1">
-<h1>Applying filters on the command line</h1>
+<section id="combining-and-or-logic" class="level2">
+<h2 class="anchored" data-anchor-id="combining-and-or-logic">Combining AND / OR logic</h2>
+<p>By default, when you click the “and” / “or” of one set of filters, all filters will be changed. If you want to combine <strong>AND</strong> / <strong>OR</strong> logic, you can group one of the logic operations using parentheses.</p>
+<p>For example, say we want the above <strong>OR</strong> subset combined as an <strong>AND</strong> with those variants that have PS1 evidence. We can</p>
+<p>This is what our final filter looks like:</p>
+<p><img src="images/and-or-filter.png" class="img-fluid"> Here’s a visual breakdown of this complex filter:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+  A["All Variants\n(n=1,738)"]--"Sequence Ontology:\nmissense"--&gt; B
+  A --"Clinical Significance:\nPathogenic"--&gt; C
+  subgraph OR
+  B["Missense Variants\n(n=299)"]
+  C["Pathogenic Variants\n(n=10)"]
+  B --"OR"--&gt; E["Pathogenic OR Missense\n(n=300)"]
+  C --"OR"--&gt; E
+  end
+  subgraph PS1
+  F["PS1 Variants\n(n=27)"]
+  end
+  E --"AND"--&gt; G["PS1 Variants AND\n(Missense OR Pathogenic)\n(n=27)"]
+  A --"ClinVar ACMG\nPS1 variants"--&gt; F
+  F --"AND"--&gt; G
+  
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="not-logic" class="level2">
+<h2 class="anchored" data-anchor-id="not-logic">NOT Logic</h2>
+</section>
+<section id="deleting-a-filter" class="level2">
+<h2 class="anchored" data-anchor-id="deleting-a-filter">Deleting a Filter</h2>
+</section>
+<section id="case-study-filtering-pathogenic-variants" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-filtering-pathogenic-variants">Case Study: Filtering Pathogenic Variants</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+  A["All Variants\n(n=1,738)"] --"PS1 ID\nhas data"--&gt; B
+  B["PS1 variants\n(n=36)"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exporting-filters-as-json" class="level1">
+<h1>Exporting Filters as JSON</h1>
+<p>Filters can be exported and saved as JSON files for further reuse. They can be applied to a new set of variants in the GUI, or can be applied to result SQLite files on the command line.</p>
+</section>
+<section id="applying-json-filters-in-the-gui" class="level1">
+<h1>Applying JSON filters in the GUI</h1>
+</section>
+<section id="applying-json-filters-on-the-command-line" class="level1">
+<h1>Applying JSON filters on the command line</h1>
+<p>JSON filters can also be applied on the command-line using the <code>oc util filtersqlite</code> command. <a href="https://open-cravat.readthedocs.io/en/latest/Filter-And-Merge-SQLite.html">More information is here</a>.</p>
 </section>
 
 </main>
