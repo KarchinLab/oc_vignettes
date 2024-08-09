@@ -154,6 +154,9 @@ graph TD
   E --"AND"--> G["PS1 Variants AND\n(Missense OR Pathogenic)\n(n=27)"]
   A --"ClinVar ACMG\nPS1 variants"--> F
   F --"AND"--> G
+  classDef White fill:#FFFFFF;
+  class PS1 White
+  class OR White
 ```
 
 ## NOT Logic
