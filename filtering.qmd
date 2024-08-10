@@ -250,6 +250,7 @@ Then we can hit **Apply Filter** again. In our case, we have 1,729 variants that
 Finally, if you need to delete a filter, you can mouse to the right of the filter. A faint "X" will appear. Clicking on it will delete that filter.
 
 ![](images/filter-delete.png)
+
 ## Case Study: Filtering Pathogenic Variants
 
 Let's combine a sample filter with a grouped variant filter.
