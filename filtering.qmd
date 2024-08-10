@@ -32,23 +32,69 @@ Once you have your annotated results, you can filter variants in the results vie
 - Sample Properties
 - Variant Properties
 
-We will go through each of these filters and their functionality.
+We will go through each of these filters and their functionality after we talk about the common GUI elements of each.
+
+We will use a subset of a synthetic dataset that is a trio. There are 5 individuals in this dataset.
+
+1. The Proband
+2. Mother
+3. Father
+4. Sibling 1
+5. Sibling 2
+
+Some of the variants are shared by the Proband and Mother, and all other combinations. 
 
 ## Samples
 
-You can remove variants associated with a set of sample IDs by unselecting them in the checkboxes here.
+You can remove variants associated with a set of sample IDs by clicking on the checkboxes here. For example, we want all of the variants that are associated with the mother. We'll click on the "mother" checkbox until it is a green check.
+
+![](images/mother-filter1.png)
+If we look at the Variant tab, we can see that our variants include multiple members:
+
+![](images/mother-all-result.png)
+Here's a visual summary of the results.
 
 ```{mermaid}
 graph TD
   A["All Variants\n(n=1,738)"] --"Sample:mother"--> B
-  B["Mother Variants\n(n=385)"]
+  B["Mother Variants\n(n=1187)"]
 ```
+
+These are all of the variants that are associated with the mother, and include variants that are shared by other family members. What about variants that are *exclusive* to the mother?
 
 For example, we can filter for 
 
+To exclude samples, click on the checkbox until you see a red x.
+
+![](images/mother-exclusive-filter.png)
+After filtering, we find that 385 variants are exclusive to the mother. We can confirm this by going to the **Variant** tab:
+
+![](images/mother-exclusive-result.png)
+Here's the visual summary:
+
+```{mermaid}
+graph TD
+  A["All Variants\n(n=1,738)"] --"Sample:mother\nExclude:others"--> B
+  B["Mother Variants\n(n=385)"]
+```
+
 ## Genes
 
-Gene-level filtering can be done here. You can input a list of genes, separated by line-breaks 
+Gene-level filtering can be done here. You can input a list of genes, separated by line-breaks. 
+
+Clearing our previous filter, let's filter to only those variants that are in BRCA1 and BRCA2.
+
+To filter, we take the following steps in the **Gene** filter section:
+
+1. Enter a list of genes, 1 gene per line in the text box. You can also upload a list of genes as well.
+2. Apply the filter
+3. See the results. There are 63 variants associated with BRCA1/BRCA2.
+
+![](images/gene-filter.png)
+Going to the **Variant** tab, we can confirm that the variants belong to BRCA1 and BRCA2.
+
+![](images/gene-filter-result.png)
+Here's the visual summary of the filter:
 
 ```{mermaid}
 graph TD
@@ -62,14 +108,14 @@ graph TD
 
 In variant properties, you can filter by variant type based on your annotations. For example, let's filter our dataset to missense variants. 
 
-Under **Variant Properties**:
+A. Under **Variant Properties**:
 
 1. Click on "Query Builder".
 2. Mouse into the left bottom corner of the query builder window, and click the "+" sign.
 
 ![](images/variant-filter.png)
 
-Make your filter by selecting the following dropdown boxes:
+B. Make your filter by selecting the values for the following dropdown boxes:
 
 1. Variant Annotation
 2. Sequence Ontology
@@ -77,7 +123,7 @@ Make your filter by selecting the following dropdown boxes:
 4. Missense checkbox
 
 ![](images/variant-filter2.png)
-Finally, click the "Apply Filter" Button:
+C. Finally, click the "Apply Filter" Button:
 
 ![](images/variant-apply-filter.png)
 
@@ -86,20 +132,38 @@ You will be left with 299 variants. Here's a visual summary of what we did:
 ```{mermaid}
 graph TD
   A["All Variants\n(n=1,738)"] --"Sequence Ontology:\nMissense"--> B["Missense Variants\n(n=299)"]
-
 ```
 
-# Boolean Operations
+## Boolean Operations
 
 You can build more sophisticated operations by combining each filter step using Boolean logic.
+
+## Combining Filter Interface
+
+You can add another filter by clicking the **+** underneath your filter.
+
+![](images/add-filter.png)
 
 ## AND logic
 
 By default, the filters are combined using **AND** logic, which are more restrictive, because they require variants to meet both filters. 
 
-Here's an example of using **AND** logic. Here we are combining two filters: Missense Variants (from Variant Annotation --> Sequence Ontology) and Pathogenic variants (from ClinVar --> Clinical Significance).
+Here's an example of using **AND** logic. Here we are combining two filters: Missense Variants (from **Variant Annotation >> Sequence Ontology**) and Pathogenic variants (from **ClinVar >> Clinical Significance**).
 
 ![](images/and-filter.png)
+Then do the following:
+
+1. Select "ClinVar"
+2. Select "Clinical Significance"
+3. Select "One of"
+4. Select "Pathogenic"
+5. Click "Filter Result"
+
+![](images/add-filter2.png )
+If we look at the **Variant** tab, we can see that our combined filter selected both Pathogenic and Missense Variants. 
+
+![](images/add-filter-result.png)
+
 When we apply the filter, we get 9 variants that meet both criteria. Here's a visual summary of the filtering: 
 
 ```{mermaid}
@@ -127,7 +191,20 @@ graph TD
   C --"OR"--> E
 ```
 
-## Combining AND / OR logic
+## Grouping with Parentheses
+
+We can use the parentheses to group filters together. This can be helpful when we combine different types of logic.
+
+To make a grouped filter, click the **(** button next to the **+** button in the interface:
+
+![](images/parentheses-filter1.png)
+
+Then you can build a set of filters much like above. Notice that they are grouped within a set of parentheses.
+
+![](images/parentheses-filter2.png)
+Keep in mind that you can nest parentheses within parentheses to make even more complex filters. We'll use this to be able to combine three filters with **AND** and **OR** logic below.
+
+## Combining **AND** / **OR** logic
 
 By default, when you click the "and" / "or" of one set of filters, all filters will be changed. If you want to combine **AND** / **OR** logic, you can group one of the logic operations using parentheses.
 
@@ -148,26 +225,38 @@ graph TD
   B --"OR"--> E["Pathogenic OR Missense\n(n=300)"]
   C --"OR"--> E
   end
-  subgraph PS1
   F["PS1 Variants\n(n=27)"]
-  end
   E --"AND"--> G["PS1 Variants AND\n(Missense OR Pathogenic)\n(n=27)"]
   A --"ClinVar ACMG\nPS1 variants"--> F
   F --"AND"--> G
   classDef White fill:#FFFFFF;
-  class PS1 White
   class OR White
 ```
 
 ## NOT Logic
 
+If we mouse over the top left of a filter or filter group, we'll see a faint "NOT". 
 
+![](images/not-filter1.png)
+
+Clicking this will change the logic to **NOT**. 
+
+![](images/not-filter2.png)
+
+Then we can hit **Apply Filter** again. In our case, we have 1,729 variants that do not meet our filter criterion. This makes sense because there were 9 variants total that met our grouped criterion, and 1,738 variants total, and 1738 - 9 = 1729.
 
 ## Deleting a Filter
 
+Finally, if you need to delete a filter, you can mouse to the right of the filter. A faint "X" will appear. Clicking on it will delete that filter.
 
-
+![](images/filter-delete.png)
 ## Case Study: Filtering Pathogenic Variants
+
+Let's combine a sample filter with a grouped variant filter.
+
+In our case, we want variants that are associated with the mother of the family combined with our joint missense/pathogenic variant filter.
+
+![](images/case-study-filter.png)
 
 ```{mermaid}
 graph TD

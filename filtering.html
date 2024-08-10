@@ -101,10 +101,21 @@ ul.task-list li input[type="checkbox"] {
 <li>Sample Properties</li>
 <li>Variant Properties</li>
 </ul>
-<p>We will go through each of these filters and their functionality.</p>
+<p>We will go through each of these filters and their functionality after we talk about the common GUI elements of each.</p>
+<p>We will use a subset of a synthetic dataset that is a trio. There are 5 individuals in this dataset.</p>
+<ol type="1">
+<li>The Proband</li>
+<li>Mother</li>
+<li>Father</li>
+<li>Sibling 1</li>
+<li>Sibling 2</li>
+</ol>
+<p>Some of the variants are shared by the Proband and Mother, and all other combinations.</p>
 <section id="samples" class="level2">
 <h2 class="anchored" data-anchor-id="samples">Samples</h2>
-<p>You can remove variants associated with a set of sample IDs by unselecting them in the checkboxes here.</p>
+<p>You can remove variants associated with a set of sample IDs by clicking on the checkboxes here. For example, we want all of the variants that are associated with the mother. We’ll click on the “mother” checkbox until it is a green check.</p>
+<p><img src="images/mother-filter1.png" class="img-fluid"> If we look at the Variant tab, we can see that our variants include multiple members:</p>
+<p><img src="images/mother-all-result.png" class="img-fluid"> Here’s a visual summary of the results.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -112,6 +123,25 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <pre class="mermaid mermaid-js">graph TD
   A["All Variants\n(n=1,738)"] --"Sample:mother"--&gt; B
+  B["Mother Variants\n(n=1187)"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>These are all of the variants that are associated with the mother, and include variants that are shared by other family members. What about variants that are <em>exclusive</em> to the mother?</p>
+<p>For example, we can filter for</p>
+<p>To exclude samples, click on the checkbox until you see a red x.</p>
+<p><img src="images/mother-exclusive-filter.png" class="img-fluid"> After filtering, we find that 385 variants are exclusive to the mother. We can confirm this by going to the <strong>Variant</strong> tab:</p>
+<p><img src="images/mother-exclusive-result.png" class="img-fluid"> Here’s the visual summary:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+  A["All Variants\n(n=1,738)"] --"Sample:mother\nExclude:others"--&gt; B
   B["Mother Variants\n(n=385)"]
 </pre>
 </div>
@@ -119,11 +149,19 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>For example, we can filter for</p>
 </section>
 <section id="genes" class="level2">
 <h2 class="anchored" data-anchor-id="genes">Genes</h2>
-<p>Gene-level filtering can be done here. You can input a list of genes, separated by line-breaks</p>
+<p>Gene-level filtering can be done here. You can input a list of genes, separated by line-breaks.</p>
+<p>Clearing our previous filter, let’s filter to only those variants that are in BRCA1 and BRCA2.</p>
+<p>To filter, we take the following steps in the <strong>Gene</strong> filter section:</p>
+<ol type="1">
+<li>Enter a list of genes, 1 gene per line in the text box. You can also upload a list of genes as well.</li>
+<li>Apply the filter</li>
+<li>See the results. There are 63 variants associated with BRCA1/BRCA2.</li>
+</ol>
+<p><img src="images/gene-filter.png" class="img-fluid"> Going to the <strong>Variant</strong> tab, we can confirm that the variants belong to BRCA1 and BRCA2.</p>
+<p><img src="images/gene-filter-result.png" class="img-fluid"> Here’s the visual summary of the filter:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -145,20 +183,20 @@ ul.task-list li input[type="checkbox"] {
 <section id="variant-properties" class="level2">
 <h2 class="anchored" data-anchor-id="variant-properties">Variant Properties</h2>
 <p>In variant properties, you can filter by variant type based on your annotations. For example, let’s filter our dataset to missense variants.</p>
-<p>Under <strong>Variant Properties</strong>:</p>
+<p>A. Under <strong>Variant Properties</strong>:</p>
 <ol type="1">
 <li>Click on “Query Builder”.</li>
 <li>Mouse into the left bottom corner of the query builder window, and click the “+” sign.</li>
 </ol>
 <p><img src="images/variant-filter.png" class="img-fluid"></p>
-<p>Make your filter by selecting the following dropdown boxes:</p>
+<p>B. Make your filter by selecting the values for the following dropdown boxes:</p>
 <ol type="1">
 <li>Variant Annotation</li>
 <li>Sequence Ontology</li>
 <li>One of</li>
 <li>Missense checkbox</li>
 </ol>
-<p><img src="images/variant-filter2.png" class="img-fluid"> Finally, click the “Apply Filter” Button:</p>
+<p><img src="images/variant-filter2.png" class="img-fluid"> C. Finally, click the “Apply Filter” Button:</p>
 <p><img src="images/variant-apply-filter.png" class="img-fluid"></p>
 <p>You will be left with 299 variants. Here’s a visual summary of what we did:</p>
 <div class="cell" data-layout-align="default">
@@ -168,7 +206,6 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <pre class="mermaid mermaid-js">graph TD
   A["All Variants\n(n=1,738)"] --"Sequence Ontology:\nMissense"--&gt; B["Missense Variants\n(n=299)"]
-
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -176,15 +213,30 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-</section>
-<section id="boolean-operations" class="level1">
-<h1>Boolean Operations</h1>
+<section id="boolean-operations" class="level2">
+<h2 class="anchored" data-anchor-id="boolean-operations">Boolean Operations</h2>
 <p>You can build more sophisticated operations by combining each filter step using Boolean logic.</p>
+</section>
+<section id="combining-filter-interface" class="level2">
+<h2 class="anchored" data-anchor-id="combining-filter-interface">Combining Filter Interface</h2>
+<p>You can add another filter by clicking the <strong>+</strong> underneath your filter.</p>
+<p><img src="images/add-filter.png" class="img-fluid"></p>
+</section>
 <section id="and-logic" class="level2">
 <h2 class="anchored" data-anchor-id="and-logic">AND logic</h2>
 <p>By default, the filters are combined using <strong>AND</strong> logic, which are more restrictive, because they require variants to meet both filters.</p>
-<p>Here’s an example of using <strong>AND</strong> logic. Here we are combining two filters: Missense Variants (from Variant Annotation –&gt; Sequence Ontology) and Pathogenic variants (from ClinVar –&gt; Clinical Significance).</p>
-<p><img src="images/and-filter.png" class="img-fluid"> When we apply the filter, we get 9 variants that meet both criteria. Here’s a visual summary of the filtering:</p>
+<p>Here’s an example of using <strong>AND</strong> logic. Here we are combining two filters: Missense Variants (from <strong>Variant Annotation &gt;&gt; Sequence Ontology</strong>) and Pathogenic variants (from <strong>ClinVar &gt;&gt; Clinical Significance</strong>).</p>
+<p><img src="images/and-filter.png" class="img-fluid"> Then do the following:</p>
+<ol type="1">
+<li>Select “ClinVar”</li>
+<li>Select “Clinical Significance”</li>
+<li>Select “One of”</li>
+<li>Select “Pathogenic”</li>
+<li>Click “Filter Result”</li>
+</ol>
+<p><img src="images/add-filter2.png" class="img-fluid"> If we look at the <strong>Variant</strong> tab, we can see that our combined filter selected both Pathogenic and Missense Variants.</p>
+<p><img src="images/add-filter-result.png" class="img-fluid"></p>
+<p>When we apply the filter, we get 9 variants that meet both criteria. Here’s a visual summary of the filtering:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -224,8 +276,16 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
+<section id="grouping-with-parentheses" class="level2">
+<h2 class="anchored" data-anchor-id="grouping-with-parentheses">Grouping with Parentheses</h2>
+<p>We can use the parentheses to group filters together. This can be helpful when we combine different types of logic.</p>
+<p>To make a grouped filter, click the <strong>(</strong> button next to the <strong>+</strong> button in the interface:</p>
+<p><img src="images/parentheses-filter1.png" class="img-fluid"></p>
+<p>Then you can build a set of filters much like above. Notice that they are grouped within a set of parentheses.</p>
+<p><img src="images/parentheses-filter2.png" class="img-fluid"> Keep in mind that you can nest parentheses within parentheses to make even more complex filters. We’ll use this to be able to combine three filters with <strong>AND</strong> and <strong>OR</strong> logic below.</p>
+</section>
 <section id="combining-and-or-logic" class="level2">
-<h2 class="anchored" data-anchor-id="combining-and-or-logic">Combining AND / OR logic</h2>
+<h2 class="anchored" data-anchor-id="combining-and-or-logic">Combining <strong>AND</strong> / <strong>OR</strong> logic</h2>
 <p>By default, when you click the “and” / “or” of one set of filters, all filters will be changed. If you want to combine <strong>AND</strong> / <strong>OR</strong> logic, you can group one of the logic operations using parentheses.</p>
 <p>For example, say we want the above <strong>OR</strong> subset combined as an <strong>AND</strong> with those variants that have PS1 evidence. We can</p>
 <p>This is what our final filter looks like:</p>
@@ -244,14 +304,11 @@ ul.task-list li input[type="checkbox"] {
   B --"OR"--&gt; E["Pathogenic OR Missense\n(n=300)"]
   C --"OR"--&gt; E
   end
-  subgraph PS1
   F["PS1 Variants\n(n=27)"]
-  end
   E --"AND"--&gt; G["PS1 Variants AND\n(Missense OR Pathogenic)\n(n=27)"]
   A --"ClinVar ACMG\nPS1 variants"--&gt; F
   F --"AND"--&gt; G
   classDef White fill:#FFFFFF;
-  class PS1 White
   class OR White
 </pre>
 </div>
@@ -262,12 +319,16 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="not-logic" class="level2">
 <h2 class="anchored" data-anchor-id="not-logic">NOT Logic</h2>
+<p>If we mouse over the top left of a filter or filter group, we’ll see a faint “NOT”.</p>
+<p><img src="images/not-filter1.png" class="img-fluid"></p>
+<p>Clicking this will change the logic to <strong>NOT</strong>.</p>
+<p><img src="images/not-filter2.png" class="img-fluid"></p>
+<p>In our case, we have 1,729 variants that do not meet our filter criterion.</p>
 </section>
 <section id="deleting-a-filter" class="level2">
 <h2 class="anchored" data-anchor-id="deleting-a-filter">Deleting a Filter</h2>
-</section>
-<section id="case-study-filtering-pathogenic-variants" class="level2">
-<h2 class="anchored" data-anchor-id="case-study-filtering-pathogenic-variants">Case Study: Filtering Pathogenic Variants</h2>
+<p>If you need to delete a filter, you can mouse to the right of the filter. A faint “X” will appear. Clicking on it will delete that filter.</p>
+<p><img src="images/filter-delete.png" class="img-fluid"> ## Case Study: Filtering Pathogenic Variants</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
