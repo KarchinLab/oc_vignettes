@@ -269,6 +269,21 @@ graph TD
 
 Filters can be exported and saved as JSON files for further reuse. They can be applied to a new set of variants in the GUI, or can be applied to result SQLite files on the command line. 
 
+To export your filters, click on the save icon in the bottom right:
+
+![](images/save-filter.png)
+A modal box will pop up and ask you to name your filter set:
+
+![](images/save-filter-name.png)
+
+When you click **OK**, the filter will be saved on the top right:
+
+![](images/saved-filter.png)
+
+Finally, you can click on the download button for the individual filter to save it to disk:
+
+![](images/saved-filter_download.png)
+
 Here's an example of what a filter looks like in the JSON format:
 
 ```
@@ -313,6 +328,15 @@ Here's an example of what a filter looks like in the JSON format:
 
 # Applying JSON filters in the GUI
 
+JSON filters can be applied by clicking on the upload icon:
+
+![](images/upload-filter.png)
+
+A file select box will pop up and you can select the JSON filter to load it:
+
+![](images/upload-dialog.png)
+
+Then you can hit **Apply Filter** as usual to apply it.
 
 # Applying JSON filters on the command line
 
