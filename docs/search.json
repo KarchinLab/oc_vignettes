@@ -1,5 +1,15 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Open Cravat Vignettes",
+    "section": "",
+    "text": "This is a series of vignettes for Open Cravat that show specific tasks.\nThey consist of multimedia content: text, images, and demo videos.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Open Cravat Vignettes</span>"
+    ]
+  },
+  {
     "objectID": "getting_started_web.html",
     "href": "getting_started_web.html",
     "title": "2  Getting Started (Website/GUI)",
