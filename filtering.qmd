@@ -138,7 +138,7 @@ graph TD
 
 You can build more sophisticated operations by combining each filter step using Boolean logic.
 
-## Combining Filter Interface
+## Adding another filter
 
 You can add another filter by clicking the **+** underneath your filter.
 
