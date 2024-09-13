@@ -7,7 +7,7 @@ toc: true
 anchor-sections: true
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 Working through this document, you will learn to:
 
@@ -25,7 +25,7 @@ In the diagram below, we'll see the basic OpenCRAVAT workflow on the command-lin
 ```{mermaid}
 flowchart TD
     L[Prepare for Installing] --> A
-    click L "#preparing-and-installing-open-cravat"
+    click L "#preparing-and-installing-opencravat"
     A[Installation] --> G[Install Annotators]
     click A "#installing-opencravat"
     click G "#installing-annotators"
@@ -41,7 +41,7 @@ flowchart TD
     click F "#visualizing-our-filtered-results"
 ```
 
-## Preparing and Installing Open Cravat
+## Preparing and Installing OpenCRAVAT
 
 {{< video https://youtu.be/24awSa0ry9M >}}
 
@@ -96,7 +96,7 @@ which python3
 
 ### Installing OpenCRAVAT
 
-Now we can install Open Cravat using `pip`/`pip3`. 
+Now we can install OpenCRAVAT using `pip`/`pip3`. 
 
 ```bash
 pip3 install open-cravat
@@ -116,7 +116,7 @@ Collecting requests-toolbelt (from open-cravat)
   Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)
 ```
 
-Confirm that Open Cravat is installed:
+Confirm that OpenCRAVAT is installed:
 
 ```bash
 oc --help
@@ -157,7 +157,7 @@ Now you're ready to start installing annotators.
 
 If you prefer to install via `conda`/`mamba`, here are directions for you. You will want to install `mamba` via `miniforge`: download the installation scripts here.
 
-When `mamba` has been installed, you'll need to create a conda environment and install open-cravat via a single command:
+When `mamba` has been installed, you'll need to create a conda environment and install openCRAVAT via a single command:
 
 ```bash
 mamba create --name oc open-cravat
@@ -165,7 +165,7 @@ mamba create --name oc open-cravat
 
 This will create an environment called `oc`
 
-When you're ready to use Open-Cravat, you can activate this `oc` environment:
+When you're ready to use OpenCRAVAT, you can activate this `oc` environment:
 
 ```bash
 mamba activate oc
@@ -180,13 +180,13 @@ which oc
 /Users/tedladeras/miniforge3/envs/oc/bin/oc
 ```
 
-Now you can use Open-Cravat as below and install annotators.
+Now you can use OpenCRAVAT as below and install annotators.
 
 ## Installing annotators
 
 {{< video https://youtu.be/N6cPmt1kNaU >}}
 
-The first thing we'll need to install are some core bits of Open Cravat, called `install-base`. We'll do this with the command `oc module`:
+The first thing we'll need to install are some core bits of OpenCRAVAT, called `install-base`. We'll do this with the command `oc module`:
 
 ```bash
 oc module install-base
@@ -319,7 +319,7 @@ chr4	1804372	+	A	T	s1
 
 {{< video https://youtu.be/gSeeDM9GUgQ >}}
 
-Now we have our example, we can run Open Cravat. This will annotate our `example_input` file with all available annotators. 
+Now we have our example, we can run OpenCRAVAT. This will annotate our `example_input` file with all available annotators. 
 
 ```bash
 oc run ./example_input -l hg38
@@ -460,7 +460,7 @@ Note that we could have limited our search to pathogenic variants by adding anot
 
 ## Deactivating Your Environment
 
-When you're done using Open-Cravat and it's installed by an environment, make sure to deactivate:
+When you're done using OpenCRAVAT and it's installed by an environment, make sure to deactivate:
 
 For the `python/venv` installation:
 

@@ -5,13 +5,13 @@ format:
   html: default
 ---
 
-# Why Filter?
+## Why Filter?
 
 Filtering your annotated variants lets you query interesting subsets of your variants. 
 
 A secondary purpose of filtering is when you want to view your results in the results viewer and you have more than 100K variants. 
 
-# Filtering Roadmap
+## Filtering Roadmap
 
 ```{mermaid}
 flowchart TD
@@ -23,7 +23,7 @@ flowchart TD
   G --> E["Apply Filter on CLI"]
 ```
 
-# Filtering in the GUI
+## Filtering in the GUI
 
 Once you have your annotated results, you can filter variants in the results viewer. There are 4 kinds of filters:
 
@@ -34,6 +34,8 @@ Once you have your annotated results, you can filter variants in the results vie
 
 We will go through each of these filters and their functionality after we talk about the common GUI elements of each.
 
+## Sample Data for Demonstration Purposes
+
 We will use a subset of a synthetic dataset that is a trio. There are 5 individuals in this dataset.
 
 1. The Proband
@@ -42,9 +44,26 @@ We will use a subset of a synthetic dataset that is a trio. There are 5 individu
 4. Sibling 1
 5. Sibling 2
 
-Some of the variants are shared by the Proband and Mother, and all other combinations. 
+Some of the variants are shared by the Proband and Mother, and all other combinations. We will leverage these different combinations in our example below.
 
-## Samples
+### Downloading the Sample Data
+
+You can download the sample result file here: [Synthetic Trio Dataset](https://github.com/laderast/oc_vignettes/raw/main/data/Session2.filtered.sqlite)
+
+On the command line, you can download it into your current directory with `wget`:
+
+```bash
+wget https://github.com/laderast/oc_vignettes/raw/main/data/Session2.filtered.sqlite
+```
+
+When you're ready, open up the file with `oc gui`:
+
+```bash
+oc gui Session2.filtered.sqlite
+```
+
+
+### Samples
 
 You can remove variants associated with a set of sample IDs by clicking on the checkboxes here. For example, we want all of the variants that are associated with the mother. We'll click on the "mother" checkbox until it is a green check.
 
@@ -78,7 +97,7 @@ graph TD
   B["Mother Variants\n(n=385)"]
 ```
 
-## Genes
+### Genes
 
 Gene-level filtering can be done here. You can input a list of genes, separated by line-breaks. 
 
@@ -102,9 +121,9 @@ graph TD
   B["BRCA1/BRCA2 Genes\n(n=63)"]
 ```
 
-## Sample Properties
+### Sample Properties
 
-## Variant Properties
+### Variant Properties
 
 In variant properties, you can filter by variant type based on your annotations. For example, let's filter our dataset to missense variants. 
 
@@ -134,17 +153,17 @@ graph TD
   A["All Variants\n(n=1,738)"] --"Sequence Ontology:\nMissense"--> B["Missense Variants\n(n=299)"]
 ```
 
-## Boolean Operations
+## Advanced: Boolean Operations
 
 You can build more sophisticated operations by combining each filter step using Boolean logic.
 
-## Adding another filter
+### Adding another filter
 
 You can add another filter by clicking the **+** underneath your filter.
 
 ![](images/add-filter.png)
 
-## AND logic
+### AND logic
 
 By default, the filters are combined using **AND** logic, which are more restrictive, because they require variants to meet both filters. 
 
@@ -174,7 +193,7 @@ graph TD
   C --"AND"--> E
 ```
 
-## OR Logic
+### OR Logic
 
 These filters can also be combined using **OR** logic, which is more permissive (that is, these filters will return a greater number than the **AND** logic) we might want variants that are either missense **OR** pathogenic. 
 
@@ -191,7 +210,7 @@ graph TD
   C --"OR"--> E
 ```
 
-## Grouping with Parentheses
+### Grouping with Parentheses
 
 We can use the parentheses to group filters together. This can be helpful when we combine different types of logic.
 
@@ -204,11 +223,11 @@ Then you can build a set of filters much like above. Notice that they are groupe
 ![](images/parentheses-filter2.png)
 Keep in mind that you can nest parentheses within parentheses to make even more complex filters. We'll use this to be able to combine three filters with **AND** and **OR** logic below.
 
-## Combining **AND** / **OR** logic
+### Combining **AND** / **OR** logic
 
 By default, when you click the "and" / "or" of one set of filters, all filters will be changed. If you want to combine **AND** / **OR** logic, you can group one of the logic operations using parentheses.
 
-For example, say we want the above **OR** subset combined as an **AND** with those variants that have PS1 evidence. We can 
+For example, say we want the above **OR** subset combined as an **AND** with those variants that have PS1 evidence. 
 
 This is what our final filter looks like:
 
@@ -233,7 +252,7 @@ graph TD
   class OR White
 ```
 
-## NOT Logic
+### NOT Logic
 
 If we mouse over the top left of a filter or filter group, we'll see a faint "NOT". 
 
@@ -245,13 +264,13 @@ Clicking this will change the logic to **NOT**.
 
 Then we can hit **Apply Filter** again. In our case, we have 1,729 variants that do not meet our filter criterion. This makes sense because there were 9 variants total that met our grouped criterion, and 1,738 variants total, and 1738 - 9 = 1729.
 
-## Deleting a Filter
+### Deleting a Filter
 
 Finally, if you need to delete a filter, you can mouse to the right of the filter. A faint "X" will appear. Clicking on it will delete that filter.
 
 ![](images/filter-delete.png)
 
-## Case Study: Filtering Pathogenic Variants
+### Case Study: Filtering Pathogenic Variants
 
 Let's combine a sample filter with a grouped variant filter.
 
@@ -265,7 +284,7 @@ graph TD
   B["PS1 variants\n(n=36)"]
 ```
 
-# Exporting Filters as JSON
+## Exporting Filters as JSON
 
 Filters can be exported and saved as JSON files for further reuse. They can be applied to a new set of variants in the GUI, or can be applied to result SQLite files on the command line. 
 
@@ -326,7 +345,7 @@ Here's an example of what a filter looks like in the JSON format:
 }
 ```
 
-# Applying JSON filters in the GUI
+## Applying JSON filters in the GUI
 
 JSON filters can be applied by clicking on the upload icon:
 
@@ -338,6 +357,6 @@ A file select box will pop up and you can select the JSON filter to load it:
 
 Then you can hit **Apply Filter** as usual to apply it.
 
-# Applying JSON filters on the command line
+## Applying JSON filters on the command line
 
 JSON filters can also be applied on the command-line using the `oc util filtersqlite` command. [More information is here](https://open-cravat.readthedocs.io/en/latest/Filter-And-Merge-SQLite.html).

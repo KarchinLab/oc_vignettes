@@ -158,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Open Cravat Vignettes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">OpenCRAVAT Vignettes</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -196,20 +196,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#annotator-overview" id="toc-annotator-overview" class="nav-link active" data-scroll-target="#annotator-overview"><span class="header-section-number">4.1</span> Annotator Overview</a></li>
-  <li><a href="#initializing-an-annotator-module" id="toc-initializing-an-annotator-module" class="nav-link" data-scroll-target="#initializing-an-annotator-module"><span class="header-section-number">4.2</span> Initializing an annotator module</a></li>
-  <li><a href="#loading-annotations-as-a-sqlite-file" id="toc-loading-annotations-as-a-sqlite-file" class="nav-link" data-scroll-target="#loading-annotations-as-a-sqlite-file"><span class="header-section-number">4.3</span> Loading annotations as a SQLite file</a>
+  <li><a href="#annotator-module-build-process" id="toc-annotator-module-build-process" class="nav-link" data-scroll-target="#annotator-module-build-process"><span class="header-section-number">4.2</span> Annotator Module Build Process</a>
   <ul class="collapse">
-  <li><a href="#fetching-our-sqlite-annotations" id="toc-fetching-our-sqlite-annotations" class="nav-link" data-scroll-target="#fetching-our-sqlite-annotations"><span class="header-section-number">4.3.1</span> Fetching our SQLite annotations</a></li>
-  <li><a href="#importing-a-comma-separated-value-file-to-sqlite" id="toc-importing-a-comma-separated-value-file-to-sqlite" class="nav-link" data-scroll-target="#importing-a-comma-separated-value-file-to-sqlite"><span class="header-section-number">4.3.2</span> Importing a Comma Separated Value file to SQLite</a></li>
-  <li><a href="#creating-our-table" id="toc-creating-our-table" class="nav-link" data-scroll-target="#creating-our-table"><span class="header-section-number">4.3.3</span> Creating our Table</a></li>
+  <li><a href="#anatomy-of-an-annotator-module" id="toc-anatomy-of-an-annotator-module" class="nav-link" data-scroll-target="#anatomy-of-an-annotator-module"><span class="header-section-number">4.2.1</span> Anatomy of an annotator module</a></li>
   </ul></li>
-  <li><a href="#mapping-our-annotator-file" id="toc-mapping-our-annotator-file" class="nav-link" data-scroll-target="#mapping-our-annotator-file"><span class="header-section-number">4.4</span> Mapping our annotator file</a>
+  <li><a href="#initializing-an-annotator-module" id="toc-initializing-an-annotator-module" class="nav-link" data-scroll-target="#initializing-an-annotator-module"><span class="header-section-number">4.3</span> Initializing an annotator module</a></li>
+  <li><a href="#loading-annotations-as-a-sqlite-file" id="toc-loading-annotations-as-a-sqlite-file" class="nav-link" data-scroll-target="#loading-annotations-as-a-sqlite-file"><span class="header-section-number">4.4</span> Loading annotations as a SQLite file</a>
   <ul class="collapse">
-  <li><a href="#annotate-method" id="toc-annotate-method" class="nav-link" data-scroll-target="#annotate-method"><span class="header-section-number">4.4.1</span> <code>annotate()</code> method</a></li>
+  <li><a href="#fetching-our-sqlite-annotations" id="toc-fetching-our-sqlite-annotations" class="nav-link" data-scroll-target="#fetching-our-sqlite-annotations"><span class="header-section-number">4.4.1</span> Fetching our SQLite annotations</a></li>
+  <li><a href="#importing-a-comma-separated-value-file-to-sqlite" id="toc-importing-a-comma-separated-value-file-to-sqlite" class="nav-link" data-scroll-target="#importing-a-comma-separated-value-file-to-sqlite"><span class="header-section-number">4.4.2</span> Importing a Comma Separated Value file to SQLite</a></li>
+  <li><a href="#creating-our-table" id="toc-creating-our-table" class="nav-link" data-scroll-target="#creating-our-table"><span class="header-section-number">4.4.3</span> Creating our Table</a></li>
   </ul></li>
-  <li><a href="#configure-sift_annotator.yml" id="toc-configure-sift_annotator.yml" class="nav-link" data-scroll-target="#configure-sift_annotator.yml"><span class="header-section-number">4.5</span> Configure <code>sift_annotator.yml</code></a></li>
-  <li><a href="#test-it-out" id="toc-test-it-out" class="nav-link" data-scroll-target="#test-it-out"><span class="header-section-number">4.6</span> Test it out!</a></li>
-  <li><a href="#requirements-for-publishing-in-the-opencravat-store" id="toc-requirements-for-publishing-in-the-opencravat-store" class="nav-link" data-scroll-target="#requirements-for-publishing-in-the-opencravat-store"><span class="header-section-number">4.7</span> Requirements for publishing in the OpenCravat store</a></li>
+  <li><a href="#mapping-our-annotator-file" id="toc-mapping-our-annotator-file" class="nav-link" data-scroll-target="#mapping-our-annotator-file"><span class="header-section-number">4.5</span> Mapping our annotator file</a>
+  <ul class="collapse">
+  <li><a href="#annotate-method" id="toc-annotate-method" class="nav-link" data-scroll-target="#annotate-method"><span class="header-section-number">4.5.1</span> <code>annotate()</code> method</a></li>
+  </ul></li>
+  <li><a href="#configure-sift_annotator.yml" id="toc-configure-sift_annotator.yml" class="nav-link" data-scroll-target="#configure-sift_annotator.yml"><span class="header-section-number">4.6</span> Configure <code>sift_annotator.yml</code></a></li>
+  <li><a href="#test-it-out" id="toc-test-it-out" class="nav-link" data-scroll-target="#test-it-out"><span class="header-section-number">4.7</span> Test it out!</a></li>
   </ul>
 </nav>
     </div>
@@ -239,7 +242,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="4.1" class="anchored" data-anchor-id="annotator-overview"><span class="header-section-number">4.1</span> Annotator Overview</h2>
 <iframe src="https://share.descript.com/embed/TybKsmLT2Rx" width="640" height="360" frameborder="0" allowfullscreen="">
 </iframe>
-<div class="cell" data-layout-align="default">
+</section>
+<section id="annotator-module-build-process" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="annotator-module-build-process"><span class="header-section-number">4.2</span> Annotator Module Build Process</h2>
+<p>Click on each box in the flowchart below to jump to that part of the build process.</p>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -265,8 +272,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Mapping the annotator sqlite file in the <code>&lt;modulename&gt;.py</code> file</li>
 <li>Customizing the output using the <code>&lt;modulename&gt;.yml</code> file</li>
 </ol>
+<section id="anatomy-of-an-annotator-module" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="anatomy-of-an-annotator-module"><span class="header-section-number">4.2.1</span> Anatomy of an annotator module</h3>
 <p>This is a quick review of the basic structure of an annotator module.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -291,8 +300,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 3 directories, 5 files</code></pre>
 </section>
-<section id="initializing-an-annotator-module" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="initializing-an-annotator-module"><span class="header-section-number">4.2</span> Initializing an annotator module</h2>
+</section>
+<section id="initializing-an-annotator-module" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="initializing-an-annotator-module"><span class="header-section-number">4.3</span> Initializing an annotator module</h2>
 <p>Before we create a new annotator, we need to find where modules are installed on the system. We can do this by using <code>oc config md</code>:</p>
 <pre class="{bash}"><code>oc config md</code></pre>
 <pre><code>/Users/Shared/open-cravat/modules</code></pre>
@@ -310,12 +320,12 @@ oc new annotator sift</code></pre>
 └── sift.yml</code></pre>
 <p>So now we need to get our annotations into the <code>sqlite</code> format, map it in our <code>annotate()</code> method, and then customize the display in our <code>.yml</code> file.</p>
 </section>
-<section id="loading-annotations-as-a-sqlite-file" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="loading-annotations-as-a-sqlite-file"><span class="header-section-number">4.3</span> Loading annotations as a SQLite file</h2>
-<p>OpenCravat requires us to supply our annotations as a SQLite file. <code>sqlite3</code> is a database system that allows us to package our annotations in the <code>.sqlite</code> format, which makes our annotations accessible to OpenCravat.</p>
+<section id="loading-annotations-as-a-sqlite-file" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="loading-annotations-as-a-sqlite-file"><span class="header-section-number">4.4</span> Loading annotations as a SQLite file</h2>
+<p>OpenCRAVAT requires us to supply our annotations as a SQLite file. <code>sqlite3</code> is a database system that allows us to package our annotations in the <code>.sqlite</code> format, which makes our annotations accessible to OpenCRAVAT.</p>
 <p>SQLite is available on most systems (MacOS/PC/Linux) as the <code>sqlite3</code> command.</p>
-<section id="fetching-our-sqlite-annotations" class="level3" data-number="4.3.1">
-<h3 data-number="4.3.1" class="anchored" data-anchor-id="fetching-our-sqlite-annotations"><span class="header-section-number">4.3.1</span> Fetching our SQLite annotations</h3>
+<section id="fetching-our-sqlite-annotations" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="fetching-our-sqlite-annotations"><span class="header-section-number">4.4.1</span> Fetching our SQLite annotations</h3>
 <iframe src="https://share.descript.com/embed/i8O7qSP87s4" width="640" height="360" frameborder="0" allowfullscreen="">
 </iframe>
 <p>Let’s take a look at an example <code>.sqlite</code> file before we load our own. In our annotator’s <code>data/</code> directory (for example, <code>/Users/Shared/open-cravat/modules/annotators/sift/data/</code>), we can fetch an example <code>.sqlite</code> file. We’ll rename it <code>sift.sqlite</code>.</p>
@@ -344,8 +354,8 @@ chr17|43045683|A|C|0.0|7
 chr17|43045683|A|G|0.0|7
 chr17|43045683|A|T|0.0|7</code></pre>
 </section>
-<section id="importing-a-comma-separated-value-file-to-sqlite" class="level3" data-number="4.3.2">
-<h3 data-number="4.3.2" class="anchored" data-anchor-id="importing-a-comma-separated-value-file-to-sqlite"><span class="header-section-number">4.3.2</span> Importing a Comma Separated Value file to SQLite</h3>
+<section id="importing-a-comma-separated-value-file-to-sqlite" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="importing-a-comma-separated-value-file-to-sqlite"><span class="header-section-number">4.4.2</span> Importing a Comma Separated Value file to SQLite</h3>
 <iframe src="https://share.descript.com/embed/nZAa2LJpI9S" width="640" height="360" frameborder="0" allowfullscreen="">
 </iframe>
 <p>Now that we’re more familiar with the SQLite format, we can start loading our own version. We’ll do this for a CSV (comma separated value) file first.</p>
@@ -374,8 +384,8 @@ Interacting with the <code>sqlite3</code> prompt
 </div>
 </div>
 </section>
-<section id="creating-our-table" class="level3" data-number="4.3.3">
-<h3 data-number="4.3.3" class="anchored" data-anchor-id="creating-our-table"><span class="header-section-number">4.3.3</span> Creating our Table</h3>
+<section id="creating-our-table" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="creating-our-table"><span class="header-section-number">4.4.3</span> Creating our Table</h3>
 <p>Before we load our data in, we need to create our table. This is important because our columns have different data types, and we have to map them to the <a href="https://www.sqlite.org/draft/datatype3.html">SQLite data types</a>:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> <span class="ot">"sift"</span> (<span class="st">'chrom'</span> TEXT, <span class="st">'pos'</span> <span class="dt">INT</span>, </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'ref'</span> TEXT, <span class="st">'alt'</span> TEXT, </span>
@@ -447,12 +457,12 @@ chr1    10223   .       A       G       .       .       RNAEDIT=RADAR</code></pr
 </div>
 </section>
 </section>
-<section id="mapping-our-annotator-file" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="mapping-our-annotator-file"><span class="header-section-number">4.4</span> Mapping our annotator file</h2>
+<section id="mapping-our-annotator-file" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="mapping-our-annotator-file"><span class="header-section-number">4.5</span> Mapping our annotator file</h2>
 <iframe src="https://share.descript.com/embed/rrjQ71QQRHY" width="640" height="360" frameborder="0" allowfullscreen="">
 </iframe>
 <p>Now that our data is loaded into our <code>.sqlite</code> file, we need to set up our mapping. If we look in <code>sift.py</code>, we’ll see there are stubs for three methods: <code>setup()</code>, <code>annotate()</code>, and <code>cleanup()</code>:</p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -528,11 +538,11 @@ if __name__ == '__main__':
     annotator = CravatAnnotator(sys.argv)
     annotator.run()</code></pre>
 <p>We will focus on the <code>annotate()</code> method first.</p>
-<section id="annotate-method" class="level3" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="annotate-method"><span class="header-section-number">4.4.1</span> <code>annotate()</code> method</h3>
+<section id="annotate-method" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="annotate-method"><span class="header-section-number">4.5.1</span> <code>annotate()</code> method</h3>
 <p>Our <code>annotate()</code> method is where we map our annotations in our <code>.sqlite</code> file to an input called <code>input_data</code>. <code>input_data</code> essentially is a single row of our genomic file to annotate represented as a dictionary.</p>
 <p>This is what our <code>input_data</code> list looks like:</p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -625,8 +635,8 @@ if __name__ == '__main__':
 <span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="configure-sift_annotator.yml" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="configure-sift_annotator.yml"><span class="header-section-number">4.5</span> Configure <code>sift_annotator.yml</code></h2>
+<section id="configure-sift_annotator.yml" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="configure-sift_annotator.yml"><span class="header-section-number">4.6</span> Configure <code>sift_annotator.yml</code></h2>
 <p>Now that our <code>annotate()</code> method is filled in, we need to configure how our annotations will be displayed.</p>
 <pre class="{bash}"><code>#| eval: false
 cat /Users/Shared/open-cravat/modules/annotators/sift_annotator/sift_annotator.yml</code></pre>
@@ -690,11 +700,8 @@ description: Annotates variants with sift scores and categories
 
 [....]</code></pre>
 </section>
-<section id="test-it-out" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="test-it-out"><span class="header-section-number">4.6</span> Test it out!</h2>
-</section>
-<section id="requirements-for-publishing-in-the-opencravat-store" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="requirements-for-publishing-in-the-opencravat-store"><span class="header-section-number">4.7</span> Requirements for publishing in the OpenCravat store</h2>
+<section id="test-it-out" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="test-it-out"><span class="header-section-number">4.7</span> Test it out!</h2>
 
 
 </section>

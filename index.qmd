@@ -1,5 +1,9 @@
 ---
-title: "Open Cravat Vignettes"
+title: "OpenCRAVAT Vignettes"
 format: html
 ---
+
+This is a series of vignettes for OpenCRAVAT that show specific tasks.
+
+They consist of multimedia content: text, images, and demo videos.
 

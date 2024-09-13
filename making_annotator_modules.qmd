@@ -9,6 +9,11 @@ format:
 
 <iframe src="https://share.descript.com/embed/TybKsmLT2Rx" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
+
+## Annotator Module Build Process
+
+Click on each box in the flowchart below to jump to that part of the build process.
+
 ```{mermaid}
 flowchart TD
   A[Initialize Module] --> B
@@ -20,7 +25,6 @@ flowchart TD
   D[Customize Output/\nDisplay] 
 ```
 
-
 Creating an annotator module requires the following:
 
 1. Initializing an new annotator skeleton using `oc new annotator <modulename>`
@@ -28,6 +32,7 @@ Creating an annotator module requires the following:
 3. Mapping the annotator sqlite file in the `<modulename>.py` file
 4. Customizing the output using the `<modulename>.yml` file
 
+### Anatomy of an annotator module
 
 This is a quick review of the basic structure of an annotator module. 
 
@@ -92,7 +97,7 @@ So now we need to get our annotations into the `sqlite` format, map it in our `a
 
 ## Loading annotations as a SQLite file
 
-OpenCravat requires us to supply our annotations as a SQLite file. `sqlite3` is a database system that allows us to package our annotations in the `.sqlite` format, which makes our annotations accessible to OpenCravat.
+OpenCRAVAT requires us to supply our annotations as a SQLite file. `sqlite3` is a database system that allows us to package our annotations in the `.sqlite` format, which makes our annotations accessible to OpenCRAVAT.
 
 SQLite is available on most systems (MacOS/PC/Linux) as the `sqlite3` command. 
 
@@ -590,8 +595,6 @@ description: Annotates variants with sift scores and categories
 
 ## Test it out!
 
-
-
-## Requirements for publishing in the OpenCravat store
+Now that we're finished with building our annotator module, it's time to test it. Try it out with the GUI, or you can run it on the command line:
 
 

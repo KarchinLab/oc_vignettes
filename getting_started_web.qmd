@@ -62,7 +62,7 @@ flowchart TD
 
 ## Creating an OpenCRAVAT Account (Web)
 
-Let's start out by creating an account on <https://run.opencravat.org>. If your organization is running OpenCRAVAT locally, you will need to find out the appropriate URL for the instance of OpenCravat. 
+Let's start out by creating an account on <https://run.opencravat.org>. If your organization is running OpenCRAVAT locally, you will need to find out the appropriate URL for the instance of OpenCRAVAT. 
 
 Here's the initial screen we'll see when we go to <https://run.opencravat.org>. You'll click on the **Sign Up** Button to create an account.
 
@@ -318,6 +318,6 @@ You learned a lot in this section. You learned how to:
 
 - Create a User Account
 - Browse OpenCRAVAT's store to look for annotators
-- Submit a job to the Open-Cravat server
+- Submit a job to the OpenCRAVAT server
 - Filter results in the Results Viewer
 - Visualize results in the Results Viewer
