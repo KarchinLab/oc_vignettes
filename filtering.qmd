@@ -11,7 +11,7 @@ Filtering your annotated variants lets you query interesting subsets of your var
 
 A secondary purpose of filtering is when you want to view your results in the results viewer and you have more than 100K variants. 
 
-## Filtering Roadmap
+## Learning Objectives
 
 ```{mermaid}
 flowchart TD
@@ -22,6 +22,13 @@ flowchart TD
   G --> D["Apply filter to New Set"]
   G --> E["Apply Filter on CLI"]
 ```
+
+After reading this vignette, you should be able to:
+
+- **Explain** how to build simple filters using the OpenCRAVAT GUI
+- **Compose** multiple filters using boolean logic to make complex filtering
+- **Save** your filter and **export** it as a JSON file
+- **Apply** your filter to a new set of variants
 
 ## Filtering in the GUI
 
@@ -360,3 +367,10 @@ Then you can hit **Apply Filter** as usual to apply it.
 ## Applying JSON filters on the command line
 
 JSON filters can also be applied on the command-line using the `oc util filtersqlite` command. [More information is here](https://open-cravat.readthedocs.io/en/latest/Filter-And-Merge-SQLite.html).
+
+## What You Learned
+
+- **Explain** how to build simple filters using the OpenCRAVAT GUI
+- **Compose** multiple filters using boolean logic to make complex filtering
+- **Save** your filter and **export** it as a JSON file
+- **Apply** your filter to a new set of variants

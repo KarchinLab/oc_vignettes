@@ -597,4 +597,11 @@ description: Annotates variants with sift scores and categories
 
 Now that we're finished with building our annotator module, it's time to test it. Try it out with the GUI, or you can run it on the command line:
 
+## What you learned
 
+You learned the basic annotator module development process, including.
+
+1. Initializing an new annotator skeleton using `oc new annotator <modulename>`
+2. Loading an annotator file into a SQLite database (`<modulename>.sqlite`ss) using `sqlite3`
+3. Mapping the annotator sqlite file in the `<modulename>.py` file
+4. Customizing the output using the `<modulename>.yml` file
