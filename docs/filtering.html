@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#why-filter" id="toc-why-filter" class="nav-link active" data-scroll-target="#why-filter"><span class="header-section-number">5.1</span> Why Filter?</a></li>
-  <li><a href="#filtering-roadmap" id="toc-filtering-roadmap" class="nav-link" data-scroll-target="#filtering-roadmap"><span class="header-section-number">5.2</span> Filtering Roadmap</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">5.2</span> Learning Objectives</a></li>
   <li><a href="#filtering-in-the-gui" id="toc-filtering-in-the-gui" class="nav-link" data-scroll-target="#filtering-in-the-gui"><span class="header-section-number">5.3</span> Filtering in the GUI</a></li>
   <li><a href="#sample-data-for-demonstration-purposes" id="toc-sample-data-for-demonstration-purposes" class="nav-link" data-scroll-target="#sample-data-for-demonstration-purposes"><span class="header-section-number">5.4</span> Sample Data for Demonstration Purposes</a>
   <ul class="collapse">
@@ -219,6 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exporting-filters-as-json" id="toc-exporting-filters-as-json" class="nav-link" data-scroll-target="#exporting-filters-as-json"><span class="header-section-number">5.6</span> Exporting Filters as JSON</a></li>
   <li><a href="#applying-json-filters-in-the-gui" id="toc-applying-json-filters-in-the-gui" class="nav-link" data-scroll-target="#applying-json-filters-in-the-gui"><span class="header-section-number">5.7</span> Applying JSON filters in the GUI</a></li>
   <li><a href="#applying-json-filters-on-the-command-line" id="toc-applying-json-filters-on-the-command-line" class="nav-link" data-scroll-target="#applying-json-filters-on-the-command-line"><span class="header-section-number">5.8</span> Applying JSON filters on the command line</a></li>
+  <li><a href="#what-you-learned" id="toc-what-you-learned" class="nav-link" data-scroll-target="#what-you-learned"><span class="header-section-number">5.9</span> What You Learned</a></li>
   </ul>
 </nav>
     </div>
@@ -249,8 +250,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Filtering your annotated variants lets you query interesting subsets of your variants.</p>
 <p>A secondary purpose of filtering is when you want to view your results in the results viewer and you have more than 100K variants.</p>
 </section>
-<section id="filtering-roadmap" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="filtering-roadmap"><span class="header-section-number">5.2</span> Filtering Roadmap</h2>
+<section id="learning-objectives" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">5.2</span> Learning Objectives</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
@@ -269,6 +270,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>After reading this vignette, you should be able to:</p>
+<ul>
+<li><strong>Explain</strong> how to build simple filters using the OpenCRAVAT GUI</li>
+<li><strong>Compose</strong> multiple filters using boolean logic to make complex filtering</li>
+<li><strong>Save</strong> your filter and <strong>export</strong> it as a JSON file</li>
+<li><strong>Apply</strong> your filter to a new set of variants</li>
+</ul>
 </section>
 <section id="filtering-in-the-gui" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="filtering-in-the-gui"><span class="header-section-number">5.3</span> Filtering in the GUI</h2>
@@ -600,6 +608,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="applying-json-filters-on-the-command-line" class="level2" data-number="5.8">
 <h2 data-number="5.8" class="anchored" data-anchor-id="applying-json-filters-on-the-command-line"><span class="header-section-number">5.8</span> Applying JSON filters on the command line</h2>
 <p>JSON filters can also be applied on the command-line using the <code>oc util filtersqlite</code> command. <a href="https://open-cravat.readthedocs.io/en/latest/Filter-And-Merge-SQLite.html">More information is here</a>.</p>
+</section>
+<section id="what-you-learned" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="what-you-learned"><span class="header-section-number">5.9</span> What You Learned</h2>
+<ul>
+<li><strong>Explain</strong> how to build simple filters using the OpenCRAVAT GUI</li>
+<li><strong>Compose</strong> multiple filters using boolean logic to make complex filtering</li>
+<li><strong>Save</strong> your filter and <strong>export</strong> it as a JSON file</li>
+<li><strong>Apply</strong> your filter to a new set of variants</li>
+</ul>
 
 
 </section>

@@ -213,6 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#configure-sift_annotator.yml" id="toc-configure-sift_annotator.yml" class="nav-link" data-scroll-target="#configure-sift_annotator.yml"><span class="header-section-number">4.6</span> Configure <code>sift_annotator.yml</code></a></li>
   <li><a href="#test-it-out" id="toc-test-it-out" class="nav-link" data-scroll-target="#test-it-out"><span class="header-section-number">4.7</span> Test it out!</a></li>
+  <li><a href="#what-you-learned" id="toc-what-you-learned" class="nav-link" data-scroll-target="#what-you-learned"><span class="header-section-number">4.8</span> What you learned</a></li>
   </ul>
 </nav>
     </div>
@@ -702,6 +703,17 @@ description: Annotates variants with sift scores and categories
 </section>
 <section id="test-it-out" class="level2" data-number="4.7">
 <h2 data-number="4.7" class="anchored" data-anchor-id="test-it-out"><span class="header-section-number">4.7</span> Test it out!</h2>
+<p>Now that we’re finished with building our annotator module, it’s time to test it. Try it out with the GUI, or you can run it on the command line:</p>
+</section>
+<section id="what-you-learned" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="what-you-learned"><span class="header-section-number">4.8</span> What you learned</h2>
+<p>You learned the basic annotator module development process, including.</p>
+<ol type="1">
+<li>Initializing an new annotator skeleton using <code>oc new annotator &lt;modulename&gt;</code></li>
+<li>Loading an annotator file into a SQLite database (<code>&lt;modulename&gt;.sqlite</code>ss) using <code>sqlite3</code></li>
+<li>Mapping the annotator sqlite file in the <code>&lt;modulename&gt;.py</code> file</li>
+<li>Customizing the output using the <code>&lt;modulename&gt;.yml</code> file</li>
+</ol>
 
 
 </section>

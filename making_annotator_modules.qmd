@@ -599,7 +599,7 @@ Now that we're finished with building our annotator module, it's time to test it
 
 ## What you learned
 
-You learned the basic annotator module development process, including.
+You learned the basic annotator module development process, including:
 
 1. Initializing an new annotator skeleton using `oc new annotator <modulename>`
 2. Loading an annotator file into a SQLite database (`<modulename>.sqlite`ss) using `sqlite3`

@@ -314,7 +314,7 @@
     "href": "making_annotator_modules.html#test-it-out",
     "title": "4  Making an Annotator Module",
     "section": "4.7 Test it out!",
-    "text": "4.7 Test it out!",
+    "text": "4.7 Test it out!\nNow that we’re finished with building our annotator module, it’s time to test it. Try it out with the GUI, or you can run it on the command line:",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Making an Annotator Module</span>"
     ]
@@ -437,6 +437,16 @@
     "text": "5.9 What You Learned\n\nExplain how to build simple filters using the OpenCRAVAT GUI\nCompose multiple filters using boolean logic to make complex filtering\nSave your filter and export it as a JSON file\nApply your filter to a new set of variants",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Filtering</span>"
+    ]
+  },
+  {
+    "objectID": "making_annotator_modules.html#what-you-learned",
+    "href": "making_annotator_modules.html#what-you-learned",
+    "title": "4  Making an Annotator Module",
+    "section": "4.8 What you learned",
+    "text": "4.8 What you learned\nYou learned the basic annotator module development process, including.\n\nInitializing an new annotator skeleton using oc new annotator &lt;modulename&gt;\nLoading an annotator file into a SQLite database (&lt;modulename&gt;.sqlitess) using sqlite3\nMapping the annotator sqlite file in the &lt;modulename&gt;.py file\nCustomizing the output using the &lt;modulename&gt;.yml file",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Making an Annotator Module</span>"
     ]
   }
 ]
