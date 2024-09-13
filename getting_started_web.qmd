@@ -139,11 +139,11 @@ If we click on the **STORE** tab in the top left of the interface, we'll see the
 
 ![](images/oc-browse-annotators-1.png) 
 
-Let's browse the clinically relevant annotators by clicking on the `Clinically Relevant` checkbox:
+Let's browse the clinically relevant annotators by clicking on the `Clinically Relevance` checkbox:
 
 ![](images/oc-browse-annotators-2.png)
 
-As we browse the annotators available to us, we notice two specific annotators we want to work with. Let's use two clinically relevant annotators: [CiViC](https://civicdb.org/welcome) (Clinical Interpretations of Variants in Cancer) and [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/), a public archive of interpretations of clinically relevant patients. 
+As we browse the annotators available to us, we notice two specific annotators we want to work with. Let's use two annotators: [CiViC](https://civicdb.org/welcome) (Clinical Interpretations of Variants in Cancer) and [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/), a public archive of interpretations of clinically relevant patients. 
 
 To get more information, click on the CiViC box:
 
