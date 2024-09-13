@@ -182,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./filtering.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Filtering</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Filtering in OpenCRAVAT</span></span></a>
   </div>
 </li>
     </ul>
@@ -202,12 +202,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#using-a-virtual-environment" id="toc-using-a-virtual-environment" class="nav-link" data-scroll-target="#using-a-virtual-environment"><span class="header-section-number">3.3.1</span> Using a Virtual Environment</a></li>
   <li><a href="#installing-opencravat" id="toc-installing-opencravat" class="nav-link" data-scroll-target="#installing-opencravat"><span class="header-section-number">3.3.2</span> Installing OpenCRAVAT</a></li>
   </ul></li>
-  <li><a href="#installing-via-bioconda" id="toc-installing-via-bioconda" class="nav-link" data-scroll-target="#installing-via-bioconda"><span class="header-section-number">3.4</span> Installing via Bioconda</a></li>
-  <li><a href="#installing-annotators" id="toc-installing-annotators" class="nav-link" data-scroll-target="#installing-annotators"><span class="header-section-number">3.5</span> Installing annotators</a></li>
+  <li><a href="#installing-via-bioconda" id="toc-installing-via-bioconda" class="nav-link" data-scroll-target="#installing-via-bioconda"><span class="header-section-number">3.4</span> Installing Via Bioconda</a></li>
+  <li><a href="#installing-annotators" id="toc-installing-annotators" class="nav-link" data-scroll-target="#installing-annotators"><span class="header-section-number">3.5</span> Installing Annotators</a></li>
   <li><a href="#understanding-the-input-file-format" id="toc-understanding-the-input-file-format" class="nav-link" data-scroll-target="#understanding-the-input-file-format"><span class="header-section-number">3.6</span> Understanding the Input File Format</a></li>
-  <li><a href="#annotating-our-example" id="toc-annotating-our-example" class="nav-link" data-scroll-target="#annotating-our-example"><span class="header-section-number">3.7</span> Annotating our example</a></li>
+  <li><a href="#annotating-our-example" id="toc-annotating-our-example" class="nav-link" data-scroll-target="#annotating-our-example"><span class="header-section-number">3.7</span> Annotating Our Example</a></li>
   <li><a href="#starting-the-results-viewer" id="toc-starting-the-results-viewer" class="nav-link" data-scroll-target="#starting-the-results-viewer"><span class="header-section-number">3.8</span> Starting the Results Viewer</a></li>
-  <li><a href="#examining-our-results-file-and-filtering" id="toc-examining-our-results-file-and-filtering" class="nav-link" data-scroll-target="#examining-our-results-file-and-filtering"><span class="header-section-number">3.9</span> Examining our Results File and Filtering</a></li>
+  <li><a href="#examining-our-results-file-and-filtering" id="toc-examining-our-results-file-and-filtering" class="nav-link" data-scroll-target="#examining-our-results-file-and-filtering"><span class="header-section-number">3.9</span> Examining Our Results File and Filtering</a></li>
   <li><a href="#visualizing-our-filtered-results" id="toc-visualizing-our-filtered-results" class="nav-link" data-scroll-target="#visualizing-our-filtered-results"><span class="header-section-number">3.10</span> Visualizing Our Filtered Results</a></li>
   <li><a href="#deactivating-your-environment" id="toc-deactivating-your-environment" class="nav-link" data-scroll-target="#deactivating-your-environment"><span class="header-section-number">3.11</span> Deactivating Your Environment</a></li>
   <li><a href="#what-you-learned" id="toc-what-you-learned" class="nav-link" data-scroll-target="#what-you-learned"><span class="header-section-number">3.12</span> What You Learned</a></li>
@@ -345,7 +345,7 @@ Commands:
 </section>
 </section>
 <section id="installing-via-bioconda" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="installing-via-bioconda"><span class="header-section-number">3.4</span> Installing via Bioconda</h2>
+<h2 data-number="3.4" class="anchored" data-anchor-id="installing-via-bioconda"><span class="header-section-number">3.4</span> Installing Via Bioconda</h2>
 <p>If you prefer to install via <code>conda</code>/<code>mamba</code>, here are directions for you. You will want to install <code>mamba</code> via <code>miniforge</code>: download the installation scripts here.</p>
 <p>When <code>mamba</code> has been installed, you’ll need to create a conda environment and install openCRAVAT via a single command:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">--name</span> oc open-cravat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -358,7 +358,7 @@ Commands:
 <p>Now you can use OpenCRAVAT as below and install annotators.</p>
 </section>
 <section id="installing-annotators" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="installing-annotators"><span class="header-section-number">3.5</span> Installing annotators</h2>
+<h2 data-number="3.5" class="anchored" data-anchor-id="installing-annotators"><span class="header-section-number">3.5</span> Installing Annotators</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/N6cPmt1kNaU" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>The first thing we’ll need to install are some core bits of OpenCRAVAT, called <code>install-base</code>. We’ll do this with the command <code>oc module</code>:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> module install-base</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -391,7 +391,7 @@ alfa_latin_american                ALFA: Allele Frequency Aggregator Latin Ameri
 alfa_other                         ALFA: Allele Frequency Aggregator Others      
 
 ....</code></pre>
-<p>We’re actually looking for ClinVar, which is a list of clinically relevant annotations. Note that all of the annotators are in lower snake case (such as <code>alfa_asian</code>). So we can add <code>clinvar</code> in with our query.</p>
+<p>We’re actually looking for <code>ClinVar</code>, which is a list of clinically relevant annotations. Note that all of the annotators are in lower snake case (such as <code>alfa_asian</code>). So we can add <code>clinvar</code> in with our query.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> module ls <span class="at">-a</span> clinvar <span class="at">-t</span> annotator </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>tedladeras@teds-MacBook-Pro local % oc module ls -a clinvar -t annotator 
 Name     Title    Type       Installed  Store ver   Store data ver  Local ver  Local data ver  Size      
@@ -443,7 +443,7 @@ chr4    1804372 +   AT  GC  s1
 chr4    1804372 +   A   T   s1</code></pre>
 </section>
 <section id="annotating-our-example" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="annotating-our-example"><span class="header-section-number">3.7</span> Annotating our example</h2>
+<h2 data-number="3.7" class="anchored" data-anchor-id="annotating-our-example"><span class="header-section-number">3.7</span> Annotating Our Example</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/gSeeDM9GUgQ" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now we have our example, we can run OpenCRAVAT. This will annotate our <code>example_input</code> file with all available annotators.</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">oc</span> run ./example_input <span class="at">-l</span> hg38</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -492,7 +492,7 @@ Done getting result of [example_input.sqlite][gene] in 0.021s</code></pre>
 <p><img src="oc-gui.png" class="img-fluid"></p>
 </section>
 <section id="examining-our-results-file-and-filtering" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="examining-our-results-file-and-filtering"><span class="header-section-number">3.9</span> Examining our Results File and Filtering</h2>
+<h2 data-number="3.9" class="anchored" data-anchor-id="examining-our-results-file-and-filtering"><span class="header-section-number">3.9</span> Examining Our Results File and Filtering</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/TYs3dGDFzQQ" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now we take a look at our results in the web interface. Under the list of jobs, we can see our job. Let’s select <code>Open Result Viewer</code> under the <strong>Status</strong> tab:</p>
 <p><img src="images/oc-filter-job.png" class="img-fluid"></p>

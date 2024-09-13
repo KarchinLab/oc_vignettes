@@ -32,7 +32,7 @@ Creating an annotator module requires the following:
 3. Mapping the annotator sqlite file in the `<modulename>.py` file
 4. Customizing the output using the `<modulename>.yml` file
 
-### Anatomy of an annotator module
+### Anatomy of an Annotator Module
 
 This is a quick review of the basic structure of an annotator module. 
 
@@ -55,7 +55,7 @@ flowchart LR
 3 directories, 5 files
 ```
 
-## Initializing an annotator module
+## Initializing an Annotator Module
 
 Before we create a new annotator, we need to find where modules are installed on the system. We can do this by using `oc config md`:
 
@@ -95,13 +95,13 @@ tree  /Users/Shared/open-cravat/modules/annotators/sift/
 
 So now we need to get our annotations into the `sqlite` format, map it in our `annotate()` method, and then customize the display in our `.yml` file.
 
-## Loading annotations as a SQLite file
+## Loading Annotations as a SQLite File
 
 OpenCRAVAT requires us to supply our annotations as a SQLite file. `sqlite3` is a database system that allows us to package our annotations in the `.sqlite` format, which makes our annotations accessible to OpenCRAVAT.
 
 SQLite is available on most systems (MacOS/PC/Linux) as the `sqlite3` command. 
 
-### Fetching our SQLite annotations
+### Fetching our SQLite Annotations
 
 <iframe src="https://share.descript.com/embed/i8O7qSP87s4" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
@@ -145,7 +145,7 @@ chr17|43045683|A|G|0.0|7
 chr17|43045683|A|T|0.0|7
 ```
 
-### Importing a Comma Separated Value file to SQLite
+### Importing a Comma Separated Value File to SQLite
 
 <iframe src="https://share.descript.com/embed/nZAa2LJpI9S" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
@@ -185,7 +185,7 @@ Again, note that these commands **don't** end with a `;`. You will get errors if
 To make things easier to distinguish, we'll use all caps for SQL and lowercase for dot commands.
 :::
 
-### Creating our Table
+### Creating Our Table
 
 Before we load our data in, we need to create our table. This is important because our columns have different data types, and we have to map them to the [SQLite data types](https://www.sqlite.org/draft/datatype3.html):
 
@@ -318,7 +318,7 @@ Finally, now that we're satisfied, we can `.exit`:
 
 
 
-## Mapping our annotator file
+## Mapping Our Annotator File
 
 <iframe src="https://share.descript.com/embed/rrjQ71QQRHY" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
@@ -400,7 +400,7 @@ if __name__ == '__main__':
 
 We will focus on the `annotate()` method first.
 
-### `annotate()` method
+### `annotate()` Method
 
 Our `annotate()` method is where we map our annotations in our `.sqlite` file to an input called `input_data`. `input_data` essentially is a single row of our genomic file to annotate represented as a dictionary. 
 
@@ -593,11 +593,11 @@ description: Annotates variants with sift scores and categories
 
 
 
-## Test it out!
+## Test It Out!
 
-Now that we're finished with building our annotator module, it's time to test it. Try it out with the GUI, or you can run it on the command line:
+Now that we're finished with building our annotator module, it's time to test it. Try it out with the GUI.
 
-## What you learned
+## What You Learned
 
 You learned the basic annotator module development process, including:
 

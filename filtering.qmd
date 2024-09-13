@@ -1,5 +1,5 @@
 ---
-title: "Filtering"
+title: "Filtering in OpenCRAVAT"
 format: 
   rst: default
   html: default
@@ -164,13 +164,13 @@ graph TD
 
 You can build more sophisticated operations by combining each filter step using Boolean logic.
 
-### Adding another filter
+### Adding Another Filter
 
 You can add another filter by clicking the **+** underneath your filter.
 
 ![](images/add-filter.png)
 
-### AND logic
+### AND Logic
 
 By default, the filters are combined using **AND** logic, which are more restrictive, because they require variants to meet both filters. 
 
@@ -217,7 +217,7 @@ graph TD
   C --"OR"--> E
 ```
 
-### Grouping with Parentheses
+### Grouping With Parentheses
 
 We can use the parentheses to group filters together. This can be helpful when we combine different types of logic.
 
@@ -230,7 +230,7 @@ Then you can build a set of filters much like above. Notice that they are groupe
 ![](images/parentheses-filter2.png)
 Keep in mind that you can nest parentheses within parentheses to make even more complex filters. We'll use this to be able to combine three filters with **AND** and **OR** logic below.
 
-### Combining **AND** / **OR** logic
+### Combining **AND** / **OR** Logic
 
 By default, when you click the "and" / "or" of one set of filters, all filters will be changed. If you want to combine **AND** / **OR** logic, you can group one of the logic operations using parentheses.
 
@@ -276,20 +276,6 @@ Then we can hit **Apply Filter** again. In our case, we have 1,729 variants that
 Finally, if you need to delete a filter, you can mouse to the right of the filter. A faint "X" will appear. Clicking on it will delete that filter.
 
 ![](images/filter-delete.png)
-
-### Case Study: Filtering Pathogenic Variants
-
-Let's combine a sample filter with a grouped variant filter.
-
-In our case, we want variants that are associated with the mother of the family combined with our joint missense/pathogenic variant filter.
-
-![](images/case-study-filter.png)
-
-```{mermaid}
-graph TD
-  A["All Variants\n(n=1,738)"] --"PS1 ID\nhas data"--> B
-  B["PS1 variants\n(n=36)"]
-```
 
 ## Exporting Filters as JSON
 
@@ -352,7 +338,7 @@ Here's an example of what a filter looks like in the JSON format:
 }
 ```
 
-## Applying JSON filters in the GUI
+## Applying JSON Filters in the GUI
 
 JSON filters can be applied by clicking on the upload icon:
 
@@ -364,7 +350,7 @@ A file select box will pop up and you can select the JSON filter to load it:
 
 Then you can hit **Apply Filter** as usual to apply it.
 
-## Applying JSON filters on the command line
+## Applying JSON Filters on the Command Line
 
 JSON filters can also be applied on the command-line using the `oc util filtersqlite` command. [More information is here](https://open-cravat.readthedocs.io/en/latest/Filter-And-Merge-SQLite.html).
 

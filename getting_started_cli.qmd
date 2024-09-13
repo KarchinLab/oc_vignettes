@@ -153,7 +153,7 @@ oc gui
 
 Now you're ready to start installing annotators. 
 
-## Installing via Bioconda
+## Installing Via Bioconda
 
 If you prefer to install via `conda`/`mamba`, here are directions for you. You will want to install `mamba` via `miniforge`: download the installation scripts here.
 
@@ -182,7 +182,7 @@ which oc
 
 Now you can use OpenCRAVAT as below and install annotators.
 
-## Installing annotators
+## Installing Annotators
 
 {{< video https://youtu.be/N6cPmt1kNaU >}}
 
@@ -230,7 +230,7 @@ alfa_other                         ALFA: Allele Frequency Aggregator Others
 ....
 ```
 
-We're actually looking for ClinVar, which is a list of clinically relevant annotations. Note that all of the annotators are in lower snake case (such as `alfa_asian`). So we can add `clinvar` in with our query.
+We're actually looking for `ClinVar`, which is a list of clinically relevant annotations. Note that all of the annotators are in lower snake case (such as `alfa_asian`). So we can add `clinvar` in with our query.
 
 ```bash
 oc module ls -a clinvar -t annotator 
@@ -315,7 +315,7 @@ chr4	1804372	+	AT	GC	s1
 chr4	1804372	+	A	T	s1
 ```
 
-## Annotating our example
+## Annotating Our Example
 
 {{< video https://youtu.be/gSeeDM9GUgQ >}}
 
@@ -380,7 +380,7 @@ A window should open in your web browser. If not, enter https://localhost:8080 t
 
 ![](oc-gui.png)
 
-## Examining our Results File and Filtering
+## Examining Our Results File and Filtering
 
 {{< video https://youtu.be/TYs3dGDFzQQ >}}
 

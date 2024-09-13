@@ -21,7 +21,7 @@ By the end of this tutorial, you should be able to:
 - **Export** and **Share** annotation results with others 
 
 
-## Understanding the Context for our Task
+## Understanding the Context For Our Task
 
 Let's start with a research question we're interested in. We have a list of variants that we've found in our patient population of interest. Our research question is:
 
@@ -73,7 +73,7 @@ Enter your details in the form, and sign up. You'll automatically be signed into
 
 Now you're ready to browse the [OpenCRAVAT Store](#browse-annotators-web) to look for annotators.
 
-## Installing OpenCRAVAT via Installer (Local)
+## Installing OpenCRAVAT Via Installer (Local)
 
 You can install OpenCRAVAT via the installers below:
 
@@ -312,7 +312,7 @@ When you click that, you will have the option to export the variant level result
 Note that we could have limited our search to pathogenic variants by adding another filter rule like we did above in the filtering step. We're showing this way in case you didn't know the available categories within the `Clinical Significance` column.
 :::
 
-## What you learned
+## What You Learned
 
 You learned a lot in this section. You learned how to:
 

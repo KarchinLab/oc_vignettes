@@ -1,0 +1,37 @@
+{
+  "sample": {
+    "require": [],
+    "reject": []
+  },
+  "genes": [],
+  "variant": {
+    "operator": "and",
+    "rules": [
+      {
+        "operator": "and",
+        "rules": [
+          {
+            "column": "clinvar__sig",
+            "test": "hasData",
+            "value": null,
+            "negate": false
+          },
+          {
+            "column": "clingen__disease",
+            "test": "hasData",
+            "value": null,
+            "negate": false
+          }
+        ],
+        "negate": false
+      }
+    ],
+    "negate": false
+  },
+  "smartfilter": {},
+  "samplefilter": {
+    "operator": "and",
+    "rules": [],
+    "negate": false
+  }
+}

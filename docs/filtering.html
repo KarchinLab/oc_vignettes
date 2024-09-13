@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Filtering – OpenCRAVAT Vignettes</title>
+<title>5&nbsp; Filtering in OpenCRAVAT – OpenCRAVAT Vignettes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./filtering.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Filtering</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./filtering.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Filtering in OpenCRAVAT</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -181,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./filtering.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Filtering</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Filtering in OpenCRAVAT</span></span></a>
   </div>
 </li>
     </ul>
@@ -207,18 +207,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#advanced-boolean-operations" id="toc-advanced-boolean-operations" class="nav-link" data-scroll-target="#advanced-boolean-operations"><span class="header-section-number">5.5</span> Advanced: Boolean Operations</a>
   <ul class="collapse">
-  <li><a href="#adding-another-filter" id="toc-adding-another-filter" class="nav-link" data-scroll-target="#adding-another-filter"><span class="header-section-number">5.5.1</span> Adding another filter</a></li>
-  <li><a href="#and-logic" id="toc-and-logic" class="nav-link" data-scroll-target="#and-logic"><span class="header-section-number">5.5.2</span> AND logic</a></li>
+  <li><a href="#adding-another-filter" id="toc-adding-another-filter" class="nav-link" data-scroll-target="#adding-another-filter"><span class="header-section-number">5.5.1</span> Adding Another Filter</a></li>
+  <li><a href="#and-logic" id="toc-and-logic" class="nav-link" data-scroll-target="#and-logic"><span class="header-section-number">5.5.2</span> AND Logic</a></li>
   <li><a href="#or-logic" id="toc-or-logic" class="nav-link" data-scroll-target="#or-logic"><span class="header-section-number">5.5.3</span> OR Logic</a></li>
-  <li><a href="#grouping-with-parentheses" id="toc-grouping-with-parentheses" class="nav-link" data-scroll-target="#grouping-with-parentheses"><span class="header-section-number">5.5.4</span> Grouping with Parentheses</a></li>
-  <li><a href="#combining-and-or-logic" id="toc-combining-and-or-logic" class="nav-link" data-scroll-target="#combining-and-or-logic"><span class="header-section-number">5.5.5</span> Combining <strong>AND</strong> / <strong>OR</strong> logic</a></li>
+  <li><a href="#grouping-with-parentheses" id="toc-grouping-with-parentheses" class="nav-link" data-scroll-target="#grouping-with-parentheses"><span class="header-section-number">5.5.4</span> Grouping With Parentheses</a></li>
+  <li><a href="#combining-and-or-logic" id="toc-combining-and-or-logic" class="nav-link" data-scroll-target="#combining-and-or-logic"><span class="header-section-number">5.5.5</span> Combining <strong>AND</strong> / <strong>OR</strong> Logic</a></li>
   <li><a href="#not-logic" id="toc-not-logic" class="nav-link" data-scroll-target="#not-logic"><span class="header-section-number">5.5.6</span> NOT Logic</a></li>
   <li><a href="#deleting-a-filter" id="toc-deleting-a-filter" class="nav-link" data-scroll-target="#deleting-a-filter"><span class="header-section-number">5.5.7</span> Deleting a Filter</a></li>
-  <li><a href="#case-study-filtering-pathogenic-variants" id="toc-case-study-filtering-pathogenic-variants" class="nav-link" data-scroll-target="#case-study-filtering-pathogenic-variants"><span class="header-section-number">5.5.8</span> Case Study: Filtering Pathogenic Variants</a></li>
   </ul></li>
   <li><a href="#exporting-filters-as-json" id="toc-exporting-filters-as-json" class="nav-link" data-scroll-target="#exporting-filters-as-json"><span class="header-section-number">5.6</span> Exporting Filters as JSON</a></li>
-  <li><a href="#applying-json-filters-in-the-gui" id="toc-applying-json-filters-in-the-gui" class="nav-link" data-scroll-target="#applying-json-filters-in-the-gui"><span class="header-section-number">5.7</span> Applying JSON filters in the GUI</a></li>
-  <li><a href="#applying-json-filters-on-the-command-line" id="toc-applying-json-filters-on-the-command-line" class="nav-link" data-scroll-target="#applying-json-filters-on-the-command-line"><span class="header-section-number">5.8</span> Applying JSON filters on the command line</a></li>
+  <li><a href="#applying-json-filters-in-the-gui" id="toc-applying-json-filters-in-the-gui" class="nav-link" data-scroll-target="#applying-json-filters-in-the-gui"><span class="header-section-number">5.7</span> Applying JSON Filters in the GUI</a></li>
+  <li><a href="#applying-json-filters-on-the-command-line" id="toc-applying-json-filters-on-the-command-line" class="nav-link" data-scroll-target="#applying-json-filters-on-the-command-line"><span class="header-section-number">5.8</span> Applying JSON Filters on the Command Line</a></li>
   <li><a href="#what-you-learned" id="toc-what-you-learned" class="nav-link" data-scroll-target="#what-you-learned"><span class="header-section-number">5.9</span> What You Learned</a></li>
   </ul>
 </nav>
@@ -228,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Filtering</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Filtering in OpenCRAVAT</span></h1>
 </div>
 
 
@@ -415,12 +414,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="5.5" class="anchored" data-anchor-id="advanced-boolean-operations"><span class="header-section-number">5.5</span> Advanced: Boolean Operations</h2>
 <p>You can build more sophisticated operations by combining each filter step using Boolean logic.</p>
 <section id="adding-another-filter" class="level3" data-number="5.5.1">
-<h3 data-number="5.5.1" class="anchored" data-anchor-id="adding-another-filter"><span class="header-section-number">5.5.1</span> Adding another filter</h3>
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="adding-another-filter"><span class="header-section-number">5.5.1</span> Adding Another Filter</h3>
 <p>You can add another filter by clicking the <strong>+</strong> underneath your filter.</p>
 <p><img src="images/add-filter.png" class="img-fluid"></p>
 </section>
 <section id="and-logic" class="level3" data-number="5.5.2">
-<h3 data-number="5.5.2" class="anchored" data-anchor-id="and-logic"><span class="header-section-number">5.5.2</span> AND logic</h3>
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="and-logic"><span class="header-section-number">5.5.2</span> AND Logic</h3>
 <p>By default, the filters are combined using <strong>AND</strong> logic, which are more restrictive, because they require variants to meet both filters.</p>
 <p>Here’s an example of using <strong>AND</strong> logic. Here we are combining two filters: Missense Variants (from <strong>Variant Annotation &gt;&gt; Sequence Ontology</strong>) and Pathogenic variants (from <strong>ClinVar &gt;&gt; Clinical Significance</strong>).</p>
 <p><img src="images/and-filter.png" class="img-fluid"> Then do the following:</p>
@@ -474,7 +473,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="grouping-with-parentheses" class="level3" data-number="5.5.4">
-<h3 data-number="5.5.4" class="anchored" data-anchor-id="grouping-with-parentheses"><span class="header-section-number">5.5.4</span> Grouping with Parentheses</h3>
+<h3 data-number="5.5.4" class="anchored" data-anchor-id="grouping-with-parentheses"><span class="header-section-number">5.5.4</span> Grouping With Parentheses</h3>
 <p>We can use the parentheses to group filters together. This can be helpful when we combine different types of logic.</p>
 <p>To make a grouped filter, click the <strong>(</strong> button next to the <strong>+</strong> button in the interface:</p>
 <p><img src="images/parentheses-filter1.png" class="img-fluid"></p>
@@ -482,7 +481,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/parentheses-filter2.png" class="img-fluid"> Keep in mind that you can nest parentheses within parentheses to make even more complex filters. We’ll use this to be able to combine three filters with <strong>AND</strong> and <strong>OR</strong> logic below.</p>
 </section>
 <section id="combining-and-or-logic" class="level3" data-number="5.5.5">
-<h3 data-number="5.5.5" class="anchored" data-anchor-id="combining-and-or-logic"><span class="header-section-number">5.5.5</span> Combining <strong>AND</strong> / <strong>OR</strong> logic</h3>
+<h3 data-number="5.5.5" class="anchored" data-anchor-id="combining-and-or-logic"><span class="header-section-number">5.5.5</span> Combining <strong>AND</strong> / <strong>OR</strong> Logic</h3>
 <p>By default, when you click the “and” / “or” of one set of filters, all filters will be changed. If you want to combine <strong>AND</strong> / <strong>OR</strong> logic, you can group one of the logic operations using parentheses.</p>
 <p>For example, say we want the above <strong>OR</strong> subset combined as an <strong>AND</strong> with those variants that have PS1 evidence.</p>
 <p>This is what our final filter looks like:</p>
@@ -526,26 +525,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="5.5.7" class="anchored" data-anchor-id="deleting-a-filter"><span class="header-section-number">5.5.7</span> Deleting a Filter</h3>
 <p>Finally, if you need to delete a filter, you can mouse to the right of the filter. A faint “X” will appear. Clicking on it will delete that filter.</p>
 <p><img src="images/filter-delete.png" class="img-fluid"></p>
-</section>
-<section id="case-study-filtering-pathogenic-variants" class="level3" data-number="5.5.8">
-<h3 data-number="5.5.8" class="anchored" data-anchor-id="case-study-filtering-pathogenic-variants"><span class="header-section-number">5.5.8</span> Case Study: Filtering Pathogenic Variants</h3>
-<p>Let’s combine a sample filter with a grouped variant filter.</p>
-<p>In our case, we want variants that are associated with the mother of the family combined with our joint missense/pathogenic variant filter.</p>
-<p><img src="images/case-study-filter.png" class="img-fluid"></p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">graph TD
-  A["All Variants\n(n=1,738)"] --"PS1 ID\nhas data"--&gt; B
-  B["PS1 variants\n(n=36)"]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
 </section>
 </section>
 <section id="exporting-filters-as-json" class="level2" data-number="5.6">
@@ -598,7 +577,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</code></pre>
 </section>
 <section id="applying-json-filters-in-the-gui" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="applying-json-filters-in-the-gui"><span class="header-section-number">5.7</span> Applying JSON filters in the GUI</h2>
+<h2 data-number="5.7" class="anchored" data-anchor-id="applying-json-filters-in-the-gui"><span class="header-section-number">5.7</span> Applying JSON Filters in the GUI</h2>
 <p>JSON filters can be applied by clicking on the upload icon:</p>
 <p><img src="images/upload-filter.png" class="img-fluid"></p>
 <p>A file select box will pop up and you can select the JSON filter to load it:</p>
@@ -606,7 +585,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Then you can hit <strong>Apply Filter</strong> as usual to apply it.</p>
 </section>
 <section id="applying-json-filters-on-the-command-line" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="applying-json-filters-on-the-command-line"><span class="header-section-number">5.8</span> Applying JSON filters on the command line</h2>
+<h2 data-number="5.8" class="anchored" data-anchor-id="applying-json-filters-on-the-command-line"><span class="header-section-number">5.8</span> Applying JSON Filters on the Command Line</h2>
 <p>JSON filters can also be applied on the command-line using the <code>oc util filtersqlite</code> command. <a href="https://open-cravat.readthedocs.io/en/latest/Filter-And-Merge-SQLite.html">More information is here</a>.</p>
 </section>
 <section id="what-you-learned" class="level2" data-number="5.9">
