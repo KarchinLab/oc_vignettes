@@ -1,0 +1,124 @@
+---
+title: "making_a_package"
+editor: source
+format: 
+  html: default
+  rst: default
+  gfm: default
+toc: true
+anchor-sections: true
+---
+
+## Learning Objectives
+
+By the end of this tutorial, you should be able to create and publish an OpenCRAVAT package:
+
+-   Begin creating your package
+-   Select the annotators from the OpenCRAVAT store that you want in your package
+-   Create filtersthatyour package will use to focus on the most important results
+-   Design the layout that will appear on the Variant tab in the GUI when people use your package.
+-   Select the reporters from the OpenCRAVAT store that people can use to export your package results
+-   Publish your package in the OpenCRAVAT store to make it widely available to the community
+
+### When to use a package vs. individual annotators
+
+With hundreds of annotators available in the OpenCRAVAT store, users can benefit from a package thatalready combines a set of annotators relevant to a particular question, along with pre-selected filtersand reports.Packagesare particularly usefulwhen you want to automate an analysis workflow that willberepeatedmany times.
+
+Choosing when a package is th best choicecan significantly impact the efficiency ofananalysis. Belowwe explore the pros of using a package versus individual annotators.
+
+### Pros of using a package
+
+1.  Comprehensive Analysis: Packages include multiple annotation modules, providing a more comprehensive analysis of variants.
+
+2.  Ease of Use: Packages are pre-configured, making them easier to setup without needing to manually select individual annotator modules.
+
+3.  Consistency: Using a package ensures consistent application of annotations across different analyses.
+
+## How to make a package
+
+For example, if you use the below process often:
+
+-   Install multiple variant effect predictor modules (e.g.,SIFT, BayesDel,CADD Exome, VEST4, PrimateAI, GERP++, FATHMM and REVEL).
+
+-   Score a list of variants with this "ensemble" of predictors.
+
+-   Filter forvariants predicted to be pathogenic only.
+
+-   Update the layout to see the most useful widgets.
+
+-   Make csv and excel reports.
+
+## Package Build Process
+
+Click on each box in the flowchart below to jump to that part of the build process.
+
+```{mermaid}
+flowchart TD
+  A[Install Modules] --> B
+  click A "#install-modules"
+  B[Annotate with Modules] --> C
+  click B "#annotate-with-modules"
+  C[Filter] -->  D
+  click C "#filter"
+  D[Layout] -->E
+  click D "#layout"
+  E[Export Results] --> E
+  click E "#results"
+  F[Share Package] -->F
+  click F "#share-package"
+  
+```
+
+Creating a package module requires the following:
+
+## Open your local installation of OpenCRAVAT
+
+Before we create a new package, load OpenCRAVAT and make sure the packages we need are installed:
+
+```{bash}
+oc gui
+```
+
+![Screenshot of Terminal to Run OpenCRAVAT GUI](images/oc-ocgui.png)
+
+## Install Modules
+
+Make sure the annotator modules you would like to include in the package have been installed from the store.
+
+![Screenshot of Store](images/oc-store.png)
+
+------------------------------------------------------------------------
+
+## Annotate with Modules
+
+For this tutorial we will use the Example HGVS variants included in the OpenCRAVAT software. Choose the HGVS button under the variants tab. Next choose the annotators you would like to include in your package.
+
+We will focus on variant effect predictor annotators and choose the following: SIFT, BayesDel,CADD Exome, VEST4, PrimateAI, GERP++, FATHMM, and REVEL.
+
+![Next you will scroll down and select the ANNOTATE button.](images/oc-jobs-package.png)
+
+![](images/oc-annotate-button.png)
+
+We have successfully annotated 49 variants. Next, we will develop filters to include the ACMG/AMG Benign and Pathogenic columns for every annotator we included in our job.
+
+![](images/oc-package-job.png)
+
+## Filtering: Query Builder
+
+To begin filtering, click the FILTER tab and navigate to the section entitled variant properties and click Query Builder. The Query Builder allows you to create custom filters. Click the Query Builder header under the variant properties tab to begin. For our package, we will include variants that have data in the Benign OR Pathogenic column of every annotator. Hover your mouse inside the left side of the parenthesis and click the "+" sign to build your query. Choose BayesDel from the first drop down menu and choose ACMG/AMP Pathogenic (PP3), click the "+" and choose BayesDel and ACMG/AMP Benign (BP4). Repeat the same selections for the rest of your annotators. Once you have added all the annotators click the first "and" in your query to change our query to include only "or" filtering options. This method is inclusive to all of our annotators, gives us a high likelihood having more variants included in our results and some benign and pathogenic variants.
+
+![](images/oc-package-querybuilder1.png)
+
+![](images/oc-package-querybuilder2.png)
+
+Next, click the circular refresh bottom at the bottom left next to the variant count. Then click the Apply filter button. This leaves us with 33/49 variants that meet the criteria of our custom filter.
+
+## Layout
+
+OpenCRAVAT allows you to edit the layout of your annotated variant results under the Variant tab. Updating the layout allows the user to more easily view their results and include/exclude information important to their analysis.
+
+![](images/oc-package-varianttab.png)
+
+![](images/oc-package-layout.png)
+
+Once you click the Variant Tab,

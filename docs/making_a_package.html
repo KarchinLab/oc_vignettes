@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ted Laderas &amp; Jasmine Baker">
 
-<title>OpenCRAVAT Vignettes</title>
+<title>6&nbsp; making_a_package – OpenCRAVAT Vignettes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./getting_started_web.html" rel="next">
+<link href="./filtering.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -80,11 +79,14 @@ ul.task-list li input[type="checkbox"] {
     document.body.classList.add('hypothesis-enabled');
   });
 </script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
 
-<body class="nav-sidebar floating fullcontent">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -93,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">OpenCRAVAT Vignettes</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./making_a_package.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">making_a_package</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -120,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">OpenCRAVAT Vignettes</span></span></a>
   </div>
 </li>
@@ -150,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./making_a_package.html" class="sidebar-item-text sidebar-link">
+  <a href="./making_a_package.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">making_a_package</span></span></a>
   </div>
 </li>
@@ -159,25 +161,41 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives"><span class="header-section-number">6.1</span> Learning Objectives</a>
+  <ul class="collapse">
+  <li><a href="#when-to-use-a-package-vs.-individual-annotators" id="toc-when-to-use-a-package-vs.-individual-annotators" class="nav-link" data-scroll-target="#when-to-use-a-package-vs.-individual-annotators"><span class="header-section-number">6.1.1</span> When to use a package vs.&nbsp;individual annotators</a></li>
+  <li><a href="#pros-of-using-a-package" id="toc-pros-of-using-a-package" class="nav-link" data-scroll-target="#pros-of-using-a-package"><span class="header-section-number">6.1.2</span> Pros of using a package</a></li>
+  </ul></li>
+  <li><a href="#how-to-make-a-package" id="toc-how-to-make-a-package" class="nav-link" data-scroll-target="#how-to-make-a-package"><span class="header-section-number">6.2</span> How to make a package</a></li>
+  <li><a href="#package-build-process" id="toc-package-build-process" class="nav-link" data-scroll-target="#package-build-process"><span class="header-section-number">6.3</span> Package Build Process</a></li>
+  <li><a href="#open-your-local-installation-of-opencravat" id="toc-open-your-local-installation-of-opencravat" class="nav-link" data-scroll-target="#open-your-local-installation-of-opencravat"><span class="header-section-number">6.4</span> Open your local installation of OpenCRAVAT</a></li>
+  <li><a href="#install-modules" id="toc-install-modules" class="nav-link" data-scroll-target="#install-modules"><span class="header-section-number">6.5</span> Install Modules</a></li>
+  <li><a href="#annotate-with-modules" id="toc-annotate-with-modules" class="nav-link" data-scroll-target="#annotate-with-modules"><span class="header-section-number">6.6</span> Annotate with Modules</a></li>
+  <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter"><span class="header-section-number">6.7</span> Filter</a>
+  <ul class="collapse">
+  <li><a href="#query-builder" id="toc-query-builder" class="nav-link" data-scroll-target="#query-builder"><span class="header-section-number">6.7.1</span> Query Builder</a></li>
+  </ul></li>
+  <li><a href="#layout" id="toc-layout" class="nav-link" data-scroll-target="#layout"><span class="header-section-number">6.8</span> Layout</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">OpenCRAVAT Vignettes</h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">making_a_package</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ted Laderas &amp; Jasmine Baker </p>
-          </div>
-  </div>
     
   
     
@@ -188,10 +206,122 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a series of vignettes for OpenCRAVAT that show specific tasks.</p>
-<p>They consist of multimedia content: text, images, and demo videos.</p>
+<section id="learning-objectives" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">6.1</span> Learning Objectives</h2>
+<p>By the end of this tutorial, you should be able to:</p>
+<ul>
+<li><strong>Create</strong> a package on a local installation of OpenCRAVAT</li>
+<li><strong>Install</strong> available annotators from the open cravat store</li>
+<li><strong>Develop</strong> filters for a package</li>
+<li><strong>Determine</strong> layout</li>
+<li><strong>Upload</strong> and <strong>annotate</strong> variant files with a package from OpenCRAVAT</li>
+<li><strong>Export</strong> annotation results</li>
+<li><strong>Share</strong> package with the OpenCRAVAT community</li>
+</ul>
+<section id="when-to-use-a-package-vs.-individual-annotators" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="when-to-use-a-package-vs.-individual-annotators"><span class="header-section-number">6.1.1</span> When to use a package vs.&nbsp;individual annotators</h3>
+<p>When using OpenCRAVAT, users have the option to leverage pre-packaged annotators or select individual annotators. A package is a module which defines module installation and job parameters. Packages are always the best choice when you want to automate an analysis workflow that you will repeat many times.</p>
+<p>Choosing the right approach can significantly impact the efficiency of the analysis. Below we explore the pros of using a package versus individual annotators.</p>
+</section>
+<section id="pros-of-using-a-package" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="pros-of-using-a-package"><span class="header-section-number">6.1.2</span> Pros of using a package</h3>
+<ol type="1">
+<li><p>Comprehensive Analysis: Packages include multiple annotators, providing a more comprehensive analysis of variants.</p></li>
+<li><p>Ease of Use: Packages are pre-configured, making them easier to setup without needing to manually select individual annotators.</p></li>
+<li><p>Consistency: Using a package ensures consistent application of annotations across different analyses.</p></li>
+</ol>
+</section>
+</section>
+<section id="how-to-make-a-package" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="how-to-make-a-package"><span class="header-section-number">6.2</span> How to make a package</h2>
+<p>For example, if you use the below process often:</p>
+<ul>
+<li>Install SIFT, BayesDel,CADD Exome, VEST4, PrimateAI,GERP++,FATHMM, and REVEL modules.</li>
+<li>Annotate with the modules.</li>
+<li>Filter for Pathogenic variants only.</li>
+<li>Update layout to user preferences.</li>
+<li>Make csv and excel reports.</li>
+<li>Share your package with the OpenCRAVAT community</li>
+</ul>
+</section>
+<section id="package-build-process" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="package-build-process"><span class="header-section-number">6.3</span> Package Build Process</h2>
+<p>Click on each box in the flowchart below to jump to that part of the build process.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+  A[Install Modules] --&gt; B
+  click A "#install-modules"
+  B[Annotate with Modules] --&gt; C
+  click B "#annotate-with-modules"
+  C[Filter] --&gt;  D
+  click C "#filter"
+  D[Layout] --&gt;E
+  click D "#layout"
+  E[Export Results] --&gt; E
+  click E "#results"
+  F[Share Package]
+  
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Creating a package module requires the following:</p>
+</section>
+<section id="open-your-local-installation-of-opencravat" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="open-your-local-installation-of-opencravat"><span class="header-section-number">6.4</span> Open your local installation of OpenCRAVAT</h2>
+<p>Before we create a new package, load OpenCRAVAT and make sure the packages we need are installed:</p>
+<pre class="{bash}"><code>oc gui</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/oc-ocgui.png" class="img-fluid figure-img"></p>
+<figcaption>Screenshot of Terminal to Run OpenCRAVAT GUI</figcaption>
+</figure>
+</div>
+</section>
+<section id="install-modules" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="install-modules"><span class="header-section-number">6.5</span> Install Modules</h2>
+<p>Make sure the annotators you would like to include in the package have been installed from the store.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/oc-store.png" class="img-fluid figure-img"></p>
+<figcaption>Screenshot of Store</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="annotate-with-modules" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="annotate-with-modules"><span class="header-section-number">6.6</span> Annotate with Modules</h2>
+<p>For this tutorial we will use the Example HGVS variants included in the OpenCRAVAT software. Choose the HGVS button under the variants tab. Next choose the annotators you would like to include in your package.</p>
+<p>We will focus on variant effect predictor annotators and choose the following: SIFT, BayesDel,CADD Exome, VEST4, PrimateAI, GERP++, FATHMM, and REVEL.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/oc-jobs-package.png" class="img-fluid figure-img"></p>
+<figcaption>Next you will scroll down and select the ANNOTATE button.</figcaption>
+</figure>
+</div>
+<p><img src="images/oc-annotate-button.png" class="img-fluid"></p>
+<p><img src="images/oc-package-job.png" class="img-fluid"></p>
+</section>
+<section id="filter" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="filter"><span class="header-section-number">6.7</span> Filter</h2>
+<p>To begin filtering, click the FILTER tab and navigate to the section entitled variant properties.</p>
+<section id="query-builder" class="level3" data-number="6.7.1">
+<h3 data-number="6.7.1" class="anchored" data-anchor-id="query-builder"><span class="header-section-number">6.7.1</span> Query Builder</h3>
+<p>The Query Builder allows you to create custom filters. Click the Query Builder header under the variant properties tab to begin.</p>
+<p>First, hover your mouse within the rounded brackets. A plus sign will appear to the far left. Click the plus sign</p>
+</section>
+</section>
+<section id="layout" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="layout"><span class="header-section-number">6.8</span> Layout</h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -616,11 +746,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./filtering.html" class="pagination-link" aria-label="Filtering in OpenCRAVAT">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Filtering in OpenCRAVAT</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./getting_started_web.html" class="pagination-link" aria-label="Getting Started (Website/GUI)">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting Started (Website/GUI)</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
