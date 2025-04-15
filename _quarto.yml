@@ -4,13 +4,14 @@ project:
   output-dir: docs/
 book:
   title: "OpenCRAVAT Vignettes"
-  author: "Ted Laderas"
+  author: "Ted Laderas & Jasmine Baker"
   chapters:
     - index.qmd
     - "getting_started_web.qmd"
     - "getting_started_cli.qmd"
     - "making_annotator_modules.qmd"
     - "filtering.qmd"
+    - "making_a_package.qmd"
   comments: 
     hypothesis:
       theme: clean
