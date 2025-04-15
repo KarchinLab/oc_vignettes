@@ -217,9 +217,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#before-you-publish-essential-checks" id="toc-before-you-publish-essential-checks" class="nav-link" data-scroll-target="#before-you-publish-essential-checks"><span class="header-section-number">6.10.1</span> Before You Publish: Essential Checks</a></li>
   <li><a href="#comprehensive-markdown-documentation" id="toc-comprehensive-markdown-documentation" class="nav-link" data-scroll-target="#comprehensive-markdown-documentation"><span class="header-section-number">6.10.2</span> 1. Comprehensive Markdown Documentation</a></li>
-  <li><a href="#robust-test-files" id="toc-robust-test-files" class="nav-link" data-scroll-target="#robust-test-files"><span class="header-section-number">6.10.3</span> 2. Robust Test Files</a></li>
-  <li><a href="#eye-catching-logo-optional" id="toc-eye-catching-logo-optional" class="nav-link" data-scroll-target="#eye-catching-logo-optional"><span class="header-section-number">6.10.4</span> 3. Eye-Catching Logo (Optional)</a></li>
-  <li><a href="#comprehensive-yml-file" id="toc-comprehensive-yml-file" class="nav-link" data-scroll-target="#comprehensive-yml-file"><span class="header-section-number">6.10.5</span> 4. Comprehensive YML File</a></li>
+  <li><a href="#eye-catching-logo-optional" id="toc-eye-catching-logo-optional" class="nav-link" data-scroll-target="#eye-catching-logo-optional"><span class="header-section-number">6.10.3</span> 2. Eye-Catching Logo (Optional)</a></li>
+  <li><a href="#comprehensive-yml-file" id="toc-comprehensive-yml-file" class="nav-link" data-scroll-target="#comprehensive-yml-file"><span class="header-section-number">6.10.4</span> 3. Comprehensive YML File</a></li>
   </ul></li>
   <li><a href="#creating-an-opencravat-store-account" id="toc-creating-an-opencravat-store-account" class="nav-link" data-scroll-target="#creating-an-opencravat-store-account"><span class="header-section-number">6.11</span> Creating an OpenCRAVAT Store Account</a></li>
   <li><a href="#publishing-your-package" id="toc-publishing-your-package" class="nav-link" data-scroll-target="#publishing-your-package"><span class="header-section-number">6.12</span> Publishing Your Package</a></li>
@@ -460,43 +459,16 @@ delimited reports are automatically generated.<br>
 <li><strong>Provide External Links:</strong> Include links to source databases or more detailed documentation.</li>
 </ul>
 </section>
-<section id="robust-test-files" class="level3" data-number="6.10.3">
-<h3 data-number="6.10.3" class="anchored" data-anchor-id="robust-test-files"><span class="header-section-number">6.10.3</span> 2. Robust Test Files</h3>
-<p>Tests are crucial for maintaining the quality of your package, especially when updates are made.</p>
-<p><strong>Creating Test Files:</strong></p>
-<ol type="1">
-<li><strong>Ensure Correct Output:</strong> Verify that your package produces accurate results.</li>
-<li><strong>Select Representative Variants:</strong> Choose a diverse set of variants that cover different scenarios:
-<ul>
-<li>Variants that yield annotations.</li>
-<li>Variants that do not yield annotations.</li>
-<li>Variants representing different variant types (e.g., insertions, deletions).</li>
-</ul></li>
-<li><strong>Create the Test Directory:</strong> Create a subdirectory named <code>test</code> in your module directory.</li>
-<li><strong>Create the Input File:</strong> Inside <code>test,</code>create a file named <code>input</code> containing your selected variants in the cravat input format.</li>
-<li><strong>Run the Package:</strong> Execute the following command: <code>bash oc run input -t text -a packagename</code> (Replace <code>packagename</code> with your package’s name.)</li>
-<li><strong>Rename the Output:</strong> Rename the generated <code>input.tsv</code> file to <code>key</code>.</li>
-<li><strong>Clean Up:</strong> Remove any other files from the <code>test</code> directory, leaving only <code>input</code> and <code>key</code>.</li>
-<li><strong>Run the Test:</strong> In a directory outside your module, run: <code>bash oc util test -m packagename</code></li>
-<li><strong>Verify Success:</strong> The test should pass. A temporary file named <code>cravat_test_12345</code> will be created; you can safely delete it.</li>
-</ol>
-<p><strong>Maintaining Tests:</strong></p>
-<ul>
-<li>Run the tests after every update.</li>
-<li>If a test fails, investigate the cause.</li>
-<li>Update the <code>key</code> file if the expected output has changed.</li>
-<li>Fix any bugs in your module if the test fails due to an error.</li>
-</ul>
-</section>
-<section id="eye-catching-logo-optional" class="level3" data-number="6.10.4">
-<h3 data-number="6.10.4" class="anchored" data-anchor-id="eye-catching-logo-optional"><span class="header-section-number">6.10.4</span> 3. Eye-Catching Logo (Optional)</h3>
+<section id="eye-catching-logo-optional" class="level3" data-number="6.10.3">
+<h3 data-number="6.10.3" class="anchored" data-anchor-id="eye-catching-logo-optional"><span class="header-section-number">6.10.3</span> 2. Eye-Catching Logo (Optional)</h3>
 <ul>
 <li>A logo can enhance the visibility of your annotator.</li>
+<li>AI image generators can be helpful in creating logos.</li>
 <li>Save your logo as <code>logo.png</code> in your module directory.</li>
 </ul>
 </section>
-<section id="comprehensive-yml-file" class="level3" data-number="6.10.5">
-<h3 data-number="6.10.5" class="anchored" data-anchor-id="comprehensive-yml-file"><span class="header-section-number">6.10.5</span> 4. Comprehensive YML File</h3>
+<section id="comprehensive-yml-file" class="level3" data-number="6.10.4">
+<h3 data-number="6.10.4" class="anchored" data-anchor-id="comprehensive-yml-file"><span class="header-section-number">6.10.4</span> 3. Comprehensive YML File</h3>
 <p>The YML file defines the metadata and output structure of your annotator.</p>
 <p><strong>Key Fields:</strong></p>
 <ul>
