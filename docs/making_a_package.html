@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; making_a_package – OpenCRAVAT Vignettes</title>
+<title>6&nbsp; Making A Package – OpenCRAVAT Vignettes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -95,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./making_a_package.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">making_a_package</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./making_a_package.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Making A Package</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -153,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./making_a_package.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">making_a_package</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Making A Package</span></span></a>
   </div>
 </li>
     </ul>
@@ -176,11 +210,20 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#open-your-local-installation-of-opencravat" id="toc-open-your-local-installation-of-opencravat" class="nav-link" data-scroll-target="#open-your-local-installation-of-opencravat"><span class="header-section-number">6.4</span> Open your local installation of OpenCRAVAT</a></li>
   <li><a href="#install-modules" id="toc-install-modules" class="nav-link" data-scroll-target="#install-modules"><span class="header-section-number">6.5</span> Install Modules</a></li>
   <li><a href="#annotate-with-modules" id="toc-annotate-with-modules" class="nav-link" data-scroll-target="#annotate-with-modules"><span class="header-section-number">6.6</span> Annotate with Modules</a></li>
-  <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter"><span class="header-section-number">6.7</span> Filter</a>
-  <ul class="collapse">
-  <li><a href="#query-builder" id="toc-query-builder" class="nav-link" data-scroll-target="#query-builder"><span class="header-section-number">6.7.1</span> Query Builder</a></li>
-  </ul></li>
+  <li><a href="#filtering-query-builder" id="toc-filtering-query-builder" class="nav-link" data-scroll-target="#filtering-query-builder"><span class="header-section-number">6.7</span> Filtering: Query Builder</a></li>
   <li><a href="#layout" id="toc-layout" class="nav-link" data-scroll-target="#layout"><span class="header-section-number">6.8</span> Layout</a></li>
+  <li><a href="#save-package" id="toc-save-package" class="nav-link" data-scroll-target="#save-package"><span class="header-section-number">6.9</span> Save Package</a></li>
+  <li><a href="#publish-your-package" id="toc-publish-your-package" class="nav-link" data-scroll-target="#publish-your-package"><span class="header-section-number">6.10</span> Publish Your Package</a>
+  <ul class="collapse">
+  <li><a href="#before-you-publish-essential-checks" id="toc-before-you-publish-essential-checks" class="nav-link" data-scroll-target="#before-you-publish-essential-checks"><span class="header-section-number">6.10.1</span> Before You Publish: Essential Checks</a></li>
+  <li><a href="#comprehensive-markdown-documentation" id="toc-comprehensive-markdown-documentation" class="nav-link" data-scroll-target="#comprehensive-markdown-documentation"><span class="header-section-number">6.10.2</span> 1. Comprehensive Markdown Documentation</a></li>
+  <li><a href="#robust-test-files" id="toc-robust-test-files" class="nav-link" data-scroll-target="#robust-test-files"><span class="header-section-number">6.10.3</span> 2. Robust Test Files</a></li>
+  <li><a href="#eye-catching-logo-optional" id="toc-eye-catching-logo-optional" class="nav-link" data-scroll-target="#eye-catching-logo-optional"><span class="header-section-number">6.10.4</span> 3. Eye-Catching Logo (Optional)</a></li>
+  <li><a href="#comprehensive-yml-file" id="toc-comprehensive-yml-file" class="nav-link" data-scroll-target="#comprehensive-yml-file"><span class="header-section-number">6.10.5</span> 4. Comprehensive YML File</a></li>
+  </ul></li>
+  <li><a href="#creating-an-opencravat-store-account" id="toc-creating-an-opencravat-store-account" class="nav-link" data-scroll-target="#creating-an-opencravat-store-account"><span class="header-section-number">6.11</span> Creating an OpenCRAVAT Store Account</a></li>
+  <li><a href="#publishing-your-package" id="toc-publishing-your-package" class="nav-link" data-scroll-target="#publishing-your-package"><span class="header-section-number">6.12</span> Publishing Your Package</a></li>
+  <li><a href="#unpublishing-your-package" id="toc-unpublishing-your-package" class="nav-link" data-scroll-target="#unpublishing-your-package"><span class="header-section-number">6.13</span> Unpublishing Your Package</a></li>
   </ul>
 </nav>
     </div>
@@ -189,7 +232,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">making_a_package</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Making A Package</span></h1>
 </div>
 
 
@@ -208,40 +251,47 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="learning-objectives" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">6.1</span> Learning Objectives</h2>
-<p>By the end of this tutorial, you should be able to:</p>
+<p>By the end of this tutorial, you should be able to create and publish an OpenCRAVAT package:</p>
 <ul>
-<li><strong>Create</strong> a package on a local installation of OpenCRAVAT</li>
-<li><strong>Install</strong> available annotators from the open cravat store</li>
-<li><strong>Develop</strong> filters for a package</li>
-<li><strong>Determine</strong> layout</li>
-<li><strong>Upload</strong> and <strong>annotate</strong> variant files with a package from OpenCRAVAT</li>
-<li><strong>Export</strong> annotation results</li>
-<li><strong>Share</strong> package with the OpenCRAVAT community</li>
+<li>Begin creating your package.</li>
+<li>Select the annotators from the OpenCRAVAT store that you want in your package.</li>
+<li>Create filters for your package to focus on the most important results.</li>
+<li>Design the layout that will appear on the Variant tab in the GUI when people use your package.</li>
+<li>Select the reporters from the OpenCRAVAT store that people can use to export your package results.</li>
+<li>Publish your package in the OpenCRAVAT store to make it widely available to the community</li>
 </ul>
+<p>What is a package —-include hyperlink and description (EDIT BULLET POINTS!!!!)</p>
+<p>● To simplify the selection of annotators, filters, layout, and reports, we have begun creating packages<br>
+with pre-selected combinations of these selections, tailored for different scientific questions.<br>
+● Example: The drug Interaction Package identifies variants with potential impact on drug response. It<br>
+bundles ClinVar, PharmGKB, and DGIdb (drug interaction database) and is filtered to show only<br>
+variants with ClinVar annotation of drug response or those listed in PharmGKB or non-synonymous<br>
+variants on genes in DGIdb. A clean layout of selected widgets is provided, and Excel and tab–<br>
+delimited reports are automatically generated.<br>
+● Package filters can be adjusted by users on the Filter Tab.</p>
 <section id="when-to-use-a-package-vs.-individual-annotators" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="when-to-use-a-package-vs.-individual-annotators"><span class="header-section-number">6.1.1</span> When to use a package vs.&nbsp;individual annotators</h3>
-<p>When using OpenCRAVAT, users have the option to leverage pre-packaged annotators or select individual annotators. A package is a module which defines module installation and job parameters. Packages are always the best choice when you want to automate an analysis workflow that you will repeat many times.</p>
-<p>Choosing the right approach can significantly impact the efficiency of the analysis. Below we explore the pros of using a package versus individual annotators.</p>
+<p>With hundreds of annotators available in the OpenCRAVAT store, users can benefit from a package combining a set of annotators relevant to a particular question and pre-selected filters and reports. Packages are handy when you want to automate an analysis workflow that will be repeated many times.</p>
+<p>Choosing when a package is the best choice can significantly impact the efficiency of analysis. Below, we explore the pros of using a package versus individual annotators.</p>
 </section>
 <section id="pros-of-using-a-package" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="pros-of-using-a-package"><span class="header-section-number">6.1.2</span> Pros of using a package</h3>
 <ol type="1">
-<li><p>Comprehensive Analysis: Packages include multiple annotators, providing a more comprehensive analysis of variants.</p></li>
-<li><p>Ease of Use: Packages are pre-configured, making them easier to setup without needing to manually select individual annotators.</p></li>
+<li><p>Comprehensive Analysis: Packages include multiple annotation modules, providing a more thorough analysis of variants.</p></li>
+<li><p>Ease of Use: Packages are pre-configured, making them easier to set up without manually selecting individual annotator modules.</p></li>
 <li><p>Consistency: Using a package ensures consistent application of annotations across different analyses.</p></li>
 </ol>
 </section>
 </section>
 <section id="how-to-make-a-package" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="how-to-make-a-package"><span class="header-section-number">6.2</span> How to make a package</h2>
-<p>For example, if you use the below process often:</p>
+<p>In this example, we will create a package that uses eight variant effect prediction tools: SIFT, BayesDel, CADD Exome, VEST4, PrimateAI, GERP++, FATHMM, and REVEL, if you use the below process often:</p>
 <ul>
-<li>Install SIFT, BayesDel,CADD Exome, VEST4, PrimateAI,GERP++,FATHMM, and REVEL modules.</li>
-<li>Annotate with the modules.</li>
-<li>Filter for Pathogenic variants only.</li>
-<li>Update layout to user preferences.</li>
-<li>Make csv and excel reports.</li>
-<li>Share your package with the OpenCRAVAT community</li>
+<li><p>Install multiple variant effect predictor modules (e.g., SIFT, BayesDel, CADD Exome, VEST4, PrimateAI, GERP++, FATHMM and REVEL).</p></li>
+<li><p>Score a list of variants with this “ensemble” of predictors.</p></li>
+<li><p>Filter for variants predicted to be pathogenic only.</p></li>
+<li><p>Update the layout to see the most useful widgets.</p></li>
+<li><p>Make CSV and Excel reports.</p></li>
 </ul>
 </section>
 <section id="package-build-process" class="level2" data-number="6.3">
@@ -261,9 +311,10 @@ ul.task-list li input[type="checkbox"] {
   click C "#filter"
   D[Layout] --&gt;E
   click D "#layout"
-  E[Export Results] --&gt; E
-  click E "#results"
-  F[Share Package]
+  E[Save Package] --&gt; F
+  click E "#Save-Package"
+  F[Share Package] 
+  click F "#share-package"
   
 </pre>
 </div>
@@ -276,7 +327,6 @@ ul.task-list li input[type="checkbox"] {
 <section id="open-your-local-installation-of-opencravat" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="open-your-local-installation-of-opencravat"><span class="header-section-number">6.4</span> Open your local installation of OpenCRAVAT</h2>
 <p>Before we create a new package, load OpenCRAVAT and make sure the packages we need are installed:</p>
-<pre class="{bash}"><code>oc gui</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/oc-ocgui.png" class="img-fluid figure-img"></p>
@@ -286,7 +336,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="install-modules" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="install-modules"><span class="header-section-number">6.5</span> Install Modules</h2>
-<p>Make sure the annotators you would like to include in the package have been installed from the store.</p>
+<p>Ensure the annotator modules you want to include in the package have been installed from the store.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/oc-store.png" class="img-fluid figure-img"></p>
@@ -297,28 +347,218 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="annotate-with-modules" class="level2" data-number="6.6">
 <h2 data-number="6.6" class="anchored" data-anchor-id="annotate-with-modules"><span class="header-section-number">6.6</span> Annotate with Modules</h2>
-<p>For this tutorial we will use the Example HGVS variants included in the OpenCRAVAT software. Choose the HGVS button under the variants tab. Next choose the annotators you would like to include in your package.</p>
-<p>We will focus on variant effect predictor annotators and choose the following: SIFT, BayesDel,CADD Exome, VEST4, PrimateAI, GERP++, FATHMM, and REVEL.</p>
+<p>For this tutorial, we will use the Example HGVS variants included in the OpenCRAVAT software. Under the variants tab, choose the HGVS button. Next, choose the annotators you would like to include in your package.</p>
+<p>We will focus on variant effect predictor annotators and choose SIFT, BayesDel, CADD Exome, VEST4, PrimateAI, GERP++, FATHMM, and REVEL.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/oc-jobs-package.png" class="img-fluid figure-img"></p>
-<figcaption>Next you will scroll down and select the ANNOTATE button.</figcaption>
+<figcaption>Next, you will scroll down and select the ANNOTATE button.</figcaption>
 </figure>
 </div>
 <p><img src="images/oc-annotate-button.png" class="img-fluid"></p>
+<p>We have successfully annotated 49 variants. Next, we will develop filters to include the ACMG/AMG Benign and Pathogenic columns for every annotator we include in our job.</p>
 <p><img src="images/oc-package-job.png" class="img-fluid"></p>
 </section>
-<section id="filter" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="filter"><span class="header-section-number">6.7</span> Filter</h2>
-<p>To begin filtering, click the FILTER tab and navigate to the section entitled variant properties.</p>
-<section id="query-builder" class="level3" data-number="6.7.1">
-<h3 data-number="6.7.1" class="anchored" data-anchor-id="query-builder"><span class="header-section-number">6.7.1</span> Query Builder</h3>
-<p>The Query Builder allows you to create custom filters. Click the Query Builder header under the variant properties tab to begin.</p>
-<p>First, hover your mouse within the rounded brackets. A plus sign will appear to the far left. Click the plus sign</p>
-</section>
+<section id="filtering-query-builder" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="filtering-query-builder"><span class="header-section-number">6.7</span> Filtering: Query Builder</h2>
+<p>To begin filtering, click the FILTER tab, navigate to the section entitled Variant Properties, and click Query Builder. The Query Builder allows you to create custom filters. Click the Query Builder header under the variant properties tab to begin. For our package, we will include variants with data in every annotator’s Benign OR Pathogenic column. Hover your mouse inside the left side of the parenthesis and click the “+” sign to build your query. Choose BayesDel from the first drop-down menu and choose ACMG/AMP Pathogenic (PP3), click the “+” and choose BayesDel and ACMG/AMP Benign (BP4). Repeat the same selections for the rest of your annotators. Once you have added all the annotators, click the first “and” in your query to change our query to include only “or” filtering options. This method is inclusive to all of our annotators and gives us a high likelihood of having more variants included in our results and some benign and pathogenic variants.</p>
+<p><img src="images/oc-package-querybuilder1.png" class="img-fluid"></p>
+<p><img src="images/oc-package-querybuilder2.png" class="img-fluid"></p>
+<p>Next, click the circular refresh button at the bottom left next to the variant count. Then click the Apply filter button. This leaves us with 33 out of 49 variants that meet the criteria of our custom filter.</p>
 </section>
 <section id="layout" class="level2" data-number="6.8">
 <h2 data-number="6.8" class="anchored" data-anchor-id="layout"><span class="header-section-number">6.8</span> Layout</h2>
+<p>OpenCRAVAT allows you to customize the variant tab results layout under the Variant tab. Updating the layout allows the user to view their results more easily and include/exclude information important to their analysis.</p>
+<p><img src="images/oc-package-varianttab.png" class="img-fluid"></p>
+<p><img src="images/oc-package-layout.png" class="img-fluid"></p>
+<p>Once you click the Variant Tab, update your results layout by clicking the layout button. This is done by clicking the “Layout” button, which opens a menu to select or deselect columns. Next, unselect the options you <strong>DO NOT</strong> want to see in your results viewer. Below is a table showing each annotator’s name and the included (selected) columns in our package.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Columns Included for Each Variant Annotator in Our Package</caption>
+<colgroup>
+<col style="width: 13%">
+<col style="width: 86%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Annotator</th>
+<th style="text-align: center;">Columns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Variant Annotation</td>
+<td style="text-align: center;">Chrom,Position,Ref Base,Alt Base,Coding,Gene,Transcript,Sequence Ontology,Exon ,Number,cDNA change,Protein Change,Samples</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BayesDel</td>
+<td style="text-align: center;">ACMG/AMP Benign (BP4), ACMG/AMP Pathogenic (PP3)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CADD Exome</td>
+<td style="text-align: center;">ACMG/AMP Benign (BP4), ACMG/AMP Pathogenic (PP3)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FATHMM</td>
+<td style="text-align: center;">ACMG/AMP Benign (BP4)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PhyloP</td>
+<td style="text-align: center;">ACMG/AMP Benign (BP4), ACMG/AMP Pathogenic (PP3)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PrimateAI</td>
+<td style="text-align: center;">ACMG/AMP Benign (BP4), ACMG/AMP Pathogenic (PP3)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">REVEL</td>
+<td style="text-align: center;">ACMG/AMP Benign (BP4), ACMG/AMP Pathogenic (PP3)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SIFT</td>
+<td style="text-align: center;">ACMG/AMP Benign (BP4), ACMG/AMP Pathogenic (PP3)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VEST4</td>
+<td style="text-align: center;">ACMG/AMP Benign (BP4), ACMG/AMP Pathogenic (PP3)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="save-package" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="save-package"><span class="header-section-number">6.9</span> Save Package</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/oc-package-savejobasPackage.png" class="img-fluid figure-img"></p>
+<figcaption>Save Your Job as a Package</figcaption>
+</figure>
+</div>
+<p>Next, locate the “save job as a package” button. Click the button, name your package “Calibrated Variant Effect Predictors,” and press submit. Once your package is created, you can confirm it was created by navigating to the OpenCRAVAT GUI main page, clicking “Packages,” and confirming that your package is in the drop-down menu.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/oc-package-confirmpackageonmainpage.png" class="img-fluid figure-img"></p>
+<figcaption>Confirm the Creation of Your Package</figcaption>
+</figure>
+</div>
+</section>
+<section id="publish-your-package" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="publish-your-package"><span class="header-section-number">6.10</span> Publish Your Package</h2>
+<p>We will walk you through publishing your package to the OpenCRAVAT store, making it available to the broader community.</p>
+<section id="before-you-publish-essential-checks" class="level3" data-number="6.10.1">
+<h3 data-number="6.10.1" class="anchored" data-anchor-id="before-you-publish-essential-checks"><span class="header-section-number">6.10.1</span> Before You Publish: Essential Checks</h3>
+<p>Before sharing your hard work, ensure your annotator is polished and ready for prime time. Here’s a checklist of key areas to focus on:</p>
+</section>
+<section id="comprehensive-markdown-documentation" class="level3" data-number="6.10.2">
+<h3 data-number="6.10.2" class="anchored" data-anchor-id="comprehensive-markdown-documentation"><span class="header-section-number">6.10.2</span> 1. Comprehensive Markdown Documentation</h3>
+<ul>
+<li><strong>Describe Your Data:</strong> Explain the package’s data sources and biological significance clearly.</li>
+<li><strong>Explain the Value:</strong> Why should someone use your package? What insights does it provide?</li>
+<li><strong>Define Output Values:</strong> Thoroughly describe the meaning of each output column.</li>
+<li><strong>Provide External Links:</strong> Include links to source databases or more detailed documentation.</li>
+</ul>
+</section>
+<section id="robust-test-files" class="level3" data-number="6.10.3">
+<h3 data-number="6.10.3" class="anchored" data-anchor-id="robust-test-files"><span class="header-section-number">6.10.3</span> 2. Robust Test Files</h3>
+<p>Tests are crucial for maintaining the quality of your package, especially when updates are made.</p>
+<p><strong>Creating Test Files:</strong></p>
+<ol type="1">
+<li><strong>Ensure Correct Output:</strong> Verify that your package produces accurate results.</li>
+<li><strong>Select Representative Variants:</strong> Choose a diverse set of variants that cover different scenarios:
+<ul>
+<li>Variants that yield annotations.</li>
+<li>Variants that do not yield annotations.</li>
+<li>Variants representing different variant types (e.g., insertions, deletions).</li>
+</ul></li>
+<li><strong>Create the Test Directory:</strong> Create a subdirectory named <code>test</code> in your module directory.</li>
+<li><strong>Create the Input File:</strong> Inside <code>test,</code>create a file named <code>input</code> containing your selected variants in the cravat input format.</li>
+<li><strong>Run the Package:</strong> Execute the following command: <code>bash oc run input -t text -a packagename</code> (Replace <code>packagename</code> with your package’s name.)</li>
+<li><strong>Rename the Output:</strong> Rename the generated <code>input.tsv</code> file to <code>key</code>.</li>
+<li><strong>Clean Up:</strong> Remove any other files from the <code>test</code> directory, leaving only <code>input</code> and <code>key</code>.</li>
+<li><strong>Run the Test:</strong> In a directory outside your module, run: <code>bash oc util test -m packagename</code></li>
+<li><strong>Verify Success:</strong> The test should pass. A temporary file named <code>cravat_test_12345</code> will be created; you can safely delete it.</li>
+</ol>
+<p><strong>Maintaining Tests:</strong></p>
+<ul>
+<li>Run the tests after every update.</li>
+<li>If a test fails, investigate the cause.</li>
+<li>Update the <code>key</code> file if the expected output has changed.</li>
+<li>Fix any bugs in your module if the test fails due to an error.</li>
+</ul>
+</section>
+<section id="eye-catching-logo-optional" class="level3" data-number="6.10.4">
+<h3 data-number="6.10.4" class="anchored" data-anchor-id="eye-catching-logo-optional"><span class="header-section-number">6.10.4</span> 3. Eye-Catching Logo (Optional)</h3>
+<ul>
+<li>A logo can enhance the visibility of your annotator.</li>
+<li>Save your logo as <code>logo.png</code> in your module directory.</li>
+</ul>
+</section>
+<section id="comprehensive-yml-file" class="level3" data-number="6.10.5">
+<h3 data-number="6.10.5" class="anchored" data-anchor-id="comprehensive-yml-file"><span class="header-section-number">6.10.5</span> 4. Comprehensive YML File</h3>
+<p>The YML file defines the metadata and output structure of your annotator.</p>
+<p><strong>Key Fields:</strong></p>
+<ul>
+<li><strong><code>output_columns</code>:</strong> Defines the columns displayed in the viewer.
+<ul>
+<li><strong><code>name</code>:</strong> Matches the output column name in your Python code.</li>
+<li><strong><code>title</code>:</strong> The display name of the column.</li>
+<li><strong><code>type</code>:</strong> The data type (e.g., <code>int</code>, <code>float</code>, <code>string</code>).</li>
+<li><strong><code>width</code> (Optional):</strong> Adjusts the column width.</li>
+<li><strong><code>desc</code> (Optional):</strong> Adds a tooltip description.</li>
+<li><strong><code>hidden: true</code> (Optional):</strong> Hides the column by default.</li>
+</ul></li>
+<li><strong><code>tags</code>:</strong> Categorizes your annotator (refer to the store for valid tags).</li>
+<li><strong><code>description</code>:</strong> A brief summary of your annotator (around 140 characters).</li>
+<li><strong><code>developer</code>:</strong> Information about the developer or organization.
+<ul>
+<li><code>name</code></li>
+<li><code>organization</code></li>
+<li><code>email</code></li>
+<li><code>website</code></li>
+<li><code>citation</code> (MLA format)</li>
+</ul></li>
+<li><strong><code>datasource</code>:</strong> The data version or date.</li>
+<li><strong><code>smartfilters</code> (Optional):</strong> Defines custom filters.</li>
+<li><strong><code>requires</code> (Optional):</strong> Specifies required widgets.</li>
+<li><strong><code>private: true</code> (Optional):</strong> Makes the annotator private.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>Refer to the ClinVar annotator’s markdown file for syntax examples.</p>
+</section>
+</section>
+<section id="creating-an-opencravat-store-account" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="creating-an-opencravat-store-account"><span class="header-section-number">6.11</span> Creating an OpenCRAVAT Store Account</h2>
+<ol type="1">
+<li><strong>Run the Command:</strong> Execute the following command in your terminal: <code>bash     oc store new-account user@example.com pw1234</code> (Replace <code>user@example.com</code> and <code>pw1234</code> with your desired credentials.)</li>
+<li><strong>Verify Your Account:</strong> Check your email for a confirmation link and click it.</li>
+</ol>
+</section>
+<section id="publishing-your-package" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="publishing-your-package"><span class="header-section-number">6.12</span> Publishing Your Package</h2>
+<ol type="1">
+<li><strong>Run the Publish Command:</strong> After verifying your account, use the following command to publish your annotator: <code>bash oc store publish -u user@example.com -p pw1234 -d|c module_name</code>
+<ul>
+<li>Replace <code>user@example.com</code>, <code>pw1234</code>, and <code>module_name</code> with your credentials and annotator name.</li>
+<li>Use <code>-d</code> if your module includes data in the <code>data</code> folder.</li>
+<li>Use <code>-c</code> if your module does not include data.</li>
+</ul></li>
+</ol>
+</section>
+<section id="unpublishing-your-package" class="level2" data-number="6.13">
+<h2 data-number="6.13" class="anchored" data-anchor-id="unpublishing-your-package"><span class="header-section-number">6.13</span> Unpublishing Your Package</h2>
+<p>To unpublish a specific version of your annotator, send a DELETE request to the store’s API.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>username <span class="op">=</span> <span class="st">"user"</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>password <span class="op">=</span> <span class="st">"password"</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>requests.delete(<span class="st">"http://karchinlab.org/cravatstore/example_module/1.0.0"</span>, auth<span class="op">=</span>(username, password))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;Response [404]&gt;</code></pre>
+</div>
+</div>
 
 
 </section>
