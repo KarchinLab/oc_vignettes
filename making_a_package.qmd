@@ -3,6 +3,7 @@ title: "Making A Package"
 editor: source
 format: 
   html: default
+  rst: default
 toc: true
 anchor-sections: true
 ---
