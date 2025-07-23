@@ -22,13 +22,11 @@ What is a package?
 
 -   To simplify the selection of annotators, filters, layout, and reports, we have begun creating packages\
     with pre-selected combinations of these selections, tailored for different scientific questions
-
 -    Example: The drug Interaction Package identifies variants with potential impact on drug response. It\
     bundles ClinVar, PharmGKB, and DGIdb (drug interaction database) and is filtered to show only\
     variants with ClinVar annotation of drug response or those listed in PharmGKB or non-synonymous\
     variants on genes in DGIdb. A clean layout of selected widgets is provided, and Excel and tab--\
     delimited reports are automatically generated.
-
 -   Package filters can be adjusted by users on the Filter Tab.
 
 ### When to use a package vs. individual annotators
